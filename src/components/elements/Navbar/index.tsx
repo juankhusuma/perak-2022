@@ -21,6 +21,7 @@ import { toast } from 'react-hot-toast'
 import { NavbarProps } from './interface'
 import Link from 'next/link'
 import { routes } from './constant'
+import { api } from 'src/utils/api'
 
 export const Navbar: React.FC<NavbarProps> = ({}) => {
   // TODO: Write element's logic
@@ -36,6 +37,10 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
       !window.scrollY ? setScroll(false) : setScroll(true)
     )
   }, [])
+
+  const userData = api.userData.get.useQuery({
+    email: session?.user?.email as string,
+  })
 
   return (
     <>
@@ -81,7 +86,56 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
               >
                 <Menu.Items className="absolute right-0 mt-5 w-56 origin-top-right rounded-md  bg-[#EABB76] shadow-xl drop-shadow-lg">
                   <div className="px-1 py-1">
-                    {session && (
+                    {routes.map((route, index) => (
+                      <Menu.Item>
+                        {({ active }) =>
+                          route.requireAuth && !session ? (
+                            <button
+                              key={index}
+                              className={`flex w-full items-center justify-end gap-2 rounded-md px-2 py-2 text-sm transition-all duration-300 ease-in-out ${
+                                router.pathname === route.path && 'hidden'
+                              } ${
+                                active
+                                  ? 'bg-[#DC8F1A] text-white'
+                                  : 'text-[#6D2223]'
+                              }`}
+                              onClick={() => setAuthModalOpen(true)}
+                            >
+                              {route.name}
+                              <span className="stroke-current">
+                                <route.icon
+                                  fill="none"
+                                  stroke="primary"
+                                  className="h-5 w-5"
+                                />
+                              </span>
+                            </button>
+                          ) : (
+                            <Link key={index} href={route.path}>
+                              <button
+                                className={`flex w-full items-center justify-end gap-2 rounded-md px-2 py-2 text-sm transition-all duration-300 ease-in-out ${
+                                  router.pathname === route.path && 'hidden'
+                                } ${
+                                  active
+                                    ? 'bg-[#DC8F1A] text-white'
+                                    : 'text-[#6D2223]'
+                                }`}
+                              >
+                                {route.name}
+                                <span className="stroke-current">
+                                  <route.icon
+                                    fill="none"
+                                    stroke="primary"
+                                    className="h-5 w-5"
+                                  />
+                                </span>
+                              </button>
+                            </Link>
+                          )
+                        }
+                      </Menu.Item>
+                    ))}
+                    {/* {session && (
                       <Menu.Item>
                         {({ active }) => (
                           <button
@@ -97,7 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                           </button>
                         )}
                       </Menu.Item>
-                    )}
+                    )} */}
                     <Menu.Item>
                       {({ active }) => (
                         <button
@@ -132,10 +186,13 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
               </Transition>
             </Menu>
             <div className="hidden space-x-5 lg:flex lg:items-center">
-              {routes.map((route) =>
+              {routes.map((route, index) =>
                 route.requireAuth && !session ? (
                   <Button
-                    className="w-fit px-5 py-3 text-[12px]"
+                    key={index}
+                    className={`w-fit px-5 py-3 text-[12px] ${
+                      router.pathname === route.path && 'hidden'
+                    }`}
                     variant={3}
                     onClick={() => setAuthModalOpen(true)}
                     leftIcon={
@@ -149,9 +206,11 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                     {route.name}
                   </Button>
                 ) : (
-                  <Link href={route.path}>
+                  <Link key={index} href={route.path}>
                     <Button
-                      className="w-fit px-5 py-3 text-[12px]"
+                      className={`w-fit px-5 py-3 text-[12px] ${
+                        router.pathname === route.path && 'hidden'
+                      }`}
                       variant={3}
                       leftIcon={
                         <route.icon
@@ -178,7 +237,9 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                         >
                           <User className="h-5 w-5" />
                           <p className="w-full max-w-[140px] truncate">
-                            {session.user?.name}
+                            {userData.data?.fullName
+                              ? userData.data?.fullName
+                              : session.user?.name}
                           </p>
                           <Chevronfull
                             className={`h-6 w-6 rotate-180 text-cream-light transition-transform duration-300 ease-in-out ${
@@ -201,7 +262,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                   >
                     <Menu.Items className="absolute right-0 mt-1 w-56 origin-top-right rounded-md  bg-[#EABB76] shadow-lg ">
                       <div className="px-1 py-1">
-                        <Menu.Item>
+                        {/* <Menu.Item>
                           {({ active }) => (
                             <button
                               className={`${
@@ -215,7 +276,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                               Edit Profile
                             </button>
                           )}
-                        </Menu.Item>
+                        </Menu.Item> */}
                         <Menu.Item>
                           {({ active }) => (
                             <button

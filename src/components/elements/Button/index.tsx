@@ -17,7 +17,7 @@ export const Button: React.FC<ButtonProps> = ({
       <button
         onClick={onClick}
         disabled={disabled}
-        className={`${className} flex h-fit flex-none select-none items-center justify-center gap-1 rounded-lg font-poppins text-label-medium font-extrabold tracking-wider
+        className={`${className} flex h-fit select-none items-center justify-center gap-1 rounded-lg font-poppins text-label-medium font-extrabold tracking-wider
         ${
           variant == 1 &&
           'bg-orange-normal text-primary transition-shadow hover:drop-shadow-lg active:drop-shadow-none'

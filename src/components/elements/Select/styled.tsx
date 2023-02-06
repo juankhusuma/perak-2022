@@ -6,7 +6,7 @@ export const CustomSelectField = styled(Input)(({ theme }) => ({
     fontFamily: 'Poppins',
     color: '#383D75',
     fontWeight: 'bold',
-    background: '#00',
+    background: '#FFFFFF',
     border: '2px solid #383D75',
     borderRadius: 10,
     transition: theme.transitions.create([
@@ -17,13 +17,16 @@ export const CustomSelectField = styled(Input)(({ theme }) => ({
     '&.Mui-focused': {
       color: '#DC8F1A',
       border: '2px solid #DC8F1A',
+      background: '#FFFFFF',
     },
     '&.Mui-error': {
       border: '2px solid #6D2223',
       color: '#DC8F1A',
+      background: '#FFFFFF',
     },
     '&.Mui-disabled': {
       border: '2px solid #A39B74',
+      background: '#FFFFFF',
     },
   },
   '& label': {

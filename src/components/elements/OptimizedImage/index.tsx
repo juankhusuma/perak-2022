@@ -6,7 +6,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   imageUrl,
   alt,
   className,
-  fit,
+  fill,
   isRounded,
 }) => {
   if (isRounded) {
@@ -18,8 +18,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       <Image
         src={imageUrl}
         alt={alt}
-        layout="fill"
-        objectFit={fit}
+        fill={fill}
         className={isRounded as string}
         priority
       />

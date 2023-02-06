@@ -22,6 +22,9 @@ export const Countdown: React.FC<CountdownProps> = ({
     hours: Math.floor((diff / (60 * 60)) % 24),
     minutes: Math.floor((diff / 60) % 60),
   })
+  const [day, setDay] = useState<number>(0)
+  const [hour, setHour] = useState<number>(0)
+  const [minute, setMinute] = useState<number>(0)
 
   useEffect(() => {
     setTimeout(() => {
@@ -32,6 +35,15 @@ export const Countdown: React.FC<CountdownProps> = ({
         minutes: Math.floor((diff / 60) % 60),
       })
     }, 1000)
+    if (differences.days > 0) {
+      setDay(differences.days)
+    }
+    if (differences.hours > 0) {
+      setHour(differences.hours)
+    }
+    if (differences.minutes > 0) {
+      setMinute(differences.minutes)
+    }
   }, [dayjs()])
 
   // format end date to string
@@ -46,37 +58,37 @@ export const Countdown: React.FC<CountdownProps> = ({
   return (
     <>
       <div className={`space-y-2 text-center ${className}`}>
-        <h1
+        <div
           className={`${
             titleClassName ?? 'font-poppinsBold text-title-medium'
           }`}
         >
           {title}
-        </h1>
+        </div>
         <div className="grid grid-cols-3">
           <div className="bg-primary px-3 py-4 text-center text-orange-normal">
-            <h1 className="font-retro text-display-small md:text-display-medium">
-              {date ? (differences.days < 0 ? 0 : differences.days) : 0}
-            </h1>
-            <p className="font-poppinsBold text-title-small md:text-title-medium">
+            <div className="font-retro text-display-small md:text-display-medium">
+              {day}
+            </div>
+            <div className="font-poppinsBold text-title-small md:text-title-medium">
               Hari
-            </p>
+            </div>
           </div>
           <div className="bg-orange-normal px-3 py-4 text-center text-primary">
-            <h1 className="font-retro text-display-small md:text-display-medium">
-              {date ? (differences.hours < 0 ? 0 : differences.hours) : 0}
-            </h1>
-            <p className="font-poppinsBold text-title-small md:text-title-medium">
+            <div className="font-retro text-display-small md:text-display-medium">
+              {hour}
+            </div>
+            <div className="font-poppinsBold text-title-small md:text-title-medium">
               Jam
-            </p>
+            </div>
           </div>
           <div className="bg-primary px-3 py-4 text-center text-orange-normal">
-            <h1 className="font-retro text-display-small md:text-display-medium">
-              {date ? (differences.minutes < 0 ? 0 : differences.minutes) : 0}
-            </h1>
-            <p className="font-poppinsBold text-title-small md:text-title-medium">
+            <div className="font-retro text-display-small md:text-display-medium">
+              {minute}
+            </div>
+            <div className="font-poppinsBold text-title-small md:text-title-medium">
               Menit
-            </p>
+            </div>
           </div>
         </div>
         <div className={`${subTitleClassName ?? 'text-title-medium'}`}>

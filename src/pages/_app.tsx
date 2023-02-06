@@ -7,7 +7,7 @@ import { api } from '../utils/api'
 
 import '../styles/globals.css'
 import { Spinelipse, Toasterror, Toastsuccess } from '@icons'
-import { Footer, Smoothscroll } from '@elements'
+import { Footer, Smoothscroll, Onboarding } from '@elements'
 import { AuthModalContextProvider } from '@contexts'
 
 const MyApp: AppType<{ session: Session | null }> = ({
@@ -57,10 +57,12 @@ const MyApp: AppType<{ session: Session | null }> = ({
         }}
       />
       <AuthModalContextProvider>
-        <Smoothscroll>
-          <Component {...pageProps} />
-          <Footer />
-        </Smoothscroll>
+        <Onboarding>
+          <Smoothscroll>
+            <Component {...pageProps} />
+            <Footer />
+          </Smoothscroll>
+        </Onboarding>
       </AuthModalContextProvider>
     </SessionProvider>
   )

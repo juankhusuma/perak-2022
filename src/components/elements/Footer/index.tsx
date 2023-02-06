@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
             imageUrl="/logo.svg"
             alt="Logo"
             className="h-[100px] w-[100px]"
-            fit="fill"
+            fill
           />
           <div className="-space-y-4">
             <p className="font-retro text-display-small text-[#E9DEA6] md:text-display-medium">
