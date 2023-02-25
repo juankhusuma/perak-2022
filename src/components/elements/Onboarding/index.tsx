@@ -133,7 +133,7 @@ export const Onboarding: React.FC<OnBoardingProps> = ({ children }) => {
                     rules={{
                       required: 'Anda harus memasukkan nama.',
                       pattern: {
-                        value: /^[a-zA-Z\s]*$/,
+                        value: /^\d{10}$/,
                         message: 'Nama hanya berupa huruf.',
                       },
                     }}
@@ -189,7 +189,7 @@ export const Onboarding: React.FC<OnBoardingProps> = ({ children }) => {
                     rules={{
                       required: 'Anda harus memasukkan Id LINE.',
                       pattern: {
-                        value: /^[a-zA-Z0-9_-]*$/,
+                        value: /^\S+$/,
                         message:
                           'Id LINE hanya bisa terdiri dari huruf dan angka.',
                       },
