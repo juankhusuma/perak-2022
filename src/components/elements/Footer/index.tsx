@@ -29,15 +29,33 @@ export const Footer: React.FC = () => {
             Ikuti Perak di
           </p>
           <div className="flex gap-4">
-            <div className="cursor-pointer">
-              <Instagramfooter />
-            </div>
-            <div className="cursor-pointer">
-              <Youtubefooter />
-            </div>
-            <div className=" cursor-pointer">
-              <Twitterfooter />
-            </div>
+            <a
+              href="https://www.instagram.com/perakfasilkom"
+              target="_blank"
+              rel="noopener"
+            >
+              <div className="cursor-pointer">
+                <Instagramfooter />
+              </div>
+            </a>
+            <a
+              href="https://www.youtube.com/@PestaRakyatKomputer"
+              target="_blank"
+              rel="noopener"
+            >
+              <div className="cursor-pointer">
+                <Youtubefooter />
+              </div>
+            </a>
+            <a
+              href="https://twitter.com/perakfasilkom"
+              target="_blank"
+              rel="noopener"
+            >
+              <div className=" cursor-pointer">
+                <Twitterfooter />
+              </div>
+            </a>
           </div>
         </div>
       </div>

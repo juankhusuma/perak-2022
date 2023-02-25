@@ -1,5 +1,5 @@
 import { useAuthModalContext } from '@contexts'
-import { AuthModal, Button } from '@elements'
+import { AuthModal, Button, Image } from '@elements'
 import { Menu, Transition } from '@headlessui/react'
 import {
   ArrowLeftOnRectangleIcon,
@@ -61,7 +61,12 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
             </div>
             <Link href={'/'}>
               <div className="h-fit w-fit cursor-pointer">
-                <Navbaricon />
+                <Image
+                  imageUrl="/NavbarLogo.svg"
+                  alt="Logo"
+                  className="h-[50px] w-[212px]"
+                  fill
+                />
               </div>
             </Link>
           </div>

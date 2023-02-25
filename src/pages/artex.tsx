@@ -22,6 +22,7 @@ import { type NextPage } from 'next'
 import Head from 'next/head'
 import { useState } from 'react'
 import { useCalendlyEventListener } from 'react-calendly'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
 
 const Artex: NextPage = () => {
@@ -107,7 +108,29 @@ const Artex: NextPage = () => {
   const handleClick = () => {}
 
   const [dateValue, setDateValue] = useState<string>('')
-  // console.log(dateValue);
+
+  interface FormDataType {
+    name: string
+    email: string
+    team: string
+    equipments: string[]
+  }
+
+  const defaultValues: FormDataType = {
+    name: '',
+    email: '',
+    team: '',
+    equipments: [],
+  }
+
+  const { handleSubmit, control, setValue, setError } = useForm<FormDataType>({
+    defaultValues: defaultValues,
+    mode: 'onBlur',
+  })
+
+  const onSubmit: SubmitHandler<FormDataType> = (data) => {
+    console.log(data)
+  }
 
   return (
     <>
@@ -338,12 +361,47 @@ const Artex: NextPage = () => {
               </Radio>
             </div>
           </div>
-          <div className="md:pl-5">
+          {/* <div className="md:pl-5">
             <p className="pl-2 font-retro text-6xl text-primary">Checkbox</p>
             <div className="mt-5 space-y-3 p-2 md:p-0 md:pl-10">
-              <Checkbox>Label</Checkbox>
-              <Checkbox>Label</Checkbox>
-              <Checkbox>Label</Checkbox>
+              <Checkbox
+                label="Example"
+                options={[{ label: 'Software Engineer' }, { label: 'UI/UX' }]}
+                name="example"
+                control={control}
+                setValue={setValue}
+              />
+              <Checkbox
+                label="Disabled"
+                options={[{ label: 'Software Engineer' }, { label: 'UI/UX' }]}
+                name="disabled"
+                control={control}
+                setValue={setValue}
+                disabled
+              />
+            </div>
+          </div> */}
+          <div className="md:pl-5">
+            <p className="pl-2 font-retro text-6xl text-primary">
+              Form Example
+            </p>
+            <div className="mt-5 space-y-3 p-2 md:p-0 md:pl-10">
+              <Checkbox
+                label="Checkbox"
+                options={[{ label: 'Laptop' }, { label: 'PC' }]}
+                name="IT Dev"
+                required
+                rules={{ required: true }}
+                control={control}
+                setValue={setValue}
+              />
+              <Button
+                className="w-fit px-5 py-3"
+                variant={6}
+                onClick={handleSubmit(onSubmit)}
+              >
+                Submit
+              </Button>
             </div>
           </div>
           <div className="md:pl-5">
