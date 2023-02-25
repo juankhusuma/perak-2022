@@ -70,7 +70,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           {!!errors[name] && (
             <p className="flex flex-row items-center gap-x-2 pt-2 text-sm text-red-normal">
               {errors[name]!['type'] == 'required'
-                ? 'Mohon pilih salah satu dari pilihan diatas'
+                ? 'Mohon pilih minimal satu dari pilihan diatas'
                 : errors[name]!['message']?.toString()}
             </p>
           )}

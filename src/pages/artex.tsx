@@ -330,7 +330,7 @@ const Artex: NextPage = () => {
               </Select>
             </div>
           </div>
-          <div className="md:pl-5">
+          {/* <div className="md:pl-5">
             <p className="pl-2 font-retro text-6xl text-primary">
               Radio Button
             </p>
@@ -360,7 +360,7 @@ const Artex: NextPage = () => {
                 Label
               </Radio>
             </div>
-          </div>
+          </div> */}
           {/* <div className="md:pl-5">
             <p className="pl-2 font-retro text-6xl text-primary">Checkbox</p>
             <div className="mt-5 space-y-3 p-2 md:p-0 md:pl-10">
@@ -387,6 +387,7 @@ const Artex: NextPage = () => {
             </p>
             <div className="mt-5 space-y-3 p-2 md:p-0 md:pl-10">
               <Checkbox
+                className="text-primary"
                 label="Checkbox"
                 options={[{ label: 'Laptop' }, { label: 'PC' }]}
                 name="IT Dev"
@@ -394,6 +395,17 @@ const Artex: NextPage = () => {
                 rules={{ required: true }}
                 control={control}
                 setValue={setValue}
+              />
+              <Radio
+                className="text-primary"
+                label="Radio"
+                options={[{ label: 'Software Engineer' }, { label: 'UI/UX' }]}
+                name="Team"
+                required
+                rules={{ required: true }}
+                control={control}
+                setValue={setValue}
+                flexRow
               />
               <Button
                 className="w-fit px-5 py-3"

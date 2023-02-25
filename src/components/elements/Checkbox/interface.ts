@@ -1,4 +1,3 @@
-import { ReactNode } from 'react'
 import { Control, RegisterOptions } from 'react-hook-form'
 
 export interface CheckboxProps {
