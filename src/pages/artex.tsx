@@ -361,7 +361,7 @@ const Artex: NextPage = () => {
               <div className="pt-5">
                 <Button
                   className="w-fit px-5 py-3"
-                  variant={6}
+                  variant={1}
                   onClick={handleSubmit(onSubmit)}
                 >
                   Submit
@@ -570,6 +570,30 @@ const Artex: NextPage = () => {
               >
                 Button
               </Button>
+              <Button
+                className="w-fit px-5 py-3"
+                variant={1}
+                onClick={handleClick}
+                leftIcon={<Instagram size="w-4 h-4" />}
+                rightIcon={<Instagram size="w-4 h-4" />}
+                disabled
+              >
+                Button
+              </Button>
+              <Button
+                className="w-fit p-2"
+                variant={1}
+                onClick={handleClick}
+                leftIcon={<Instagram size="w-7 h-7" />}
+              ></Button>
+              <Button
+                className="w-fit px-5 py-3"
+                variant={1}
+                onClick={handleClick}
+                isLoading
+              >
+                Button
+              </Button>
             </div>
             <div className="mt-5 flex w-fit flex-col items-center gap-2 pl-5 md:flex-row md:p-0 md:pl-10">
               <Button
@@ -605,6 +629,30 @@ const Artex: NextPage = () => {
               >
                 Button
               </Button>
+              <Button
+                className="w-fit px-5 py-3"
+                variant={2}
+                onClick={handleClick}
+                leftIcon={<Instagram size="w-4 h-4" />}
+                rightIcon={<Instagram size="w-4 h-4" />}
+                disabled
+              >
+                Button
+              </Button>
+              <Button
+                className="w-fit p-2"
+                variant={2}
+                onClick={handleClick}
+                leftIcon={<Instagram size="w-7 h-7" />}
+              ></Button>
+              <Button
+                className="w-fit px-5 py-3"
+                variant={2}
+                onClick={handleClick}
+                isLoading
+              >
+                Button
+              </Button>
             </div>
             <div className="mt-5 flex w-fit flex-col items-center gap-2 pl-5 md:flex-row md:p-0 md:pl-10">
               <Button
@@ -640,105 +688,27 @@ const Artex: NextPage = () => {
               >
                 Button
               </Button>
-            </div>
-            <div className="mt-5 flex w-fit flex-col items-center gap-2 pl-5 md:flex-row md:p-0 md:pl-10">
               <Button
-                className="w-fit px-3 py-2"
-                variant={4}
-                onClick={handleClick}
-              >
-                Button
-              </Button>
-              <Button
-                className="w-fit px-3 py-2"
-                variant={4}
+                className="w-fit px-5 py-3"
+                variant={3}
                 onClick={handleClick}
                 leftIcon={<Instagram size="w-4 h-4" />}
                 rightIcon={<Instagram size="w-4 h-4" />}
+                disabled
               >
                 Button
               </Button>
+              <Button
+                className="w-fit p-2"
+                variant={3}
+                onClick={handleClick}
+                leftIcon={<Instagram size="w-7 h-7" />}
+              ></Button>
               <Button
                 className="w-fit px-5 py-3"
-                variant={4}
+                variant={3}
                 onClick={handleClick}
-              >
-                Button
-              </Button>
-              <Button
-                className="w-fit px-5 py-3"
-                variant={4}
-                onClick={handleClick}
-                leftIcon={<Instagram size="w-4 h-4" />}
-                rightIcon={<Instagram size="w-4 h-4" />}
-              >
-                Button
-              </Button>
-            </div>
-            <div className="mt-5 flex w-fit flex-col items-center gap-2 pl-5 md:flex-row md:p-0 md:pl-10">
-              <Button
-                className="w-fit px-3 py-2"
-                variant={5}
-                onClick={handleClick}
-              >
-                Button
-              </Button>
-              <Button
-                className="w-fit px-3 py-2"
-                variant={5}
-                onClick={handleClick}
-                leftIcon={<Instagram size="w-4 h-4" />}
-                rightIcon={<Instagram size="w-4 h-4" />}
-              >
-                Button
-              </Button>
-              <Button
-                className="w-fit px-5 py-3"
-                variant={5}
-                onClick={handleClick}
-              >
-                Button
-              </Button>
-              <Button
-                className="w-fit px-5 py-3"
-                variant={5}
-                onClick={handleClick}
-                leftIcon={<Instagram size="w-4 h-4" />}
-                rightIcon={<Instagram size="w-4 h-4" />}
-              >
-                Button
-              </Button>
-            </div>
-            <div className="mt-5 flex w-fit flex-col items-center gap-2 pl-5 md:flex-row md:p-0 md:pl-10">
-              <Button
-                className="w-fit px-3 py-2"
-                variant={6}
-                onClick={handleClick}
-              >
-                Button
-              </Button>
-              <Button
-                className="w-fit px-3 py-2"
-                variant={6}
-                onClick={handleClick}
-                leftIcon={<Instagram size="w-4 h-4" />}
-                rightIcon={<Instagram size="w-4 h-4" />}
-              >
-                Button
-              </Button>
-              <Button
-                className="w-fit px-5 py-3"
-                variant={6}
-                onClick={handleClick}
-              >
-                Button
-              </Button>
-              <Button
-                className="w-fit px-5 py-3"
-                variant={6}
-                onClick={handleClick}
-                leftIcon={<Instagram size="w-4 h-4" />}
-                rightIcon={<Instagram size="w-4 h-4" />}
+                isLoading
               >
                 Button
               </Button>

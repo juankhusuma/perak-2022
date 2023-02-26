@@ -5,7 +5,8 @@ export interface ButtonProps {
   rightIcon?: any
   leftIcon?: any
   variant: number
-  children: ReactNode
+  children?: ReactNode
   onClick?: () => void
   disabled?: boolean
+  isLoading?: boolean
 }
