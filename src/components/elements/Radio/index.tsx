@@ -61,13 +61,14 @@ export const Radio: React.FC<RadioProps> = ({
                   >
                     <div className="group flex select-none items-center justify-center space-x-2 p-2">
                       <div
-                        className={`bg-black-700 flex h-5 w-5 cursor-pointer items-center justify-center rounded-full bg-orange-light transition-colors ease-in-out ${
-                          !disabled &&
-                          `border-2 border-primary outline-primary ${
-                            selectedItem === (value?.toString() ?? label)
-                              ? 'border-primary bg-onPrimaryContainer'
-                              : 'border-primary bg-cream-light outline-primary'
-                          }`
+                        className={`bg-black-700 flex h-5 w-5 cursor-pointer items-center justify-center rounded-full transition-colors ease-in-out ${
+                          disabled
+                            ? 'bg-orange-light'
+                            : `border-2 border-primary outline-primary ${
+                                selectedItem === (value?.toString() ?? label)
+                                  ? 'border-primary bg-onPrimaryContainer'
+                                  : 'border-primary bg-cream-light outline-primary'
+                              }`
                         }`}
                       >
                         <div
