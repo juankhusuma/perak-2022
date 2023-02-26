@@ -8,7 +8,6 @@ import {
   Modal,
   Radio,
   Select,
-  Smoothscroll,
   Tabs,
   Tag,
   TextField,
