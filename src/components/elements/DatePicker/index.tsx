@@ -53,7 +53,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                 setAnchorEl(e.currentTarget)
               }}
             >
-              <TextField
+              {/* <TextField
                 onChange={(e) => {
                   params?.inputProps?.onChange && params.inputProps.onChange(e)
                 }}
@@ -69,7 +69,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                     stroke="#272B52"
                   />
                 }
-              />
+              /> */}
             </div>
           </>
         )}

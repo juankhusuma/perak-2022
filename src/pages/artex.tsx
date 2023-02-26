@@ -268,7 +268,7 @@ const Artex: NextPage = () => {
               </div>
             </div>
           </div>
-          <div className="md:pl-5">
+          {/* <div className="md:pl-5">
             <p className="pl-2 font-retro text-6xl text-primary">Text Field</p>
             <div className="mt-5 p-2 md:p-0 md:pl-5">
               <TextField
@@ -308,7 +308,7 @@ const Artex: NextPage = () => {
                 disabled
               />
             </div>
-          </div>
+          </div> */}
           <div className="md:pl-5">
             <p className="pl-2 font-retro text-6xl text-primary">Dropdown</p>
             <div className="mt-5 p-2 md:p-0 md:pl-5">
@@ -386,6 +386,19 @@ const Artex: NextPage = () => {
               Form Example
             </p>
             <div className="mt-5 space-y-3 p-2 md:p-0 md:pl-10">
+              <TextField
+                className="max-w-sm text-primary"
+                placeholder="Placeholder"
+                title="TextField"
+                subTitle="Wajib diisi!"
+                label="Nama"
+                name="name"
+                required
+                rules={{ required: true }}
+                control={control}
+                leftIcon={<Instagram stroke="currentColor" />}
+                rightIcon={<Instagram stroke="currentColor" />}
+              />
               <Checkbox
                 className="text-primary"
                 label="Checkbox"

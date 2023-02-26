@@ -1,24 +1,27 @@
-import { ChangeEventHandler } from 'react'
+import { Control, RegisterOptions } from 'react-hook-form'
 
 export interface TextFieldProps {
-  className?: string
-  variant?: 'desktop' | 'mobile'
-
+  control: Control<any>
+  rules?: Pick<
+    RegisterOptions,
+    | 'required'
+    | 'min'
+    | 'max'
+    | 'minLength'
+    | 'maxLength'
+    | 'pattern'
+    | 'validate'
+  >
+  required?: boolean
   disabled?: boolean
-
-  label?: string
+  type?: string
   placeholder?: string
-  message?: string
-  name?: string
-
+  id?: string
+  name: string
+  label: string
+  title?: string
+  subTitle?: string
   leftIcon?: any
   rightIcon?: any
-
-  value?: string | number
-  onChange?:
-    | ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>
-    | undefined
-  error?: boolean
-  ref?: any
-  type?: string
+  className?: string
 }

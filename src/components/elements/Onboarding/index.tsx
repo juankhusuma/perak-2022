@@ -127,7 +127,7 @@ export const Onboarding: React.FC<OnBoardingProps> = ({ children }) => {
                     </p>
                   </div>
 
-                  <Controller
+                  {/* <Controller
                     name="nama"
                     control={control}
                     rules={{
@@ -237,7 +237,7 @@ export const Onboarding: React.FC<OnBoardingProps> = ({ children }) => {
                         </div>
                       )
                     }}
-                  />
+                  /> */}
                   <div className={`mt-4 space-y-2`}>
                     <button
                       type="button"
