@@ -100,12 +100,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                       disabled={disabled}
                       id={id ?? name}
                       type="text"
-                      helperText={
-                        !!error &&
-                        (error!['type'] == 'required'
-                          ? 'Mohon isi tanggal!'
-                          : error!['message']?.toString())
-                      }
+                      helperText={!!error && error!['message']?.toString()}
                       InputProps={{
                         disableUnderline: true,
                         endAdornment: (

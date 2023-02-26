@@ -280,7 +280,7 @@ const Artex: NextPage = () => {
                 label="Nama"
                 name="name"
                 required
-                rules={{ required: true }}
+                rules={{ required: 'Anda harus mengisi ini!' }}
                 control={control}
                 leftIcon={<Instagram stroke="currentColor" />}
                 rightIcon={<Instagram stroke="currentColor" />}
@@ -294,7 +294,7 @@ const Artex: NextPage = () => {
                 name="email"
                 required
                 rules={{
-                  required: true,
+                  required: 'Anda harus mengisi ini!',
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                     message: 'Alamat email tidak valid!',
@@ -312,7 +312,7 @@ const Artex: NextPage = () => {
                 label="Tahun Ajaran"
                 name="yearOfStudy"
                 required
-                rules={{ required: true }}
+                rules={{ required: 'Anda harus mengisi ini!' }}
                 control={control}
                 select
               >
@@ -330,7 +330,7 @@ const Artex: NextPage = () => {
                 options={[{ label: 'Laptop' }, { label: 'PC' }]}
                 name="equipments"
                 required
-                rules={{ required: true }}
+                rules={{ required: 'Anda harus mengisi ini!' }}
                 control={control}
                 setValue={setValue}
               />
@@ -341,7 +341,7 @@ const Artex: NextPage = () => {
                 options={[{ label: 'Software Engineer' }, { label: 'UI/UX' }]}
                 name="team"
                 required
-                rules={{ required: true }}
+                rules={{ required: 'Anda harus mengisi ini!' }}
                 control={control}
                 setValue={setValue}
                 flexRow
@@ -354,7 +354,7 @@ const Artex: NextPage = () => {
                 label="Tanggal Lahir"
                 name="eventDate"
                 required
-                rules={{ required: true }}
+                rules={{ required: 'Anda harus mengisi ini!' }}
                 control={control}
                 setValue={setValue}
                 minDateTime={dayjs()}
@@ -540,27 +540,27 @@ const Artex: NextPage = () => {
             <div className="mt-5 space-y-3 p-2 md:p-0 md:pl-10">
               <TipCard
                 message="Pastikan file GDrive telah kamu public."
-                icon={<ExclamationTriangleIcon className='w-7 h-7' />}
+                icon={<ExclamationTriangleIcon className="h-7 w-7" />}
                 variant="red"
               />
               <TipCard
                 message="Pastikan file GDrive telah kamu public."
-                icon={<ExclamationTriangleIcon className='w-7 h-7' />}
+                icon={<ExclamationTriangleIcon className="h-7 w-7" />}
                 variant="green"
               />
               <TipCard
                 message="Pastikan file GDrive telah kamu public."
-                icon={<ExclamationTriangleIcon className='w-7 h-7' />}
+                icon={<ExclamationTriangleIcon className="h-7 w-7" />}
                 variant="orange"
               />
               <TipCard
                 message="Pastikan file GDrive telah kamu public."
-                icon={<ExclamationTriangleIcon className='w-7 h-7' />}
+                icon={<ExclamationTriangleIcon className="h-7 w-7" />}
                 variant="purple"
               />
               <TipCard
                 message="Pastikan file GDrive telah kamu public."
-                icon={<ExclamationTriangleIcon className='w-7 h-7' />}
+                icon={<ExclamationTriangleIcon className="h-7 w-7" />}
                 variant="blue"
               />
             </div>

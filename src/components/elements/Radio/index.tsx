@@ -100,9 +100,7 @@ export const Radio: React.FC<RadioProps> = ({
           </div>
           {!!errors[name] && (
             <p className="flex flex-row items-center gap-x-2 text-label-medium text-red-normal">
-              {errors[name]!['type'] == 'required'
-                ? 'Mohon pilih salah satu dari pilihan diatas!'
-                : errors[name]!['message']?.toString()}
+              {errors[name]!['message']?.toString()}
             </p>
           )}
         </div>

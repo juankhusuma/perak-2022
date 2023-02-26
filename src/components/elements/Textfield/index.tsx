@@ -53,12 +53,7 @@ export const TextField: React.FC<TextFieldProps> = ({
             error={!!error}
             label={label}
             placeholder={placeholder}
-            helperText={
-              !!error &&
-              (error!['type'] == 'required'
-                ? 'Mohon isi ini!'
-                : error!['message']?.toString())
-            }
+            helperText={!!error && error!['message']?.toString()}
             fullWidth
             type={type}
             name={name}
