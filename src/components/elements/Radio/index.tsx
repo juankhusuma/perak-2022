@@ -61,18 +61,25 @@ export const Radio: React.FC<RadioProps> = ({
                   >
                     <div className="group flex select-none items-center justify-center space-x-2 p-2">
                       <div
-                        className={`bg-black-700 h-5 w-5 cursor-pointer rounded-full ${
-                          selectedItem === (value?.toString() ?? label)
-                            ? 'border-primary bg-onPrimaryContainer'
-                            : 'border-primary outline-primary bg-cream-light'
-                        }  flex items-center justify-center border-2 border-primary outline-primary transition-colors ease-in-out`}
+                        className={`bg-black-700 flex h-5 w-5 cursor-pointer items-center justify-center rounded-full bg-orange-light transition-colors ease-in-out ${
+                          !disabled &&
+                          `border-2 border-primary outline-primary ${
+                            selectedItem === (value?.toString() ?? label)
+                              ? 'border-primary bg-onPrimaryContainer'
+                              : 'border-primary bg-cream-light outline-primary'
+                          }`
+                        }`}
                       >
                         <div
-                          className={`h-2 w-2 rounded-full  ${
-                            selectedItem === (value?.toString() ?? label)
+                          className={`h-2 w-2 rounded-full transition-all ease-in-out ${
+                            disabled
                               ? 'bg-primary'
-                              : 'bg-transparent'
-                          } transition-all ease-in-out group-hover:ring-4 group-hover:ring-onPrimaryContainer`}
+                              : `group-hover:ring-4 group-hover:ring-onPrimaryContainer ${
+                                  selectedItem === (value?.toString() ?? label)
+                                    ? 'bg-primary'
+                                    : 'bg-transparent'
+                                }`
+                          }`}
                         ></div>
                       </div>
                       <p className="text-label-large">{label}</p>
@@ -81,14 +88,14 @@ export const Radio: React.FC<RadioProps> = ({
                 </div>
               )
             })}
-            {!!errors[name] && (
-              <p className="flex flex-row items-center gap-x-2 pt-2 text-sm text-red-normal">
-                {errors[name]!['type'] == 'required'
-                  ? 'Mohon pilih salah satu dari pilihan diatas'
-                  : errors[name]!['message']?.toString()}
-              </p>
-            )}
           </div>
+          {!!errors[name] && (
+            <p className="flex flex-row items-center gap-x-2 pt-2 text-sm text-red-normal">
+              {errors[name]!['type'] == 'required'
+                ? 'Mohon pilih salah satu dari pilihan diatas'
+                : errors[name]!['message']?.toString()}
+            </p>
+          )}
         </div>
       )}
     />
