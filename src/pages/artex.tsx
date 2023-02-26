@@ -11,9 +11,11 @@ import {
   Tabs,
   Tag,
   TextField,
+  TipCard,
   Toast,
   Toggle,
 } from '@elements'
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import { Instagram, Modalcheckicon } from '@icons'
 import { MenuItem } from '@mui/material'
 import dayjs from 'dayjs'
@@ -531,6 +533,36 @@ const Artex: NextPage = () => {
                 <Tag text="TAG" variant={2} />
                 <Tag text="TAG" icon={<Instagram />} variant={2} />
               </div>
+            </div>
+          </div>
+          <div className="md:pl-5">
+            <p className="pl-2 font-retro text-6xl text-primary">Tip Card</p>
+            <div className="mt-5 space-y-3 p-2 md:p-0 md:pl-10">
+              <TipCard
+                message="Pastikan file GDrive telah kamu public."
+                icon={<ExclamationTriangleIcon className='w-7 h-7' />}
+                variant="red"
+              />
+              <TipCard
+                message="Pastikan file GDrive telah kamu public."
+                icon={<ExclamationTriangleIcon className='w-7 h-7' />}
+                variant="green"
+              />
+              <TipCard
+                message="Pastikan file GDrive telah kamu public."
+                icon={<ExclamationTriangleIcon className='w-7 h-7' />}
+                variant="orange"
+              />
+              <TipCard
+                message="Pastikan file GDrive telah kamu public."
+                icon={<ExclamationTriangleIcon className='w-7 h-7' />}
+                variant="purple"
+              />
+              <TipCard
+                message="Pastikan file GDrive telah kamu public."
+                icon={<ExclamationTriangleIcon className='w-7 h-7' />}
+                variant="blue"
+              />
             </div>
           </div>
           <div className="md:pl-5">
