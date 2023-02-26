@@ -14,8 +14,6 @@ const Home: NextPage = () => {
   const { data: session, status } = useSession()
   const { setAuthModalOpen } = useAuthModalContext()
 
-  console.log(session, status)
-
   return (
     <>
       <Head>
