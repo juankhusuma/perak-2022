@@ -198,7 +198,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                     className={`w-fit px-5 py-3 text-[12px] ${
                       router.pathname === route.path && 'hidden'
                     }`}
-                    variant={3}
+                    variant={2}
                     onClick={() => setAuthModalOpen(true)}
                     leftIcon={
                       <route.icon
@@ -216,7 +216,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                       className={`w-fit px-5 py-3 text-[12px] ${
                         router.pathname === route.path && 'hidden'
                       }`}
-                      variant={3}
+                      variant={2}
                       leftIcon={
                         <route.icon
                           fill="none"
@@ -316,7 +316,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
               ) : (
                 <Button
                   className="w-fit px-5 py-3 text-[12px]"
-                  variant={6}
+                  variant={1}
                   onClick={() => setAuthModalOpen(true)}
                 >
                   Masuk

@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { OnBoardingProps } from './interface'
-import { Controller, useForm } from 'react-hook-form'
+import { OnBoardingFormProps, OnBoardingProps } from './interface'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { TextField } from '@elements'
 import { useSession } from 'next-auth/react'
 import { api } from 'src/utils/api'
@@ -34,37 +34,19 @@ export const Onboarding: React.FC<OnBoardingProps> = ({ children }) => {
 
   const onClose = () => {}
 
-  const {
-    control,
-    watch,
-    formState: { errors },
-  } = useForm({
+  const { handleSubmit, control } = useForm<OnBoardingFormProps>({
     mode: 'onBlur',
   })
 
-  const handleClick = () => {
-    if (
-      Boolean(errors.nama || errors.npm || errors.idLine || errors.noTlp) ||
-      !Boolean(watch('nama')) ||
-      !Boolean(watch('npm')) ||
-      !Boolean(watch('idLine')) ||
-      !Boolean(watch('noTlp'))
-    ) {
-      toast.error('Harap masukan input yang benar!')
-    } else {
-      const nama = watch('nama') as string
-      const npm = watch('npm') as string
-      const idLine = watch('idLine') as string
-      const noTlp = watch('noTlp') as string
-      const email = session?.user?.email as string
-      mutation.mutate({
-        email: email,
-        fullName: nama,
-        npm: npm,
-        lineId: idLine,
-        phone: noTlp,
-      })
-    }
+  const onSubmit: SubmitHandler<OnBoardingFormProps> = (data) => {
+    const email = session?.user?.email as string
+    mutation.mutate({
+      email: email,
+      fullName: data.nama,
+      npm: data.npm,
+      lineId: data.idLine,
+      phone: data.noTlp,
+    })
   }
 
   useEffect(() => {
@@ -125,6 +107,66 @@ export const Onboarding: React.FC<OnBoardingProps> = ({ children }) => {
                       Kamu sudah login, harap untuk melengkapi data-data yang
                       ada di bawah ini untuk melanjutkan.
                     </p>
+                  </div>
+                  <div className="space-y-4">
+                    <TextField
+                      className="text-primary"
+                      label="Nama"
+                      name="nama"
+                      required
+                      rules={{
+                        required: 'Anda harus memasukkan nama.',
+                        pattern: {
+                          value: /^[a-zA-Z\s]*$/,
+                          message: 'Nama hanya berupa huruf.',
+                        },
+                      }}
+                      control={control}
+                    />
+                    <TextField
+                      className="text-primary"
+                      label="NPM"
+                      name="npm"
+                      required
+                      rules={{
+                        required: 'Anda harus memasukkan NPM.',
+                        pattern: {
+                          value: /^\d{10}$/,
+                          message: 'NPM hanya berupa angka yang panjangnya 10.',
+                        },
+                      }}
+                      control={control}
+                    />
+                    <TextField
+                      className="text-primary"
+                      label="Id LINE"
+                      name="idLine"
+                      required
+                      rules={{
+                        required: 'Anda harus memasukkan Id LINE.',
+                        pattern: {
+                          value: /^\S+$/,
+                          message:
+                            'Id LINE tidak boleh mengandung white space.',
+                        },
+                      }}
+                      control={control}
+                    />
+                    <TextField
+                      className="text-primary"
+                      label="Nomor Telepon"
+                      name="noTlp"
+                      required
+                      rules={{
+                        required: 'Anda harus memasukkan nomor telepon.',
+                        pattern: {
+                          value: /^[0-9]*$/,
+                          message:
+                            'Nomor telepon hanya bisa terdiri dari angka.',
+                        },
+                      }}
+                      control={control}
+                    />
                   </div>
 
                   {/* <Controller
@@ -242,7 +284,7 @@ export const Onboarding: React.FC<OnBoardingProps> = ({ children }) => {
                     <button
                       type="button"
                       className="inline-flex w-full justify-center rounded-md bg-orange-normal px-4 py-3 font-poppinsBold text-sm font-bold text-primary hover:drop-shadow-md"
-                      onClick={handleClick}
+                      onClick={handleSubmit(onSubmit)}
                       disabled={loading}
                     >
                       Simpan
