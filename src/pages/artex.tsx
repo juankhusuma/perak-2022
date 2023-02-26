@@ -112,15 +112,19 @@ const Artex: NextPage = () => {
   interface FormDataType {
     name: string
     email: string
+    yearOfStudy: string
     team: string
     equipments: string[]
+    birthDate: string
   }
 
   const defaultValues: FormDataType = {
     name: '',
     email: '',
+    yearOfStudy: '',
     team: '',
     equipments: [],
+    birthDate: '',
   }
 
   const { handleSubmit, control, setValue, setError } = useForm<FormDataType>({
@@ -269,27 +273,6 @@ const Artex: NextPage = () => {
             </div>
           </div>
           <div className="md:pl-5">
-            <p className="pl-2 font-retro text-6xl text-primary">Dropdown</p>
-            <div className="mt-5 p-2 md:p-0 md:pl-5">
-              <Select
-                className="mt-2"
-                onChange={(e) => setCurrentSelect(e.target.value)}
-                value={currentSelect}
-                placeholder="Focused"
-                message="Message"
-                label="Normal"
-                select
-              >
-                <MenuItem key={1} value="test">
-                  Test 1
-                </MenuItem>
-                <MenuItem key={2} value="test2">
-                  Test 2
-                </MenuItem>
-              </Select>
-            </div>
-          </div>
-          <div className="md:pl-5">
             <p className="pl-2 font-retro text-6xl text-primary">
               Form Example
             </p>
@@ -307,6 +290,44 @@ const Artex: NextPage = () => {
                 leftIcon={<Instagram stroke="currentColor" />}
                 rightIcon={<Instagram stroke="currentColor" />}
               />
+              <TextField
+                className="max-w-sm text-primary"
+                placeholder="Placeholder"
+                title="TextField"
+                subTitle="Wajib diisi!"
+                label="Email"
+                name="email"
+                required
+                rules={{
+                  required: true,
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: 'Alamat email tidak valid!',
+                  },
+                }}
+                control={control}
+                leftIcon={<Instagram stroke="currentColor" />}
+                rightIcon={<Instagram stroke="currentColor" />}
+              />
+              <Select
+                className="max-w-sm text-primary"
+                placeholder="Placeholder"
+                title="Select"
+                subTitle="Wajib diisi!"
+                label="Tahun Ajaran"
+                name="yearOfStudy"
+                required
+                rules={{ required: true }}
+                control={control}
+                select
+              >
+                <MenuItem key={1} value="2021">
+                  2021
+                </MenuItem>
+                <MenuItem key={2} value="2022">
+                  2022
+                </MenuItem>
+              </Select>
               <Checkbox
                 className="text-primary"
                 label="Checkbox"

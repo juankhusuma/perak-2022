@@ -28,6 +28,10 @@ export const CustomSelectField = styled(Input)(({ theme }) => ({
       border: '2px solid #A39B74',
       background: '#FFFFFF',
     },
+    '&:hover': {
+      border: '2px solid #DC8F1A',
+      background: '#FFFFFF',
+    },
   },
   '& label': {
     marginTop: '2px',
@@ -53,8 +57,7 @@ export const CustomSelectField = styled(Input)(({ theme }) => ({
     color: '#383D75',
     fontSize: '12px',
     '&.Mui-error': {
-      color: '#e73636',
-      fontWeight: 'bold',
+      color: '#A33233',
     },
     '&.Mui-disabled': {
       color: '#A39B74',

@@ -50,9 +50,7 @@ export const Radio: React.FC<RadioProps> = ({
               </label>
             </div>
           )}
-          <div
-            className={`flex ${flexRow ? 'flex-row gap-2' : 'flex-col'}`}
-          >
+          <div className={`flex ${flexRow ? 'flex-row gap-2' : 'flex-col'}`}>
             {options.map(({ label, value }: optionType, idx: number) => {
               return (
                 <div className="flex items-center">
