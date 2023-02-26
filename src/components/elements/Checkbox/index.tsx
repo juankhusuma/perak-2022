@@ -5,6 +5,7 @@ import { CheckboxProps, optionType } from './interface'
 
 export const Checkbox: React.FC<CheckboxProps> = ({
   label,
+  subLabel,
   options,
   name,
   required,
@@ -45,9 +46,18 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       rules={rules}
       render={({ field: { onBlur } }) => (
         <div onBlur={onBlur} className={className}>
-          <p className="font-poppinsBold text-base">
-            {label} {required && <span className="text-red-normal">*</span>}
-          </p>
+          {label && (
+            <div className="flex flex-col">
+              <label className="font-poppinsBold text-title-medium">
+                {label} {required && <span className="text-red-normal">*</span>}
+                {!!subLabel && (
+                  <p className="flex flex-row items-center gap-x-2 font-poppins text-title-small">
+                    {subLabel}
+                  </p>
+                )}
+              </label>
+            </div>
+          )}
           {options.map(({ label, value }: optionType, idx: number) => {
             return (
               <div className="flex flex-row items-center">
@@ -68,7 +78,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             )
           })}
           {!!errors[name] && (
-            <p className="flex flex-row items-center gap-x-2 pt-2 text-sm text-red-normal">
+            <p className="flex flex-row items-center gap-x-2 text-label-medium text-red-normal">
               {errors[name]!['type'] == 'required'
                 ? 'Mohon pilih minimal satu dari pilihan diatas!'
                 : errors[name]!['message']?.toString()}

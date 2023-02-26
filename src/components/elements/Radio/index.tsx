@@ -4,6 +4,7 @@ import { optionType, RadioProps } from './interface'
 
 export const Radio: React.FC<RadioProps> = ({
   label,
+  subLabel,
   options,
   name,
   required,
@@ -37,11 +38,20 @@ export const Radio: React.FC<RadioProps> = ({
       rules={rules}
       render={({ field: { onBlur } }) => (
         <div onBlur={onBlur} className={className}>
-          <p className="font-poppinsBold text-base">
-            {label} {required && <span className="text-red-normal">*</span>}
-          </p>
+          {label && (
+            <div className="flex flex-col">
+              <label className="font-poppinsBold text-title-medium">
+                {label} {required && <span className="text-red-normal">*</span>}
+                {!!subLabel && (
+                  <p className="flex flex-row items-center gap-x-2 font-poppins text-title-small">
+                    {subLabel}
+                  </p>
+                )}
+              </label>
+            </div>
+          )}
           <div
-            className={`mt-2 flex ${flexRow ? 'flex-row gap-2' : 'flex-col'}`}
+            className={`flex ${flexRow ? 'flex-row gap-2' : 'flex-col'}`}
           >
             {options.map(({ label, value }: optionType, idx: number) => {
               return (
@@ -83,7 +93,7 @@ export const Radio: React.FC<RadioProps> = ({
                           }`}
                         ></div>
                       </div>
-                      <p className="text-label-large">{label}</p>
+                      <p className="text-body-large">{label}</p>
                     </div>
                   </label>
                 </div>
@@ -91,7 +101,7 @@ export const Radio: React.FC<RadioProps> = ({
             })}
           </div>
           {!!errors[name] && (
-            <p className="flex flex-row items-center gap-x-2 pt-2 text-sm text-red-normal">
+            <p className="flex flex-row items-center gap-x-2 text-label-medium text-red-normal">
               {errors[name]!['type'] == 'required'
                 ? 'Mohon pilih salah satu dari pilihan diatas!'
                 : errors[name]!['message']?.toString()}

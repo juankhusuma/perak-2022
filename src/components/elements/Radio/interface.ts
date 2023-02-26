@@ -15,6 +15,7 @@ export interface RadioProps {
   required?: boolean
   disabled?: boolean
   label: string
+  subLabel?: string
   id?: string
   name: string
   setValue?: any

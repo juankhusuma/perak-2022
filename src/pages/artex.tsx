@@ -268,47 +268,6 @@ const Artex: NextPage = () => {
               </div>
             </div>
           </div>
-          {/* <div className="md:pl-5">
-            <p className="pl-2 font-retro text-6xl text-primary">Text Field</p>
-            <div className="mt-5 p-2 md:p-0 md:pl-5">
-              <TextField
-                className="mt-2"
-                onChange={(e) => setCurrentTextField(e.target.value)}
-                value={currentTextField}
-                placeholder="Focused"
-                message="Message"
-                label="Normal"
-              />
-              <TextField
-                className="mt-2"
-                onChange={(e) => setCurrentTextField(e.target.value)}
-                value={currentTextField}
-                placeholder="Placeholder"
-                message="Message"
-                label="With Icons"
-                leftIcon={<Instagram stroke="currentColor" />}
-                rightIcon={<Instagram stroke="currentColor" />}
-              />
-              <TextField
-                className="mt-2"
-                onChange={(e) => setCurrentTextField(e.target.value)}
-                value={currentTextField}
-                placeholder="Placeholder"
-                message="Message"
-                label="Error"
-                error
-              />
-              <TextField
-                className="mt-2"
-                onChange={(e) => setCurrentTextField(e.target.value)}
-                value={currentTextField}
-                placeholder="Placeholder"
-                message="Message"
-                label="Disabled"
-                disabled
-              />
-            </div>
-          </div> */}
           <div className="md:pl-5">
             <p className="pl-2 font-retro text-6xl text-primary">Dropdown</p>
             <div className="mt-5 p-2 md:p-0 md:pl-5">
@@ -330,57 +289,6 @@ const Artex: NextPage = () => {
               </Select>
             </div>
           </div>
-          {/* <div className="md:pl-5">
-            <p className="pl-2 font-retro text-6xl text-primary">
-              Radio Button
-            </p>
-            <div className="mt-5 space-y-3 p-2 md:p-0 md:pl-10">
-              <Radio
-                name="radio"
-                value="test"
-                handleChange={handleRadioChange}
-                isSelected={currentRadio === 'test'}
-              >
-                Label
-              </Radio>
-              <Radio
-                name="radio"
-                value="test2"
-                handleChange={handleRadioChange}
-                isSelected={currentRadio === 'test2'}
-              >
-                Label
-              </Radio>
-              <Radio
-                name="radio"
-                value="test3"
-                handleChange={handleRadioChange}
-                isSelected={currentRadio === 'test3'}
-              >
-                Label
-              </Radio>
-            </div>
-          </div> */}
-          {/* <div className="md:pl-5">
-            <p className="pl-2 font-retro text-6xl text-primary">Checkbox</p>
-            <div className="mt-5 space-y-3 p-2 md:p-0 md:pl-10">
-              <Checkbox
-                label="Example"
-                options={[{ label: 'Software Engineer' }, { label: 'UI/UX' }]}
-                name="example"
-                control={control}
-                setValue={setValue}
-              />
-              <Checkbox
-                label="Disabled"
-                options={[{ label: 'Software Engineer' }, { label: 'UI/UX' }]}
-                name="disabled"
-                control={control}
-                setValue={setValue}
-                disabled
-              />
-            </div>
-          </div> */}
           <div className="md:pl-5">
             <p className="pl-2 font-retro text-6xl text-primary">
               Form Example
@@ -402,6 +310,7 @@ const Artex: NextPage = () => {
               <Checkbox
                 className="text-primary"
                 label="Checkbox"
+                subLabel="Wajib diisi!"
                 options={[{ label: 'Laptop' }, { label: 'PC' }]}
                 name="IT Dev"
                 required
@@ -412,6 +321,7 @@ const Artex: NextPage = () => {
               <Radio
                 className="text-primary"
                 label="Radio"
+                subLabel="Wajib diisi!"
                 options={[{ label: 'Software Engineer' }, { label: 'UI/UX' }]}
                 name="Team"
                 required
