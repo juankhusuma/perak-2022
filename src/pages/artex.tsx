@@ -26,13 +26,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
 
 const Artex: NextPage = () => {
-  const [currentTextField, setCurrentTextField] = useState('')
-  const [currentSelect, setCurrentSelect] = useState('')
-  const [currentRadio, setCurrentRadio] = useState('')
   const [currentTab, setCurrentTab] = useState(0)
-  const handleRadioChange = (id: string) => {
-    setCurrentRadio(id)
-  }
 
   const [isOpen1, setIsOpen1] = useState(false)
 
@@ -107,15 +101,13 @@ const Artex: NextPage = () => {
 
   const handleClick = () => {}
 
-  const [dateValue, setDateValue] = useState<string>('')
-
   interface FormDataType {
     name: string
     email: string
     yearOfStudy: string
     team: string
     equipments: string[]
-    birthDate: string
+    eventDate: Date | null
   }
 
   const defaultValues: FormDataType = {
@@ -124,16 +116,18 @@ const Artex: NextPage = () => {
     yearOfStudy: '',
     team: '',
     equipments: [],
-    birthDate: '',
+    eventDate: null,
   }
 
-  const { handleSubmit, control, setValue, setError } = useForm<FormDataType>({
-    defaultValues: defaultValues,
-    mode: 'onBlur',
-  })
+  const { handleSubmit, control, setValue, setError, watch } =
+    useForm<FormDataType>({
+      defaultValues: defaultValues,
+      mode: 'onBlur',
+    })
 
   const onSubmit: SubmitHandler<FormDataType> = (data) => {
     console.log(data)
+    toast.success('Form telah berhasil dikumpul!')
   }
 
   return (
@@ -333,7 +327,7 @@ const Artex: NextPage = () => {
                 label="Checkbox"
                 subLabel="Wajib diisi!"
                 options={[{ label: 'Laptop' }, { label: 'PC' }]}
-                name="IT Dev"
+                name="equipments"
                 required
                 rules={{ required: true }}
                 control={control}
@@ -344,20 +338,46 @@ const Artex: NextPage = () => {
                 label="Radio"
                 subLabel="Wajib diisi!"
                 options={[{ label: 'Software Engineer' }, { label: 'UI/UX' }]}
-                name="Team"
+                name="team"
                 required
                 rules={{ required: true }}
                 control={control}
                 setValue={setValue}
                 flexRow
               />
-              <Button
-                className="w-fit px-5 py-3"
-                variant={6}
-                onClick={handleSubmit(onSubmit)}
-              >
-                Submit
-              </Button>
+              <DatePicker
+                className="max-w-sm text-primary"
+                placeholder="Placeholder"
+                title="DatePicker"
+                subTitle="Wajib diisi!"
+                label="Tanggal Lahir"
+                name="eventDate"
+                required
+                rules={{ required: true }}
+                control={control}
+                setValue={setValue}
+                minDateTime={dayjs()}
+              />
+              <div className="pt-5">
+                <Button
+                  className="w-fit px-5 py-3"
+                  variant={6}
+                  onClick={handleSubmit(onSubmit)}
+                >
+                  Submit
+                </Button>
+              </div>
+            </div>
+          </div>
+          <div className="md:pl-5">
+            <p className="pl-2 font-retro text-6xl text-primary">Countdown</p>
+            <div className="mt-5 flex w-fit flex-col items-center gap-2 pl-5 md:flex-row md:p-0 md:pl-10">
+              <Countdown
+                title="Title"
+                subTitle="Sub Title"
+                date={watch('eventDate')?.toString() ?? ''}
+                className="w-[425px]"
+              />
             </div>
           </div>
           <div className="md:pl-5">
@@ -790,30 +810,6 @@ const Artex: NextPage = () => {
               >
                 Open Toast Error
               </button>
-            </div>
-          </div>
-          <div className="md:pl-5">
-            <p className="pl-2 font-retro text-6xl text-primary">Date Picker</p>
-            <div className="mt-5 flex w-fit flex-col items-center gap-2 pl-5 md:flex-row md:p-0 md:pl-10">
-              <DatePicker
-                label={'Set Countdown'}
-                value={dateValue}
-                onChange={(newValue) => {
-                  setDateValue(newValue)
-                }}
-                minDateTime={dayjs()}
-              />
-            </div>
-          </div>
-          <div className="md:pl-5">
-            <p className="pl-2 font-retro text-6xl text-primary">Countdown</p>
-            <div className="mt-5 flex w-fit flex-col items-center gap-2 pl-5 md:flex-row md:p-0 md:pl-10">
-              <Countdown
-                title="Title"
-                subTitle="Sub Title"
-                date={dateValue.toString()}
-                className="w-[425px]"
-              />
             </div>
           </div>
           <div className="md:pl-5">
