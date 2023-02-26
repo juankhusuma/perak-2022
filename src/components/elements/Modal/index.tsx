@@ -89,7 +89,7 @@ export const Modal: FC<ModalProps> = ({
                     </button>
                     <button
                       type="button"
-                      className="inline-flex w-full justify-center rounded-md bg-primaryContainer px-4 py-3 font-poppinsBold text-sm font-bold text-primary hover:drop-shadow-md"
+                      className="inline-flex w-full justify-center rounded-md bg-onPrimaryContainer px-4 py-3 font-poppinsBold text-sm font-bold text-primary hover:drop-shadow-md"
                       onClick={secondaryClicked}
                     >
                       {secondary}

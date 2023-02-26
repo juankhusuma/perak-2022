@@ -12,7 +12,7 @@ export const TipCard: React.FC<TipCardProps> = ({ icon, message, variant }) => {
         } ${variant === 'green' && 'bg-green-normal text-green-normal'} ${
           variant === 'blue' && 'bg-blue-dark text-blue-dark'
         } ${variant === 'orange' && 'bg-orange-dark text-orange-dark'} ${
-          variant === 'purple' && 'bg-purple-dark text-purple-dark'
+          variant === 'purple' && 'bg-purple-normal text-purple-normal'
         }`}
       >
         <div
@@ -20,7 +20,7 @@ export const TipCard: React.FC<TipCardProps> = ({ icon, message, variant }) => {
             variant === 'green' && 'bg-green-light'
           } ${variant === 'blue' && 'bg-blue-normal'} ${
             variant === 'orange' && 'bg-orange-normal'
-          } ${variant === 'purple' && 'bg-purple-light'}`}
+          } ${variant === 'purple' && 'bg-purple-lightest'}`}
         >
           {icon}
         </div>

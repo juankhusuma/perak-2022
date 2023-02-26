@@ -74,7 +74,7 @@ export const Radio: React.FC<RadioProps> = ({
                             ? 'bg-orange-light'
                             : `border-2 border-primary outline-primary ${
                                 selectedItem === (value?.toString() ?? label)
-                                  ? 'border-primary bg-onPrimaryContainer'
+                                  ? 'border-primary bg-onPrimary'
                                   : 'border-primary bg-cream-light outline-primary'
                               }`
                         }`}
@@ -83,7 +83,7 @@ export const Radio: React.FC<RadioProps> = ({
                           className={`h-2 w-2 rounded-full transition-all ease-in-out ${
                             disabled
                               ? 'bg-primary'
-                              : `group-hover:ring-4 group-hover:ring-onPrimaryContainer ${
+                              : `group-hover:ring-4 group-hover:ring-onPrimary ${
                                   selectedItem === (value?.toString() ?? label)
                                     ? 'bg-primary'
                                     : 'bg-transparent'

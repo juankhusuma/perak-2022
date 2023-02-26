@@ -37,9 +37,9 @@ export const Button: React.FC<ButtonProps> = ({
         }
         ${
           variant == 3 &&
-          `border-2 border-[#383D75] bg-transparent text-[#383D75] hover:bg-[#EABB7633]/20 active:bg-[#EABB7633]/50 ${
+          `border-2 border-purple-dark bg-transparent text-purple-dark hover:bg-[#EABB7633]/20 active:bg-[#EABB7633]/50 ${
             !isLoading && 'disabled:border-0'
-          }  disabled:bg-transparent disabled:text-[#383D75]/50`
+          }  disabled:bg-transparent disabled:text-purple-dark/50`
         }`}
       >
         {leftIcon && <span className="stroke-current">{leftIcon}</span>}

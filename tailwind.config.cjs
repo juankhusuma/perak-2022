@@ -10,10 +10,9 @@ module.exports = {
       },
       colors: {
         primary: '#272B52',
-        onPrimary: '#A3AA10',
-        primaryContainer: '#E9DEA6',
-        onPrimaryContainer: '#DC8F1A',
-        onPrimaryContainerRed: '#A33233',
+        onPrimary: '#DC8F1A',
+        primaryContainer: '#A3AA10',
+        onPrimaryContainer: '#E9DEA6',
         success: '#B6F2D7',
         onSuccess: '#10613D',
         successContainer: '#188C58',
@@ -22,18 +21,14 @@ module.exports = {
         onDanger: '#601410',
         dangerContainer: '#8C1D18',
         onDangerContainer: '#F9DEDC',
-        background: '#272B52',
-        onBackground: '#E0CDF2',
-        surface: '#DC8F1A',
-        onSurface: '#E9DEA6',
         red: {
           light: '#CA5355',
           normal: '#A33233',
           dark: '#6D2223',
         },
         grey: {
-          light: '#4F579E',
-          normal: '#272B52',
+          light: '#242A2B4D',
+          normal: '#242A2BB2',
           dark: '#242A2B',
         },
         pink: {
@@ -52,9 +47,11 @@ module.exports = {
           dark: '#F36A22',
         },
         purple: {
-          light: '#E0CDF2',
-          normal: '#BB83F2',
-          dark: '#8C3FD9',
+          lightest: '#E0CDF2',
+          light: '#BB83F2',
+          normal: '#8C3FD9',
+          dark: '#383D75',
+          darkest: '#272B52',
         },
         cream: {
           light: '#F4EFD3',
@@ -65,6 +62,11 @@ module.exports = {
           light: '#C7CC70',
           normal: '#A3AA10',
           dark: '#71770B',
+        },
+        background: {
+          light: '#F4EFD3',
+          normal: '#E9DEA6',
+          dark: '#A39B74',
         },
       },
       fontSize: {
