@@ -3,8 +3,7 @@ generator client {
 }
 
 datasource db {
-    // provider = "postgresql"
-    provider = "sqlite"
+    provider = "postgresql"
     url      = env("DATABASE_URL")
 }
 
@@ -21,12 +20,12 @@ model Account {
     type              String
     provider          String
     providerAccountId String
-    refresh_token     String? //@db.Text
-    access_token      String? //@db.Text
+    refresh_token     String? @db.Text
+    access_token      String? @db.Text
     expires_at        Int?
     token_type        String?
     scope             String?
-    id_token          String? //@db.Text
+    id_token          String? @db.Text
     session_state     String?
     user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -42,7 +41,7 @@ model Session {
 }
 
 model User {
-    id            String        @id @default(cuid())
+    id            String        @id @unique @default(cuid())
     name          String?
     email         String?       @unique
     emailVerified DateTime?
@@ -64,21 +63,20 @@ model User {
 }
 
 model Participant {
-    id           String   @id @default(cuid())
-    ign          String?
-    User         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
-    userId       String?
-    Team         Team?    @relation("Member", fields: [teamId], references: [id], onDelete: Cascade)
-    teamId       String?
-    LeadOnTeam   Team?
-    game         Game?    @relation(fields: [gameId], references: [id], onDelete: Cascade)
-    gameId       String?
-    isIndividual Boolean?
+    id         String  @id @default(cuid())
+    ign        String?
+    User       User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId     String?
+    Team       Team?   @relation("Member", fields: [teamId], references: [id], onDelete: Cascade)
+    teamId     String?
+    LeadOnTeam Team?
+    game       Game?   @relation(fields: [gameId], references: [id], onDelete: Cascade)
+    gameId     String?
 }
 
 model Game {
     id             String          @id @default(cuid())
-    name           String?
+    name           String?         @unique
     gameTypeId     String?
     gameType       GameType?       @relation(fields: [gameTypeId], references: [id])
     teamCost       Int?
@@ -90,21 +88,25 @@ model Game {
     idealMembers   Int?
     lineGroup      String?
     paymentMethod  PaymentMethod[]
+    isIndividual   Boolean?
     Team           Team[]
     Participant    Participant[]
 }
 
 model Team {
-    id           String        @id @default(cuid())
-    name         String?
-    logo         String?
-    gameId       String?
-    game         Game?         @relation(fields: [gameId], references: [id], onDelete: Cascade)
-    leaderId     String?       @unique
-    leader       Participant?  @relation(fields: [leaderId], references: [id], onDelete: SetNull)
-    member       Participant[] @relation("Member")
-    teamStatus   TeamStatus?   @relation(fields: [teamStatusId], references: [id])
-    teamStatusId String
+    id              String         @id @default(cuid())
+    name            String?        @unique
+    logo            String?
+    gameId          String?
+    game            Game?          @relation(fields: [gameId], references: [id], onDelete: Cascade)
+    leaderId        String?        @unique
+    leader          Participant?   @relation(fields: [leaderId], references: [id], onDelete: SetNull)
+    member          Participant[]  @relation("Member")
+    paymentMethod   PaymentMethod? @relation(fields: [paymentMethodId], references: [id])
+    paymentReceipt  String?
+    teamStatus      TeamStatus?    @relation(fields: [teamStatusId], references: [id])
+    teamStatusId    String
+    paymentMethodId String?
 }
 
 model Generation {
@@ -122,7 +124,7 @@ model ElementType {
 
 model GameType {
     id   String  @id @default(cuid())
-    name String?
+    name String? @unique
     Game Game[]
 }
 
@@ -132,6 +134,7 @@ model PaymentMethod {
     accountName String?
     Game        Game?   @relation(fields: [gameId], references: [id])
     gameId      String?
+    Team        Team[]
 }
 
 model TeamStatus {

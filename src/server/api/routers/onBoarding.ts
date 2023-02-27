@@ -28,9 +28,8 @@ export const onBoardingRouter = createTRPCRouter({
         where: { email: input.email },
         data: {
           fullName: input.fullName,
-          npm: input.npm,
           lineId: input.lineId,
-          phone: input.phone,
+          phoneNumber: input.phone,
           isOnboarded: true,
         },
       })

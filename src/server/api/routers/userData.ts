@@ -4,11 +4,11 @@ import { createTRPCRouter, protectedProcedure } from '../trpc'
 
 export const userDataRouter = createTRPCRouter({
   get: protectedProcedure
-    .input(z.object({ email: z.string() }))
+    .input(z.object({ id: z.string() }))
     .query(({ ctx, input }) => {
       const userData = ctx.prisma.user.findUnique({
         where: {
-          email: input.email,
+          id: input.id,
         },
       })
 

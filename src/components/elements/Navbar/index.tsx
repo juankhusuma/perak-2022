@@ -39,7 +39,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
   }, [])
 
   const userData = api.userData.get.useQuery({
-    email: session?.user?.email as string,
+    id: session?.user?.id as string,
   })
 
   return (
