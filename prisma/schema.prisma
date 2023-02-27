@@ -42,18 +42,102 @@ model Session {
 }
 
 model User {
-    id            String    @id @default(cuid())
+    id            String        @id @default(cuid())
     name          String?
-    email         String?   @unique
+    email         String?       @unique
     emailVerified DateTime?
     image         String?
+    awsImage      String?
     fullName      String?
-    npm           String?
+    dob           DateTime?
+    city          String?
+    elementTypeId String?
+    elementType   ElementType?  @relation(fields: [elementTypeId], references: [id])
+    generationId  String?
+    generation    Generation?   @relation(fields: [generationId], references: [id])
+    phoneNumber   String?
     lineId        String?
-    phone         String?
     isOnboarded   Boolean?
     accounts      Account[]
     sessions      Session[]
+    participant   Participant[]
+}
+
+model Participant {
+    id           String   @id @default(cuid())
+    ign          String?
+    User         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId       String?
+    Team         Team?    @relation("Member", fields: [teamId], references: [id], onDelete: Cascade)
+    teamId       String?
+    LeadOnTeam   Team?
+    game         Game?    @relation(fields: [gameId], references: [id], onDelete: Cascade)
+    gameId       String?
+    isIndividual Boolean?
+}
+
+model Game {
+    id             String          @id @default(cuid())
+    name           String?
+    gameTypeId     String?
+    gameType       GameType?       @relation(fields: [gameTypeId], references: [id])
+    teamCost       Int?
+    individualCost Int?
+    startDate      DateTime?
+    endDate        DateTime?
+    minimumMembers Int?
+    maximumMembers Int?
+    idealMembers   Int?
+    lineGroup      String?
+    paymentMethod  PaymentMethod[]
+    Team           Team[]
+    Participant    Participant[]
+}
+
+model Team {
+    id           String        @id @default(cuid())
+    name         String?
+    logo         String?
+    gameId       String?
+    game         Game?         @relation(fields: [gameId], references: [id], onDelete: Cascade)
+    leaderId     String?       @unique
+    leader       Participant?  @relation(fields: [leaderId], references: [id], onDelete: SetNull)
+    member       Participant[] @relation("Member")
+    teamStatus   TeamStatus?   @relation(fields: [teamStatusId], references: [id])
+    teamStatusId String
+}
+
+model Generation {
+    id   String  @id @default(cuid())
+    name String?
+    year Int?
+    User User[]
+}
+
+model ElementType {
+    id   String  @id @default(cuid())
+    name String?
+    User User[]
+}
+
+model GameType {
+    id   String  @id @default(cuid())
+    name String?
+    Game Game[]
+}
+
+model PaymentMethod {
+    id          String  @id @default(cuid())
+    accountNo   Int?
+    accountName String?
+    Game        Game?   @relation(fields: [gameId], references: [id])
+    gameId      String?
+}
+
+model TeamStatus {
+    id   String  @id @default(cuid())
+    name String? @unique
+    Team Team[]
 }
 
 model VerificationToken {
