@@ -1,1 +1,5 @@
-export * from './'
+export * from './DashboardModule'
+export * from './RegistrationModule'
+export * from './PaymentModule'
+export * from './InviteModule'
+export * from './LandingModule'
