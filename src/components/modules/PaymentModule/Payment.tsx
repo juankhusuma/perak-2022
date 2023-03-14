@@ -8,7 +8,7 @@ import { MenuItem } from '@mui/material'
 import { PAYMENT_DETAIL } from './constant'
 import { Highlight } from './module-exports/Highlight'
 import { PaymentProps } from './interface'
-import { moneyFormatter, uploadPaymentReciept } from '@utils'
+import { moneyFormater, uploadPaymentReciept } from '@utils'
 import Link from 'next/link'
 import { api } from 'src/utils/api'
 import { useRegistration } from '@contexts'
@@ -146,7 +146,7 @@ export const Payment: React.FC<PaymentProps> = ({ game, participant }) => {
           <p className="text-title-large text-green-dark">
             {/* add this when isIndividual or anything really attribute has been added to participant schema */}
             {/* {F(participant?.isIndividual ? game?.individualCost as number : game?.teamCost as number)} */}
-            {moneyFormatter(
+            {moneyFormater(
               (team.data?.game?.isIndividual
                 ? team.data.game.individualCost
                 : team.data?.isTeamButIndividual

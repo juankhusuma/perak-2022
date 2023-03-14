@@ -6,7 +6,7 @@ import { Button, Tag } from '@elements'
 import { useRegistration } from '@contexts'
 import { GameDetailProps } from '../interface'
 import { DateTime } from 'luxon'
-import { moneyFormatter } from '@utils'
+import { moneyFormater } from '@utils'
 import { useState } from 'react'
 import Skeleton from '@mui/material/Skeleton'
 
@@ -44,12 +44,12 @@ export const GameDetail: React.FC<GameDetailProps> = ({
                         {!game?.isIndividual && (
                           <div className="flex flex-col gap-0 md:flex-row md:gap-1">
                             <p>Kelompok:</p>
-                            <p>{moneyFormatter(game.teamCost as number)}</p>
+                            <p>{moneyFormater(game.teamCost as number)}</p>
                           </div>
                         )}
                         <div className="flex flex-col gap-0 md:flex-row md:gap-1">
                           <p>Individu:</p>
-                          <p>{moneyFormatter(game.individualCost as number)}</p>
+                          <p>{moneyFormater(game.individualCost as number)}</p>
                         </div>
                       </div>
                     )}

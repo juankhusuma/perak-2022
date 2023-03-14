@@ -1,4 +1,4 @@
-export const moneyFormatter = (balance: number) => {
+export const moneyFormater = (balance: number) => {
   // TODO: Write Util's logic
 
   return new Intl.NumberFormat('id-ID', {
