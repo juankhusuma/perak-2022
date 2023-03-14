@@ -107,6 +107,9 @@ module.exports = {
           '100%': { transform: 'translateY(0)' },
         },
       },
+      scale: {
+        '-100': '-1',
+      },
     },
   },
   plugins: [],

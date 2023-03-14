@@ -48,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
         isOpen={authModalOpen}
         onClose={() => setAuthModalOpen(false)}
       />
-      <div className="sticky top-0 z-10 select-none">
+      <div className="fixed top-0 z-10 w-full select-none">
         <div
           className={`flex w-full items-center justify-between bg-[#E9DEA6] px-4 py-3 shadow-lg  duration-1000 ${
             scroll ? 'md:top-1 md:scale-[0.99] lg:top-2' : 'top-0 scale-100'
@@ -140,7 +140,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                         }
                       </Menu.Item>
                     ))}
-                    {/* {session && (
+                    {session && (
                       <Menu.Item>
                         {({ active }) => (
                           <button
@@ -149,14 +149,16 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                                 ? 'bg-[#DC8F1A] text-white'
                                 : 'text-[#6D2223]'
                             } flex w-full items-center justify-end gap-2 rounded-md px-2 py-2 text-sm transition-all duration-300 ease-in-out`}
-                            onClick={() => {}}
+                            onClick={() => {
+                              router.push('/profile')
+                            }}
                           >
                             Edit Profile
                             <PencilSquareIcon className="h-6 w-6" />
                           </button>
                         )}
                       </Menu.Item>
-                    )} */}
+                    )}
                     <Menu.Item>
                       {({ active }) => (
                         <button
@@ -240,10 +242,10 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                             open ? 'drop-shadow-lg' : 'drop-shadow-none'
                           }`}
                         >
-                          <User className="h-5 w-5" />
+                          <User className="h-5 w-5 stroke-white" />
                           <p className="w-full max-w-[140px] truncate">
-                            {userData.data?.fullName
-                              ? userData.data?.fullName
+                            {userData.data?.slug
+                              ? userData.data?.slug
                               : session.user?.name}
                           </p>
                           <Chevronfull
@@ -267,7 +269,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                   >
                     <Menu.Items className="absolute right-0 mt-1 w-56 origin-top-right rounded-md  bg-[#EABB76] shadow-lg ">
                       <div className="px-1 py-1">
-                        {/* <Menu.Item>
+                        <Menu.Item>
                           {({ active }) => (
                             <button
                               className={`${
@@ -275,13 +277,15 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                                   ? 'bg-[#DC8F1A] text-white'
                                   : 'text-[#6D2223]'
                               } flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm transition-all duration-300 ease-in-out`}
-                              onClick={() => {}}
+                              onClick={() => {
+                                router.push('/profile')
+                              }}
                             >
                               <PencilSquareIcon className="h-6 w-6" />
                               Edit Profile
                             </button>
                           )}
-                        </Menu.Item> */}
+                        </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
                             <button

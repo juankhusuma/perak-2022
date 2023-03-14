@@ -18,6 +18,9 @@ export const Modal: FC<ModalProps> = ({
   secondaryClicked = () => {},
   variant,
   canClose = true,
+  exitCross = 'none',
+  primaryButtonClassname,
+  secondaryButtonClassname,
 }) => {
   return (
     <>
@@ -50,14 +53,16 @@ export const Modal: FC<ModalProps> = ({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-[300px] transform overflow-hidden rounded-2xl bg-primary p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel
+                  className={`w-full max-w-[300px] transform overflow-hidden rounded-2xl bg-primary p-6 text-left align-middle shadow-xl transition-all ${className}`}
+                >
                   <div
                     className={`flex w-full justify-end ${
                       variant != 3 && 'hidden'
                     }`}
                   >
                     <div onClick={onClose}>
-                      <Cross className="cursor-pointer" />
+                      <Cross className="cursor-pointer" fill={exitCross} />
                     </div>
                   </div>
                   <div className="mb-5 flex w-full items-center justify-center">
@@ -70,9 +75,13 @@ export const Modal: FC<ModalProps> = ({
                     {title}
                   </Dialog.Title>
                   <div className="mt-2">
-                    <p className="text-center font-poppins text-label-large text-white">
-                      {message}
-                    </p>
+                    {typeof message === 'string' ? (
+                      <p className="text-center font-poppins text-label-large text-white">
+                        {message}
+                      </p>
+                    ) : (
+                      message
+                    )}
                   </div>
 
                   <div
@@ -82,14 +91,14 @@ export const Modal: FC<ModalProps> = ({
                   >
                     <button
                       type="button"
-                      className="inline-flex w-full justify-center rounded-md bg-orange-normal px-4 py-3 font-poppinsBold text-sm font-bold text-primary hover:drop-shadow-md"
+                      className={`inline-flex w-full justify-center rounded-md bg-orange-normal px-4 py-3 font-poppinsBold text-sm font-bold text-primary hover:drop-shadow-md ${primaryButtonClassname}`}
                       onClick={primaryClicked}
                     >
                       {primary}
                     </button>
                     <button
                       type="button"
-                      className="inline-flex w-full justify-center rounded-md bg-onPrimaryContainer px-4 py-3 font-poppinsBold text-sm font-bold text-primary hover:drop-shadow-md"
+                      className={`inline-flex w-full justify-center rounded-md bg-onPrimaryContainer px-4 py-3 font-poppinsBold text-sm font-bold text-primary hover:drop-shadow-md ${secondaryButtonClassname}`}
                       onClick={secondaryClicked}
                     >
                       {secondary}

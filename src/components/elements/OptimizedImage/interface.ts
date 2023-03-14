@@ -4,4 +4,5 @@ export interface OptimizedImageProps {
   className?: string
   fill?: boolean
   isRounded?: boolean | string
+  rounded?: string
 }

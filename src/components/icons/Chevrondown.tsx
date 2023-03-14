@@ -3,7 +3,7 @@ import { IconProps } from './interface'
 
 export const Chevrondown: React.FC<IconProps> = ({
   fill = 'none',
-  stroke = 'black',
+  stroke = 'currentColor',
   className,
   size = 'w-[25px] h-[25px]',
 }) => {

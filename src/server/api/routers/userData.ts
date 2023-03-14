@@ -10,6 +10,10 @@ export const userDataRouter = createTRPCRouter({
         where: {
           id: input.id,
         },
+        include: {
+          elementType: true,
+          generation: true,
+        },
       })
 
       return userData

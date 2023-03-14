@@ -4,7 +4,7 @@ export interface ModalProps {
   className?: string
   icon?: any
   title?: string
-  message?: string
+  message?: string | JSX.Element
   onClose?: () => void
   onOpen?: () => void
   isOpen?: boolean
@@ -14,4 +14,7 @@ export interface ModalProps {
   secondaryClicked?: () => void
   variant?: number
   canClose?: boolean
+  primaryButtonClassname?: string
+  secondaryButtonClassname?: string
+  exitCross?: string
 }

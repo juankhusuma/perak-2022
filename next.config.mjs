@@ -28,6 +28,8 @@ const config = {
       'lh3.googleusercontent.com',
       'pbs.twimg.com',
       'avatars.githubusercontent.com',
+      'perak2023.s3.ap-northeast-1.amazonaws.com',
+      'cdn.discordapp.com',
     ],
   },
 }

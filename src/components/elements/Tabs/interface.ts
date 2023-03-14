@@ -3,5 +3,6 @@ export interface TabsProps {
   value: number
   setValue: (a: number) => void
   dark?: boolean
+  variant?: number
   className?: string
 }

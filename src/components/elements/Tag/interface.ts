@@ -1,5 +1,6 @@
 export interface TagProps {
-  text: string
+  text?: string
   icon?: any
   variant: number
+  className?: string
 }

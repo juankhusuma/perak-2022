@@ -42,8 +42,10 @@ model Session {
 
 model User {
     id            String        @id @unique @default(cuid())
+    slug          String?       @unique
     name          String?
     email         String?       @unique
+    password      String?
     emailVerified DateTime?
     image         String?
     awsImage      String?
@@ -51,17 +53,18 @@ model User {
     dob           DateTime?
     city          String?
     elementTypeId String?
-    elementType   ElementType?  @relation(fields: [elementTypeId], references: [id])
+    elementType   ElementType?  @relation(fields: [elementTypeId], references: [id], onDelete: SetNull)
     generationId  String?
-    generation    Generation?   @relation(fields: [generationId], references: [id])
+    generation    Generation?   @relation(fields: [generationId], references: [id], onDelete: SetNull)
     phoneNumber   String?
     lineId        String?
-    isOnboarded   Boolean?
+    isOnboarded   Boolean?      @default(false)
     accounts      Account[]
     sessions      Session[]
     participant   Participant[]
 }
 
+// kalo daftar solo di game team, teamnya bakal null
 model Participant {
     id         String  @id @default(cuid())
     ign        String?
@@ -74,11 +77,13 @@ model Participant {
     gameId     String?
 }
 
+// daftar game solo, tetep ngebuat team tapi isIndividual = true
 model Game {
     id             String          @id @default(cuid())
+    slug           String?         @unique
     name           String?         @unique
-    gameTypeId     String?
-    gameType       GameType?       @relation(fields: [gameTypeId], references: [id])
+    gameTypeName   String?
+    gameType       GameType?       @relation(fields: [gameTypeName], references: [name])
     teamCost       Int?
     individualCost Int?
     startDate      DateTime?
@@ -94,19 +99,21 @@ model Game {
 }
 
 model Team {
-    id              String         @id @default(cuid())
-    name            String?        @unique
-    logo            String?
-    gameId          String?
-    game            Game?          @relation(fields: [gameId], references: [id], onDelete: Cascade)
-    leaderId        String?        @unique
-    leader          Participant?   @relation(fields: [leaderId], references: [id], onDelete: SetNull)
-    member          Participant[]  @relation("Member")
-    paymentMethod   PaymentMethod? @relation(fields: [paymentMethodId], references: [id])
-    paymentReceipt  String?
-    teamStatus      TeamStatus?    @relation(fields: [teamStatusId], references: [id])
-    teamStatusId    String
-    paymentMethodId String?
+    id                  String         @id @default(cuid())
+    slug                String?        @unique
+    name                String?        @unique
+    logo                String?
+    gameId              String?
+    game                Game?          @relation(fields: [gameId], references: [id], onDelete: Cascade)
+    leaderId            String?        @unique
+    leader              Participant?   @relation(fields: [leaderId], references: [id], onDelete: SetNull)
+    member              Participant[]  @relation("Member")
+    paymentMethod       PaymentMethod? @relation(fields: [paymentMethodId], references: [id], onDelete: SetNull)
+    paymentReceipt      String?
+    teamStatus          TeamStatus?    @relation(fields: [teamStatusId], references: [id], onDelete: SetNull)
+    teamStatusId        String?
+    paymentMethodId     String?
+    isTeamButIndividual Boolean?       @default(false)
 }
 
 model Generation {
@@ -129,18 +136,19 @@ model GameType {
 }
 
 model PaymentMethod {
-    id          String  @id @default(cuid())
-    accountNo   Int?
-    accountName String?
-    Game        Game?   @relation(fields: [gameId], references: [id])
-    gameId      String?
-    Team        Team[]
+    id              String  @id @default(cuid())
+    accountNo       String?
+    accountName     String?
+    accountProvider String?
+    Game            Game[]
+    Team            Team[]
 }
 
 model TeamStatus {
-    id   String  @id @default(cuid())
-    name String? @unique
-    Team Team[]
+    id      String  @id @default(cuid())
+    name    String? @unique
+    message String?
+    Team    Team[]
 }
 
 model VerificationToken {

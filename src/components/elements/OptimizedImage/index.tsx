@@ -8,18 +8,15 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   className,
   fill,
   isRounded,
+  rounded,
 }) => {
-  if (isRounded) {
-    isRounded = typeof isRounded === 'boolean' ? 'rounded-full' : isRounded
-  }
-
   return (
     <div className={`relative ${className}`}>
       <Image
         src={imageUrl}
         alt={alt}
         fill={fill}
-        className={isRounded as string}
+        className={`${isRounded ? 'rounded-full' : rounded}`}
         priority
       />
     </div>
