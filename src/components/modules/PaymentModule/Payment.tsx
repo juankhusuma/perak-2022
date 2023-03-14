@@ -168,7 +168,8 @@ export const Payment: React.FC<PaymentProps> = ({ game, participant }) => {
                 >
                   {/* <i> {PAYMENT_DETAIL[key % PAYMENT_DETAIL.length]} </i> */}
                   <p>
-                    {paymentMethod.accountNo} a.n. {paymentMethod.accountName}
+                    {paymentMethod.accountNo} a.n. {paymentMethod.accountName} (
+                    {paymentMethod.accountProvider})
                   </p>
                   <div
                     className="bg-orange-light p-1"
@@ -274,7 +275,8 @@ export const Payment: React.FC<PaymentProps> = ({ game, participant }) => {
                 {game?.paymentMethod?.map(
                   (paymentMethod: PaymentMethod, idx: number) => (
                     <MenuItem value={paymentMethod.id} key={idx}>
-                      {paymentMethod.accountNo} a.n. {paymentMethod.accountName}
+                      {paymentMethod.accountNo} a.n. {paymentMethod.accountName}{' '}
+                      ({paymentMethod.accountProvider})
                     </MenuItem>
                   )
                 )}
