@@ -54,6 +54,7 @@ export const gameRouter = createTRPCRouter({
               },
             },
             leaderId: true,
+            ign: true,
             leader: {
               select: {
                 userId: true,

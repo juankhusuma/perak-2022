@@ -11,6 +11,7 @@ export interface TeamDetailProps {
     } | null
     id: string
     name: string | null
+    ign: string | null
     leader: {
       userId: string | null
     } | null

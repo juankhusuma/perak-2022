@@ -103,6 +103,7 @@ model Team {
     slug                String?        @unique
     name                String?        @unique
     logo                String?
+    ign                 String?
     gameId              String?
     game                Game?          @relation(fields: [gameId], references: [id], onDelete: Cascade)
     leaderId            String?        @unique

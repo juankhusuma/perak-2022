@@ -70,6 +70,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
       teamName: watch('teamName'),
       userId: session?.user?.id as string,
       isTeamButIndividual: isSendiri,
+      isIndiviual: (isSendiri || gameData.data?.isIndividual) as boolean,
     })
   }
 

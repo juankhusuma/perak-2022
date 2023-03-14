@@ -38,6 +38,9 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
   const inviteLink = `${window.location.origin}/invite/${Team?.id}`
   const isFinalized = Team?.teamStatus?.name === 'Terfinalisasi'
   const isConfirmed = Team?.teamStatus?.name === 'Terkonfirmasi'
+  const isConfirmed2 =
+    Team?.teamStatus?.name === 'Terkonfirmasi' ||
+    Team?.teamStatus?.name === 'Menunggu Pembayaran'
 
   const [removeModalProps, setRemoveModalProps] = useState<RemoveModalProps>({
     isOpen: false,
@@ -148,7 +151,7 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-shadow-md font-retro text-display-small shadow-orange-dark">
-              {Team?.name}
+              {Team?.name ? Team?.name : Team?.ign}
             </h2>
             <p className="w-max rounded-md bg-orange-normal p-1 px-2 font-semibold uppercase">
               {game?.name}
@@ -365,7 +368,7 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
               variant={2}
               className="w-full flex-1 p-3 text-p-md"
               onClick={() => setIsInviteModalOpen(true)}
-              disabled={!isConfirmed}
+              disabled={!isConfirmed2}
             >
               <LinkIcon className="h-7 w-7" />
               Undang Teman

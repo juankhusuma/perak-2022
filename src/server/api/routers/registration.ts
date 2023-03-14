@@ -24,6 +24,7 @@ export const registrationRouter = createTRPCRouter({
         ign: z.string(),
         gameid: z.string(),
         isTeamButIndividual: z.boolean(),
+        isIndiviual: z.boolean(),
       })
     )
     .mutation(async ({ input, ctx }) => {
@@ -51,7 +52,7 @@ export const registrationRouter = createTRPCRouter({
         },
       })
 
-      if (teamName) {
+      if (teamName && !input.isIndiviual) {
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'Nama team sudah digunakan',
@@ -101,8 +102,9 @@ export const registrationRouter = createTRPCRouter({
           },
           Team: {
             create: {
-              name: game?.isIndividual ? input.ign : input.teamName,
-              slug: game?.isIndividual ? user?.slug : newSlug,
+              name: input.isIndiviual ? null : input.teamName,
+              slug: input.isIndiviual ? null : newSlug,
+              ign: input.isIndiviual ? input.ign : null,
               game: {
                 connect: { id: input.gameid },
               },
