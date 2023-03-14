@@ -26,7 +26,6 @@ const GameSection = () => {
     (game) => game.gameType?.name == 'Master League'
   )
 
-  console.log(games)
   return (
     <>
       <div

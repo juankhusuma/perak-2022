@@ -160,7 +160,6 @@ export const GameDetail: React.FC<GameDetailProps> = ({
                 rightIcon={<User />}
                 onClick={() => {
                   setType('personal')
-                  console.log(currentPage)
                   setCurrentPage(currentPage + 1)
                   if (!game?.isIndividual) {
                     setIsSendiri(true)

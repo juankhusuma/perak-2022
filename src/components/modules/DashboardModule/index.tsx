@@ -20,9 +20,7 @@ export const DashboardModule: React.FC = () => {
   })
 
   const gameDataQuery = api.game.getParticipantOf.useQuery(undefined, {
-    onSuccess(data) {
-      console.log(data)
-    },
+    onSuccess(data) {},
     refetchOnWindowFocus: false,
   })
   const { data: gameData } = gameDataQuery

@@ -131,7 +131,6 @@ export const Payment: React.FC<PaymentProps> = ({ game, participant }) => {
     }
   }, [payment.status])
 
-  console.log(paymentProof)
   return (
     <>
       <div className="flex flex-col gap-y-6 px-8 py-12">
@@ -274,7 +273,11 @@ export const Payment: React.FC<PaymentProps> = ({ game, participant }) => {
               >
                 {game?.paymentMethod?.map(
                   (paymentMethod: PaymentMethod, idx: number) => (
-                    <MenuItem value={paymentMethod.id} key={idx}>
+                    <MenuItem
+                      value={paymentMethod.id}
+                      key={idx}
+                      className="text-xs md:text-base"
+                    >
                       {paymentMethod.accountNo} a.n. {paymentMethod.accountName}{' '}
                       ({paymentMethod.accountProvider})
                     </MenuItem>
