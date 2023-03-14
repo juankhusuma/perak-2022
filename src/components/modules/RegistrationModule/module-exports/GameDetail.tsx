@@ -122,17 +122,26 @@ export const GameDetail: React.FC<GameDetailProps> = ({
           <div className="flex w-full flex-col gap-y-2 px-4 py-2">
             <p className="font-poppinsBold"> Cara Bermain </p>
             <div className="flex flex-col gap-y-2">
-              {!game?.isIndividual ? (
+              {game &&
+              !game?.isIndividual &&
+              game.gameTypeName == 'Competitive Games' ? (
                 INFORMATION_SECTION.map(({ type, message }, key) => (
                   <div className="flex flex-col gap-y-2" key={key}>
                     <Tag text={type} variant={1} />
                     <p> {message} </p>
                   </div>
                 ))
+              ) : game &&
+                (game.gameTypeName == 'Family Games' ||
+                  game.gameTypeName == 'Master League') ? (
+                <>
+                  <Tag text={'TIM'} variant={1} />
+                  <p> {'Daftar dan jadi ketua tim untuk teman-temanmu!'} </p>
+                </>
               ) : (
                 <>
                   <Tag text={'INDIVIDU'} variant={1} />
-                  <p> {'Individual game description here ....'} </p>
+                  <p> {'Bermain secara individu dan menangkan kejuaraan'} </p>
                 </>
               )}
             </div>

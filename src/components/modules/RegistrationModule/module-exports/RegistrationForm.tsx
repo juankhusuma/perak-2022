@@ -170,7 +170,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
         onClose={() => setIsOpen(false)}
         onOpen={() => setIsOpen(true)}
         title={`Pendaftaran ${type === 'personal' ? 'Individu' : 'Tim'}`}
-        variant={2}
+        variant={1}
         canClose={false}
         primary="Tidak"
         primaryClicked={() => setIsOpen(false)}
@@ -178,7 +178,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
         secondaryClicked={() => onSubmit()}
         message={
           <div className="flex flex-col items-center gap-y-4">
-            <p className="text-center text-white">
+            <p className="text-center text-sm text-white md:text-base">
               Apakah anda yakin ingin mendaftarkan diri
               {type === 'personal' ? ' secara' : ' sebagai ketua tim'}
               <span className="font-poppinsBold text-orange-normal">
@@ -200,7 +200,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
             )}
           </div>
         }
-        className="w-full min-w-[600px] pb-8"
+        className="w-full max-w-[600px] pb-8"
         primaryButtonClassname="bg-onPrimaryContainer"
         secondaryButtonClassname="!bg-orange-dark text-background-light"
       />
