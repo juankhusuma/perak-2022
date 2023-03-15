@@ -3,6 +3,7 @@ export interface TeamDetailProps {
   game: {
     name: string | null
     lineGroup: string | null
+    isIndividual: boolean | null
   } | null
   Team: {
     teamStatus: {
@@ -14,6 +15,7 @@ export interface TeamDetailProps {
     ign: string | null
     leader: {
       userId: string | null
+      ign: string | null
     } | null
     logo: string | null
     leaderId: string | null

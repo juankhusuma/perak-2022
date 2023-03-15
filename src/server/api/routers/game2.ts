@@ -42,6 +42,7 @@ export const gameRouter = createTRPCRouter({
           select: {
             name: true,
             lineGroup: true,
+            isIndividual: true,
           },
         },
         Team: {
@@ -58,6 +59,7 @@ export const gameRouter = createTRPCRouter({
             leader: {
               select: {
                 userId: true,
+                ign: true,
               },
             },
             logo: true,

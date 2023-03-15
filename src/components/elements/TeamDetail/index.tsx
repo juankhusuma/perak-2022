@@ -151,7 +151,7 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-shadow-md font-retro text-display-small shadow-orange-dark">
-              {Team?.name ? Team?.name : Team?.ign}
+              {Team?.name ? Team?.name : Team?.leader?.ign}
             </h2>
             <p className="w-max rounded-md bg-orange-normal p-1 px-2 font-semibold uppercase">
               {game?.name}
@@ -362,7 +362,10 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
             </ul>
           )}
         </div>
-        {isLeader && !Team?.isTeamButIndividual && !isFinalized ? (
+        {isLeader &&
+        !Team?.isTeamButIndividual &&
+        !game?.isIndividual &&
+        !isFinalized ? (
           <div className="grid items-center gap-2 md:grid-cols-2">
             <Button
               variant={2}
