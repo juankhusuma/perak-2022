@@ -227,141 +227,145 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
             </Link>
           </div>
         )}
-        <div className="rounded-md bg-background-light p-3 font-semibold">
-          <div className="flex items-center justify-between">
-            <h3 className="mb-2 text-lg">Anggota Tim</h3>
-            <ChevronDownIcon
-              className={`h-6 w-6 cursor-pointer select-none transition-transform duration-300 ease-in-out ${
-                isShowMember && 'rotate-180'
-              }`}
-              onClick={() => setIsShowMember(!isShowMember)}
-            />
-          </div>
-          {isShowMember && (
-            <ul className="flex flex-col gap-3">
-              {members && !Team?.isTeamButIndividual ? (
-                members.map((member) => (
-                  <li
-                    key={member.id}
-                    className="flex items-center justify-between"
-                  >
-                    <div className="w-full">
-                      <div className="flex items-center gap-2">
-                        {member.userId === session?.user?.id ? (
-                          editingModeProps.isEditingMode ? (
-                            <div className="flex w-full items-center gap-1">
-                              <TextField
-                                className="w-full text-primary"
-                                placeholder={member.ign ?? 'Masukkan IGN'}
-                                label="IGN"
-                                name="ign"
-                                required
-                                rules={{ required: 'Anda harus mengisi ini!' }}
-                                control={control}
-                              />
-                              <Button
-                                className="w-fit p-2"
-                                variant={2}
-                                onClick={() => {
-                                  setEditingModeProps({
-                                    ...editingModeProps,
-                                    isEditingMode: false,
-                                  })
-                                  resetField('ign')
-                                }}
-                                leftIcon={
-                                  <XMarkIcon className="h-7 w-7 text-primary" />
-                                }
-                              ></Button>
-                              <Button
-                                className="w-fit p-2"
-                                variant={1}
-                                onClick={handleSubmit(updateIgnSubmitHandler)}
-                                leftIcon={
-                                  <CheckIcon className="h-7 w-7 text-background-light" />
-                                }
-                              ></Button>
-                            </div>
+        {!game?.isIndividual && (
+          <div className="rounded-md bg-background-light p-3 font-semibold">
+            <div className="flex items-center justify-between">
+              <h3 className="mb-2 text-lg">Anggota Tim</h3>
+              <ChevronDownIcon
+                className={`h-6 w-6 cursor-pointer select-none transition-transform duration-300 ease-in-out ${
+                  isShowMember && 'rotate-180'
+                }`}
+                onClick={() => setIsShowMember(!isShowMember)}
+              />
+            </div>
+            {isShowMember && (
+              <ul className="flex flex-col gap-3">
+                {members && !Team?.isTeamButIndividual ? (
+                  members.map((member) => (
+                    <li
+                      key={member.id}
+                      className="flex items-center justify-between"
+                    >
+                      <div className="w-full">
+                        <div className="flex items-center gap-2">
+                          {member.userId === session?.user?.id ? (
+                            editingModeProps.isEditingMode ? (
+                              <div className="flex w-full items-center gap-1">
+                                <TextField
+                                  className="w-full text-primary"
+                                  placeholder={member.ign ?? 'Masukkan IGN'}
+                                  label="IGN"
+                                  name="ign"
+                                  required
+                                  rules={{
+                                    required: 'Anda harus mengisi ini!',
+                                  }}
+                                  control={control}
+                                />
+                                <Button
+                                  className="w-fit p-2"
+                                  variant={2}
+                                  onClick={() => {
+                                    setEditingModeProps({
+                                      ...editingModeProps,
+                                      isEditingMode: false,
+                                    })
+                                    resetField('ign')
+                                  }}
+                                  leftIcon={
+                                    <XMarkIcon className="h-7 w-7 text-primary" />
+                                  }
+                                ></Button>
+                                <Button
+                                  className="w-fit p-2"
+                                  variant={1}
+                                  onClick={handleSubmit(updateIgnSubmitHandler)}
+                                  leftIcon={
+                                    <CheckIcon className="h-7 w-7 text-background-light" />
+                                  }
+                                ></Button>
+                              </div>
+                            ) : (
+                              <p className="text-orange-dark">{member.ign}</p>
+                            )
                           ) : (
-                            <p className="text-orange-dark">{member.ign}</p>
-                          )
-                        ) : (
-                          <p className="text-green-dark">{member.ign}</p>
-                        )}
-                        {Team?.leaderId === member.id &&
-                          !editingModeProps.isEditingMode && (
-                            <p className="rounded-md bg-background-normal px-2 py-1">
-                              Ketua
-                            </p>
+                            <p className="text-green-dark">{member.ign}</p>
                           )}
+                          {Team?.leaderId === member.id &&
+                            !editingModeProps.isEditingMode && (
+                              <p className="rounded-md bg-background-normal px-2 py-1">
+                                Ketua
+                              </p>
+                            )}
+                        </div>
+                        <p className="font-normal">{member.User?.fullName}</p>
                       </div>
-                      <p className="font-normal">{member.User?.fullName}</p>
-                    </div>
-                    {!isFinalized && (
-                      <div className="flex items-center gap-2">
-                        {member.userId === session?.user?.id &&
-                          !editingModeProps.isEditingMode && (
-                            <PencilSquareIcon
-                              className="h-7 w-7 cursor-pointer"
-                              onClick={() =>
-                                setEditingModeProps({
-                                  isEditingMode:
-                                    !editingModeProps.isEditingMode,
-                                  participantId: member.id,
-                                })
-                              }
-                            />
-                          )}
-                        {isLeader && member.userId !== session?.user?.id ? (
-                          <TrashIcon
-                            className="h-7 w-7 cursor-pointer text-red-normal"
-                            onClick={() => {
-                              setRemoveModalProps({
-                                isOpen: true,
-                                participantId: member.id,
-                                participantIgn: member.ign ?? '',
-                                participantName: member.User?.fullName ?? '',
-                              })
-                            }}
-                          />
-                        ) : (
-                          Team?.leader?.userId !== session?.user?.id &&
-                          member.userId === session?.user?.id && (
-                            <ArrowRightOnRectangleIcon
+                      {!isFinalized && (
+                        <div className="flex items-center gap-2">
+                          {member.userId === session?.user?.id &&
+                            !editingModeProps.isEditingMode && (
+                              <PencilSquareIcon
+                                className="h-7 w-7 cursor-pointer"
+                                onClick={() =>
+                                  setEditingModeProps({
+                                    isEditingMode:
+                                      !editingModeProps.isEditingMode,
+                                    participantId: member.id,
+                                  })
+                                }
+                              />
+                            )}
+                          {isLeader && member.userId !== session?.user?.id ? (
+                            <TrashIcon
                               className="h-7 w-7 cursor-pointer text-red-normal"
                               onClick={() => {
-                                !isFinalized &&
-                                  setRemoveModalProps({
-                                    isOpen: true,
-                                    participantId: member.id,
-                                    participantIgn: member.ign ?? '',
-                                    participantName:
-                                      member.User?.fullName ?? '',
-                                  })
+                                setRemoveModalProps({
+                                  isOpen: true,
+                                  participantId: member.id,
+                                  participantIgn: member.ign ?? '',
+                                  participantName: member.User?.fullName ?? '',
+                                })
                               }}
                             />
-                          )
-                        )}
-                      </div>
-                    )}
-                  </li>
-                ))
-              ) : (
-                <div className="flex flex-col items-center justify-center">
-                  <Image
-                    src="/member-loading.png"
-                    alt="Loading..."
-                    width={198}
-                    height={182}
-                  />
-                  <p className="max-w-[35ch] text-center font-normal">
-                    Kami sedang mencarikanmu rekan tim. Mohon bersabar {':)'}
-                  </p>
-                </div>
-              )}
-            </ul>
-          )}
-        </div>
+                          ) : (
+                            Team?.leader?.userId !== session?.user?.id &&
+                            member.userId === session?.user?.id && (
+                              <ArrowRightOnRectangleIcon
+                                className="h-7 w-7 cursor-pointer text-red-normal"
+                                onClick={() => {
+                                  !isFinalized &&
+                                    setRemoveModalProps({
+                                      isOpen: true,
+                                      participantId: member.id,
+                                      participantIgn: member.ign ?? '',
+                                      participantName:
+                                        member.User?.fullName ?? '',
+                                    })
+                                }}
+                              />
+                            )
+                          )}
+                        </div>
+                      )}
+                    </li>
+                  ))
+                ) : (
+                  <div className="flex flex-col items-center justify-center">
+                    <Image
+                      src="/member-loading.png"
+                      alt="Loading..."
+                      width={198}
+                      height={182}
+                    />
+                    <p className="max-w-[35ch] text-center font-normal">
+                      Kami sedang mencarikanmu rekan tim. Mohon bersabar {':)'}
+                    </p>
+                  </div>
+                )}
+              </ul>
+            )}
+          </div>
+        )}
         {isLeader &&
         !Team?.isTeamButIndividual &&
         !game?.isIndividual &&
