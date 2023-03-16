@@ -87,7 +87,7 @@ export const InviteModule: React.FC = () => {
           <p className="capitalize"> {team?.leader?.User?.fullName}</p>
         </Highlight>
         <div className="flex flex-col gap-y-1">
-          <p className='text-primary font-poppinsBold'> Informasi Pendaftar </p>
+          <p className="font-poppinsBold text-primary"> Informasi Pendaftar </p>
           <div className="flex flex-col gap-y-4">
             <TextField
               control={control}
