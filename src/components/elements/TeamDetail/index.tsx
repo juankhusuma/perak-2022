@@ -158,7 +158,7 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
             </p>
           </div>
           {Team?.logo ? (
-            <div className="relative aspect-square h-20">
+            <div className="aspect-square relative h-20">
               <Image
                 src={Team.logo}
                 alt={Team.name ?? ''}
@@ -391,8 +391,18 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
                 disabled={!isConfirmed}
                 onClick={() => setIsFinalizeModalOpen(true)}
               >
-                <UserGroupIcon className="h-7 w-7 stroke-[#C5B27A]" />
-                <p className="text-[#C5B27A]">Finalisasi Tim</p>
+                <UserGroupIcon
+                  className={`h-7 w-7  ${
+                    isConfirmed ? 'stroke-white' : 'stroke-[#C5B27A]'
+                  }`}
+                />
+                <p
+                  className={` ${
+                    isConfirmed ? 'text-white' : 'text-[#C5B27A]'
+                  }`}
+                >
+                  Finalisasi Tim
+                </p>
               </Button>
             </div>
           </div>

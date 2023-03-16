@@ -162,16 +162,26 @@ export const InviteModule: React.FC = () => {
               {' '}
               {errorMessage}{' '}
             </p>
-            <Button
-              variant={1}
-              className="w-full px-6 py-4 md:text-[20px]"
+            <button
+              type="button"
+              className={`inline-flex w-full justify-center rounded-md bg-orange-dark px-4 py-3 font-poppinsBold text-sm font-bold text-background-light hover:drop-shadow-md `}
               onClick={() => {
                 setIsError(false)
                 router.reload()
               }}
             >
               Baik, dimengerti.
-            </Button>
+            </button>
+            {/* <Button
+              variant={1}
+              className="w-full px-6 py-2 md:text-[17px]"
+              onClick={() => {
+                setIsError(false)
+                router.reload()
+              }}
+            >
+              Baik, dimengerti.
+            </Button> */}
           </div>
         }
         className="w-full pb-8 md:min-w-[600px]"

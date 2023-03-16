@@ -9,7 +9,7 @@ export const leagueData = [
   },
   {
     title: 'Competitive Games',
-    body: '/ dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. / dolor sit amet, consectetur adipiscing elit, sed',
+    body: 'Competitive Games adalah serangkaian acara perlombaan games berbasis tim maupun individu yang disusun dengan konsep league dan Knockout. Competitive Games menghadirkan perlombaan games kompetitif seperti Valorant, Dota 2, Mobile Legends, Fifa 23, Chess, dan Apex Legends.',
   },
   {
     title: 'Family Games',
