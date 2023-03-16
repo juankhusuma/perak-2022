@@ -45,7 +45,7 @@ const GameSection = () => {
           items={['All', 'Master League', 'Competitive Games', 'Family Games']}
         />
         {league > 0 && (
-          <div className="flex min-h-[256px] max-w-[300px] flex-col items-center gap-10 rounded-[20px] border-2 border-[#E9DEA6] bg-background-normal px-[40px] py-[32px] text-primary md:max-w-[1024px] md:flex-row">
+          <div className="hidden min-h-[256px] max-w-[300px] flex-col items-center gap-10 rounded-[20px] border-2 border-[#E9DEA6] bg-background-normal px-[40px] py-[32px] text-primary md:max-w-[1024px] md:flex-row lg:flex">
             <div>
               {league === 1 && <MasterLeagueImage />}
               {league === 2 && <CompetitiveGamesImage />}

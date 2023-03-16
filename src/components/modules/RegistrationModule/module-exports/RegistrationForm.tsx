@@ -103,7 +103,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
         </h1>
         <p className="text-sm md:text-base">{REGISTRATION_DESCRIPTION[type]}</p>
         <div className="flex flex-col gap-y-1">
-          <p> Informasi Pendaftar </p>
+          <p className="font-poppinsBold text-primary"> Informasi Pendaftar </p>
           <div className="flex flex-col gap-y-4">
             {type == 'team' && gameData.data && !gameData.data.isIndividual && (
               <TextField

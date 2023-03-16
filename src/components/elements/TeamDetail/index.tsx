@@ -380,15 +380,21 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
               <LinkIcon className="h-7 w-7" />
               Undang Teman
             </Button>
-            <Button
-              variant={1}
-              className="w-full flex-1 p-3 text-p-md"
-              disabled={!isConfirmed}
-              onClick={() => setIsFinalizeModalOpen(true)}
+            <div
+              className={`${
+                !isConfirmed && 'rounded-lg border border-[#EABB76]'
+              }`}
             >
-              <UserGroupIcon className="h-7 w-7" />
-              Finalisasi Tim
-            </Button>
+              <Button
+                variant={1}
+                className={`$ w-full flex-1 p-3 text-p-md`}
+                disabled={!isConfirmed}
+                onClick={() => setIsFinalizeModalOpen(true)}
+              >
+                <UserGroupIcon className="h-7 w-7 stroke-[#C5B27A]" />
+                <p className="text-[#C5B27A]">Finalisasi Tim</p>
+              </Button>
+            </div>
           </div>
         ) : null}
       </li>
@@ -520,7 +526,7 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
                 className="cursor-pointer"
                 onClick={() => {
                   navigator.clipboard.writeText(inviteLink)
-                  toast.success('Invite link successfuly copied to clipboard!')
+                  toast.success('Invite link berhasil di-copy ke clipboard.')
                 }}
               >
                 <Clipboard className="h-7 w-7" />
