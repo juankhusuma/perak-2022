@@ -32,7 +32,7 @@ export default function Hero() {
       <div className="grid w-full place-items-center">
         <Stars />
       </div>
-      <div className='z-10'>
+      <div className="z-10">
         <h1 className="text-shadow-lg font-outline-4 mx-10 text-center font-retro text-display-small text-primary shadow-orange-dark md:text-display-medium lg:text-display-large">
           Main dan Menang!
         </h1>

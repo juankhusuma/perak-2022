@@ -162,10 +162,10 @@ const GameSection = () => {
         )}
       </div>
       <div className="flex w-full flex-col items-center gap-3 bg-[rgb(243,106,34)] py-20 px-5">
-        <p className="text-center font-poppinsBold text-headline-small md:text-headline-large text-white">
+        <p className="text-center font-poppinsBold text-headline-small text-white md:text-headline-large">
           Mau tahu permainan lainnya?
         </p>
-        <p className="text-center font-poppins text-label-large md:text-headline-medium text-white">
+        <p className="text-center font-poppins text-label-large text-white md:text-headline-medium">
           Temukan games-games seru hanya di PERAK!
         </p>
         <Button
