@@ -246,7 +246,7 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
                       key={member.id}
                       className="flex items-center justify-between"
                     >
-                      <div className="w-full">
+                      <div className="w-full space-y-[2px]">
                         <div className="flex items-center gap-2">
                           {member.userId === session?.user?.id ? (
                             editingModeProps.isEditingMode ? (

@@ -118,10 +118,10 @@ export const InviteModule: React.FC = () => {
         title={`Pendaftaran Anggota`}
         variant={1}
         canClose={true}
-        primary="Tidak"
-        primaryClicked={() => setIsOpen(false)}
-        secondary="Ya, daftarkan saya"
-        secondaryClicked={() => onSubmit()}
+        primary="Ya, daftarkan saya"
+        primaryClicked={() => onSubmit()}
+        secondary="Tidak"
+        secondaryClicked={() => setIsOpen(false)}
         message={
           <div className="flex flex-col items-center gap-y-4">
             <p className="text-center text-white">
@@ -138,8 +138,8 @@ export const InviteModule: React.FC = () => {
           </div>
         }
         className="w-full pb-8 md:min-w-[600px]"
-        primaryButtonClassname={`bg-onPrimaryContainer`}
-        secondaryButtonClassname={`!bg-orange-dark text-background-light`}
+        primaryButtonClassname={`!bg-orange-dark text-background-light`}
+        secondaryButtonClassname={`bg-onPrimaryContainer`}
       />
       <Modal
         isOpen={isError}
@@ -154,7 +154,7 @@ export const InviteModule: React.FC = () => {
         secondaryClicked={() => null}
         message={
           <div className="flex flex-col items-center gap-y-4">
-            <XCircleIcon className="h-20 w-20 text-red-light md:h-40 md:w-40" />
+            <XCircleIcon className="h-14 w-14 text-red-light md:h-20 md:w-20" />
             <h1 className="text-center font-poppinsBold text-sm text-background-light md:text-2xl">
               Yah, kamu gagal bergabung :(
             </h1>

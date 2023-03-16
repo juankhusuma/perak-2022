@@ -172,10 +172,10 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
         title={`Pendaftaran ${type === 'personal' ? 'Individu' : 'Tim'}`}
         variant={1}
         canClose={false}
-        primary="Tidak"
-        primaryClicked={() => setIsOpen(false)}
-        secondary="Ya, daftarkan saya"
-        secondaryClicked={() => onSubmit()}
+        primary="Ya, daftarkan saya"
+        primaryClicked={() => onSubmit()}
+        secondary="Tidak"
+        secondaryClicked={() => setIsOpen(false)}
         message={
           <div className="flex flex-col items-center gap-y-4">
             <p className="text-center text-sm text-white md:text-base">
@@ -201,8 +201,8 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
           </div>
         }
         className="w-full max-w-[600px] pb-8"
-        primaryButtonClassname="bg-onPrimaryContainer"
-        secondaryButtonClassname="!bg-orange-dark text-background-light"
+        primaryButtonClassname="!bg-orange-dark text-background-light"
+        secondaryButtonClassname="bg-onPrimaryContainer"
       />
     </>
   )

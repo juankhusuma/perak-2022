@@ -6,7 +6,7 @@ import GameSection from './gameSection'
 export const LandingModule: React.FC = () => {
   return (
     <>
-      <div className="relative mt-20 w-full">
+      <div className="relative w-full">
         <Hero />
         <About />
         <GameSection />
