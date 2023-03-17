@@ -127,7 +127,7 @@ export const GameDetail: React.FC<GameDetailProps> = ({
               game.gameTypeName == 'Competitive Games' ? (
                 INFORMATION_SECTION.map(({ type, message }, key) => (
                   <div className="flex flex-col gap-y-2" key={key}>
-                    <Tag text={type} variant={1} />
+                    <Tag text={type} variant={1} flex />
                     <p> {message} </p>
                   </div>
                 ))
@@ -135,12 +135,12 @@ export const GameDetail: React.FC<GameDetailProps> = ({
                 (game.gameTypeName == 'Family Games' ||
                   game.gameTypeName == 'Master League') ? (
                 <>
-                  <Tag text={'TIM'} variant={1} />
+                  <Tag text={'TIM'} variant={1} flex />
                   <p> {'Daftar dan jadi ketua tim untuk teman-temanmu!'} </p>
                 </>
               ) : (
                 <>
-                  <Tag text={'INDIVIDU'} variant={1} />
+                  <Tag text={'INDIVIDU'} variant={1} flex />
                   <p> {'Bermain secara individu dan menangkan kejuaraan'} </p>
                 </>
               )}

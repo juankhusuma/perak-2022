@@ -197,6 +197,7 @@ export const Payment: React.FC<PaymentProps> = ({ game, participant }) => {
             text={team.data?.teamStatus?.name as string}
             variant={2}
             className={`${statusColor} text-background-light`}
+            flex
           />
         </div>
         <Highlight

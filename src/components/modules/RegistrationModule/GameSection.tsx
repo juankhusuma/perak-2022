@@ -32,7 +32,11 @@ export const GameSection: React.FC<GameProps> = ({ game }) => {
   return (
     <div className="flex flex-col gap-y-4 xl:w-1/2">
       {game ? (
-        <Tag text={game?.gameTypeName?.toUpperCase() as string} variant={1} />
+        <Tag
+          text={game?.gameTypeName?.toUpperCase() as string}
+          variant={1}
+          flex
+        />
       ) : (
         <Skeleton
           variant={'rectangular'}

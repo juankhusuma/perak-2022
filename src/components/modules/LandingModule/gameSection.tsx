@@ -25,7 +25,7 @@ const GameSection = () => {
     )
   const games = data?.pages[currentPage]?.items
   const nextCursor = data?.pages[currentPage]?.nextCursor
-  const totalPages = Math.floor((data?.pages[currentPage]?.totalCount ?? 0) / 2)
+  const totalPages = Math.ceil((data?.pages[currentPage]?.totalCount ?? 0) / 3)
   const pages = Array.from(Array(totalPages).keys())
 
   const handleFetchNextPage = async () => {
@@ -149,11 +149,7 @@ const GameSection = () => {
                 </div>
               </div>
             )}
-            <Pagination
-              currentPage={currentPage}
-              // setPage={setPage}
-              pages={pages}
-            />
+            <Pagination currentPage={currentPage} pages={pages} />
           </div>
         )}
       </div>

@@ -3,4 +3,5 @@ export interface TagProps {
   icon?: any
   variant: number
   className?: string
+  flex?: boolean
 }

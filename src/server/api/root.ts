@@ -1,5 +1,5 @@
 import { onBoardingRouter } from './routers/onBoarding'
-import { gameRouter } from './routers/game2'
+import { gameRouter } from './routers/game'
 import { profileRouter } from './routers/profile'
 import { userDataRouter } from './routers/userData'
 import { createTRPCRouter } from './trpc'

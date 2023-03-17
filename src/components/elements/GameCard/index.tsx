@@ -13,7 +13,6 @@ export const GameCard: React.FC<GameCardProps> = ({
   className,
 }) => {
   const [isHover, setIsHover] = useState(false)
-  const [isImgLoading, setIsImgLoading] = useState(true)
   const renderURL = (name: string) => {
     switch (name) {
       case 'Dota 2':
@@ -70,8 +69,8 @@ export const GameCard: React.FC<GameCardProps> = ({
           </p>
           <div className="mt-1 flex flex-col gap-2">
             <div className="flex gap-[10px]">
-              <Tag text={league} variant={3} />
-              <Tag text={count} variant={3} />
+              <Tag text={league} variant={3} className="truncate" />
+              <Tag text={count} variant={3} className="truncate" />
             </div>
             <Link href={`/registration/${slug}`} className="w-full">
               <Button variant={2} className="w-full py-4">

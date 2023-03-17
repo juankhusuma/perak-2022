@@ -522,12 +522,22 @@ const Artex: NextPage = () => {
             <p className="pl-2 font-retro text-6xl text-primary">Tag</p>
             <div className="mt-5 space-y-3 p-2 md:p-0 md:pl-10">
               <div className="space-y-2 md:flex md:gap-2 md:space-y-0">
-                <Tag text="TAG" variant={1} />
-                <Tag text="TAG" icon={<Instagram />} variant={1} />
+                <Tag
+                  text="TAG"
+                  variant={1}
+                  className="flex items-center"
+                  flex
+                />
+                <Tag text="TAG" icon={<Instagram />} variant={1} flex />
               </div>
               <div className="space-y-2 md:flex md:gap-2 md:space-y-0">
-                <Tag text="TAG" variant={2} />
-                <Tag text="TAG" icon={<Instagram />} variant={2} />
+                <Tag
+                  text="TAG"
+                  variant={2}
+                  className="flex items-center"
+                  flex
+                />
+                <Tag text="TAG" icon={<Instagram />} variant={2} flex />
               </div>
             </div>
           </div>
