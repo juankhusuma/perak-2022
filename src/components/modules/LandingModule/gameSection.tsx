@@ -1,30 +1,45 @@
 import { Button, GameCard, Tabs } from '@elements'
-import React, { useState } from 'react'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import CompetitiveGamesImage from '@images/CompetitiveGamesImage.svg'
-import MasterLeagueImage from '@images/MasterLeagueImage.svg'
 import FamilyGamesImage from '@images/FamilyGamesImage.svg'
-import { gameData, leagueData } from './constant'
-import { api } from 'src/utils/api'
-import { Game } from '@prisma/client'
-import Link from 'next/link'
+import MasterLeagueImage from '@images/MasterLeagueImage.svg'
 import Skeleton from '@mui/material/Skeleton'
+import React, { useEffect, useState } from 'react'
+import { api } from 'src/utils/api'
+import { leagueData } from './constant'
+import { Pagination } from './Pagination'
 
 const GameSection = () => {
   const [league, setLeague] = useState(0)
+  const [currentPage, setCurrentPage] = useState(0)
 
-  const games = api.game.getGames.useQuery()
+  const { data, fetchNextPage, isLoading, isFetchingNextPage } =
+    api.game.getGamesBatch.useInfiniteQuery(
+      {
+        limit: 3,
+        gameTypeName: league > 0 ? leagueData[league].title : undefined,
+      },
+      {
+        getNextPageParam: (lastPage) => lastPage.nextCursor,
+      }
+    )
+  const games = data?.pages[currentPage]?.items
+  const nextCursor = data?.pages[currentPage]?.nextCursor
+  const totalPages = Math.floor((data?.pages[currentPage]?.totalCount ?? 0) / 2)
+  const pages = Array.from(Array(totalPages).keys())
 
-  const competitiveGames = games.data?.filter(
-    (game) => game.gameType?.name == 'Competitive Games'
-  )
+  const handleFetchNextPage = async () => {
+    await fetchNextPage()
+    setCurrentPage((prev) => prev + 1)
+  }
 
-  const familyGames = games.data?.filter(
-    (game) => game.gameType?.name == 'Family Games'
-  )
+  const handleFetchPreviousPage = () => {
+    setCurrentPage((prev) => prev - 1)
+  }
 
-  const masterLeague = games.data?.filter(
-    (game) => game.gameType?.name == 'Master League'
-  )
+  useEffect(() => {
+    setCurrentPage(0)
+  }, [league])
 
   return (
     <>
@@ -61,102 +76,83 @@ const GameSection = () => {
             </div>
           </div>
         )}
-        {games.data ? (
-          <div className="flex flex-wrap justify-center gap-5">
-            {league == 0 &&
-              games.data?.map((game) => (
-                <Link href={`/registration/${game.slug}`} key={game.id}>
-                  <GameCard
-                    name={game.name as string}
-                    league={game.gameType?.name?.toLocaleUpperCase() as string}
-                    count={
-                      game.minimumMembers == game.maximumMembers
-                        ? `${game.minimumMembers} ORANG`
-                        : `${game.minimumMembers} - ${game.maximumMembers} ORANG`
-                    }
-                    className="max-w-[294px] flex-grow md:max-w-[327px]"
-                  />
-                </Link>
+        {isLoading ||
+          (isFetchingNextPage && !games && (
+            <div className="flex flex-wrap justify-center gap-5">
+              <Skeleton
+                variant={'rectangular'}
+                animation="wave"
+                className="h-[300px] w-[200px] rounded-[20px]"
+              />
+              <Skeleton
+                variant={'rectangular'}
+                animation="wave"
+                className="h-[300px] w-[200px] rounded-[20px]"
+              />
+              <Skeleton
+                variant={'rectangular'}
+                animation="wave"
+                className="h-[300px] w-[200px] rounded-[20px]"
+              />
+              <Skeleton
+                variant={'rectangular'}
+                animation="wave"
+                className="h-[300px] w-[200px] rounded-[20px]"
+              />
+            </div>
+          ))}
+        {!isLoading && (
+          <div className="relative lg:w-[1000px]">
+            <div className="flex flex-wrap justify-center gap-5">
+              {games?.map((game) => (
+                <GameCard
+                  key={game.id}
+                  name={game.name as string}
+                  league={game.gameType?.name?.toLocaleUpperCase() as string}
+                  count={
+                    game.minimumMembers == game.maximumMembers
+                      ? `${game.minimumMembers} ORANG`
+                      : `${game.minimumMembers} - ${game.maximumMembers} ORANG`
+                  }
+                  slug={game.slug as string}
+                  className="max-w-[294px] flex-grow md:max-w-[327px]"
+                />
               ))}
-            {league == 1 &&
-              games.data
-                ?.filter((game) => game.gameType?.name == 'Master League')
-                .map((game) => (
-                  <Link href={`/registration/${game.slug}`} key={game.id}>
-                    <GameCard
-                      name={game.name as string}
-                      league={
-                        game.gameType?.name?.toLocaleUpperCase() as string
-                      }
-                      count={
-                        game.minimumMembers == game.maximumMembers
-                          ? `${game.minimumMembers} ORANG`
-                          : `${game.minimumMembers} - ${game.maximumMembers} ORANG`
-                      }
-                      className="max-w-[294px] flex-grow md:max-w-[327px]"
+            </div>
+            {totalPages > 1 && (
+              <div className="right-0 bottom-0 z-10 mt-10 flex select-none justify-center gap-2 lg:absolute lg:mt-0">
+                {
+                  <div
+                    className="cursor-pointer rounded-full p-2"
+                    onClick={() => currentPage > 0 && handleFetchPreviousPage()}
+                  >
+                    <ChevronLeftIcon
+                      className={`h-8 w-8 transition-all ${
+                        currentPage > 0
+                          ? 'text-purple-darkest hover:scale-125'
+                          : 'text-purple-darkest/50'
+                      }`}
                     />
-                  </Link>
-                ))}
-            {league == 2 &&
-              games.data
-                ?.filter((game) => game.gameType?.name == 'Competitive Games')
-                .map((game) => (
-                  <Link href={`/registration/${game.slug}`} key={game.id}>
-                    <GameCard
-                      name={game.name as string}
-                      league={
-                        game.gameType?.name?.toLocaleUpperCase() as string
-                      }
-                      count={
-                        game.minimumMembers == game.maximumMembers
-                          ? `${game.minimumMembers} ORANG`
-                          : `${game.minimumMembers} - ${game.maximumMembers} ORANG`
-                      }
-                      className="max-w-[294px] flex-grow md:max-w-[327px]"
-                    />
-                  </Link>
-                ))}
-            {league == 3 &&
-              games.data
-                ?.filter((game) => game.gameType?.name == 'Family Games')
-                .map((game) => (
-                  <Link href={`/registration/${game.slug}`} key={game.id}>
-                    <GameCard
-                      name={game.name as string}
-                      league={
-                        game.gameType?.name?.toLocaleUpperCase() as string
-                      }
-                      count={
-                        game.minimumMembers == game.maximumMembers
-                          ? `${game.minimumMembers} ORANG`
-                          : `${game.minimumMembers} - ${game.maximumMembers} ORANG`
-                      }
-                      className="max-w-[294px] flex-grow md:max-w-[327px]"
-                    />
-                  </Link>
-                ))}
-          </div>
-        ) : (
-          <div className="flex flex-wrap justify-center gap-5">
-            <Skeleton
-              variant={'rectangular'}
-              animation="wave"
-              className="h-[300px] w-[200px]"
-            />
-            <Skeleton
-              variant={'rectangular'}
-              animation="wave"
-              className="h-[300px] w-[200px]"
-            />
-            <Skeleton
-              variant={'rectangular'}
-              animation="wave"
-              className="h-[300px] w-[200px]"
-            />
-            <Skeleton
-              variant={'rectangular'}
-              animation="wave"
-              className="h-[300px] w-[200px]"
+                  </div>
+                }
+                <div
+                  className="cursor-pointer rounded-full p-2"
+                  onClick={() => nextCursor && handleFetchNextPage()}
+                >
+                  <ChevronRightIcon
+                    className={`h-8 w-8 transition-all ${
+                      nextCursor
+                        ? 'text-purple-darkest hover:scale-125'
+                        : 'text-purple-darkest/50'
+                    }`}
+                  />
+                </div>
+              </div>
+            )}
+            <Pagination
+              currentPage={currentPage}
+              // setPage={setPage}
+              pages={pages}
             />
           </div>
         )}

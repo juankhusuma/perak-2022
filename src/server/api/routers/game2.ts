@@ -31,6 +31,47 @@ export const gameRouter = createTRPCRouter({
       })
       return game
     }),
+  getGamesBatch: publicProcedure
+    .input(
+      z.object({
+        limit: z.number(),
+        cursor: z.string().nullish(),
+        skip: z.number().optional(),
+        gameTypeName: z.string().optional(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const { limit, skip, cursor } = input
+      const items = await ctx.prisma.game.findMany({
+        take: limit + 1,
+        skip: skip,
+        cursor: cursor ? { id: cursor } : undefined,
+        orderBy: {
+          name: 'asc',
+        },
+        where: {
+          gameTypeName: input.gameTypeName ?? undefined,
+        },
+        include: {
+          gameType: true,
+        },
+      })
+      let nextCursor: typeof cursor | undefined = undefined
+      if (items.length > limit) {
+        const nextItem = items.pop() // return the last item from the array
+        nextCursor = nextItem?.id
+      }
+      const totalCount = await ctx.prisma.game.count({
+        where: {
+          gameTypeName: input.gameTypeName ?? undefined,
+        },
+      })
+      return {
+        items,
+        nextCursor,
+        totalCount,
+      }
+    }),
   getParticipantOf: protectedProcedure.query(async ({ ctx }) => {
     const participants = await ctx.prisma.participant.findMany({
       where: {

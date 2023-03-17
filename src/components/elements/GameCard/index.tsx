@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { GameCardProps } from './interface'
-import Image from 'next/image'
 import { Button, Tag } from '@elements'
+import Image from 'next/image'
+import Link from 'next/link'
+import { GameCardProps } from './interface'
 
 export const GameCard: React.FC<GameCardProps> = ({
   name,
   league,
   count,
+  slug,
   className,
 }) => {
+  const [isHover, setIsHover] = useState(false)
+  const [isImgLoading, setIsImgLoading] = useState(true)
   const renderURL = (name: string) => {
     switch (name) {
       case 'Dota 2':
@@ -36,31 +40,44 @@ export const GameCard: React.FC<GameCardProps> = ({
   }
   return (
     <div
-      className={`rounded-[20px] border-2 border-[#E9DEA6] bg-[rgb(56,61,117)] p-[10px] ${
+      className={`rounded-[20px] border-2 border-background-normal bg-purple-dark p-[10px] ${
         className ?? ''
       } w-80`}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
     >
-      <div className="overflow-hidden rounded-[12px] bg-[rgb(223,205,242)]">
-        <div className="w-full overflow-hidden">
+      <div className="relative min-h-[325px] overflow-hidden rounded-[12px] bg-black">
+        <div className="overflow-hidden">
           <Image
             src={renderURL(name) as string}
             alt="Game"
-            className="-mt-1 h-[216px] w-full rounded-[0px] object-cover"
-            width="280"
-            height="280"
+            className={`-mt-1 rounded-[0px] bg-center object-cover transition-all duration-200 ease-in-out ${
+              isHover ? 'scale-125 opacity-75' : 'scale-100'
+            }`}
+            fill
             priority
+            placeholder="blur"
+            blurDataURL="/assets/images/ImagePlaceholder.svg"
           />
         </div>
-        <div className="px-4 pt-2 pb-4">
+        <div
+          className={`absolute w-full bg-purple-lightest px-4 pt-2 pb-4 transition-all duration-200 ease-in-out ${
+            isHover ? 'bottom-0' : '-bottom-[20%]'
+          }`}
+        >
           <p className="font-poppinsBold text-title-large font-extrabold text-primary">
             {name}
           </p>
           <div className="mt-1 flex flex-col gap-2">
-            <Tag text={league} variant={3} />
-            <Tag text={count} variant={3} />
-            <Button variant={2} className="py-4">
-              Daftar Sekarang
-            </Button>
+            <div className="flex gap-[10px]">
+              <Tag text={league} variant={3} />
+              <Tag text={count} variant={3} />
+            </div>
+            <Link href={`/registration/${slug}`} className="w-full">
+              <Button variant={2} className="w-full py-4">
+                Daftar Sekarang
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

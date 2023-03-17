@@ -28,7 +28,6 @@ export default function Hero() {
       <CurtainRight className="absolute top-0 -right-40 hidden md:right-0 md:block" />
       <CurtainLeft className="absolute top-0 -left-40 hidden md:left-0 md:block" />
       <RandomBSOnTop className="invisible absolute top-5 left-5 md:visible md:top-24 md:left-20" />
-      <br />
       <div className="grid w-full place-items-center">
         <Stars />
       </div>
