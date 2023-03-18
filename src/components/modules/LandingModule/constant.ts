@@ -5,7 +5,7 @@ export const leagueData = [
   },
   {
     title: 'Master League',
-    body: '/ dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. / dolor sit amet, consectetur adipiscing elit, sed',
+    body: 'CS League merupakan  kompetisi olahraga berbasis tim yang disusun yang disusun dengan konsep league dan Knockout. Master League menghadirkan kompetisi olahraga, seperti futsal dan basket .',
   },
   {
     title: 'Competitive Games',

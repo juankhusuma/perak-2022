@@ -27,7 +27,7 @@ export const GameCard: React.FC<GameCardProps> = ({
         return '/assets/images/gameCard/fifa23.jpg'
       case 'Futsal':
         return '/assets/images/gameCard/futsal.jpg'
-      case 'Basket':
+      case 'Basket 3x3':
         return '/assets/images/gameCard/basket.jpeg'
       case 'Valorant':
         return '/assets/images/gameCard/valorant.jpg'
