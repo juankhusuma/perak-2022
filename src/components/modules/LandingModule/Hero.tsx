@@ -5,13 +5,17 @@ import CurtainLeft from 'public/assets/images/curtain-left.svg'
 import RandomBSOnTop from 'public/assets/images/RandomBSOnTop.svg'
 import Stars from 'public/assets/images/Stars.svg'
 import GamePad from 'public/assets/images/gaming-pad-02.svg'
+import GameController from '@images/GameControllerSmall.svg'
 import Send from 'public/assets/images/Send.svg'
 import { Button, Countdown } from '@elements'
 import { useRouter } from 'next/router'
 import { date } from './constant'
+import { useWindowSize } from '@hooks'
 
 export default function Hero() {
   const router = useRouter()
+  const { height } = useWindowSize()
+
   const dateNow = new Date().getTime()
   const startString = date.open ? date.open : ''
   const endString = date.close ? date.close : ''
@@ -21,13 +25,21 @@ export default function Hero() {
 
   const selisihBuka = dateNow - start
   const selisihTutup = dateNow - end
+
   return (
-    <div className="relative flex min-h-screen flex-col justify-center bg-background-light py-20 md:py-28">
+    <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-background-light py-20 md:py-28">
       <RandomLogoBottomLeft className="absolute left-0 bottom-10 z-0 hidden lg:inline-block" />
       <RandomLogoBottomRight className="absolute right-0 bottom-10 z-0 hidden lg:inline-block" />
+      {height > 800 && (
+        <div>
+          <CurtainLeft className="absolute top-[5%] z-0 scale-125 animate-slide-in md:hidden" />
+          <RandomLogoBottomRight className="absolute -right-[20%] -bottom-[10%] z-0 animate-slide-up md:hidden" />
+        </div>
+      )}
       <CurtainRight className="absolute top-0 -right-40 hidden md:right-0 md:block" />
       <CurtainLeft className="absolute top-0 -left-40 hidden md:left-0 md:block" />
-      <RandomBSOnTop className="invisible absolute top-5 left-5 md:visible md:top-24 md:left-20" />
+      <RandomBSOnTop className="invisible absolute top-5 left-5 animate-slide-in md:visible md:top-24 md:left-20" />
+      <GameController className="invisible absolute top-0 right-5 animate-slide-in md:top-12 md:right-14 lg:visible" />
       <div className="grid w-full place-items-center">
         <Stars />
       </div>

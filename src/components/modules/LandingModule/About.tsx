@@ -9,10 +9,10 @@ export default function About() {
   const { width } = useWindowSize()
   return (
     <div className="bg-background-normal py-20">
-      <div className="relative mb-10 px-5">
+      <div className="relative mb-10">
         <StarLeft className="invisible absolute -top-5 left-10 sm:left-28 md:visible md:left-32" />
         <StarRight className="invisible absolute -top-3 right-10 md:visible md:right-32" />
-        <h1 className="font-outline-4 -text-shadow-lg text-center font-retro text-display-small  text-orange-dark shadow-purple-darkest md:text-display-medium lg:text-display-large">
+        <h1 className="font-outline-4 -text-shadow-lg mx-auto max-w-[80%] text-center font-retro text-display-small text-orange-dark shadow-purple-darkest md:text-display-medium lg:max-w-[60%] lg:text-display-large">
           Tentang Perak League
         </h1>
       </div>

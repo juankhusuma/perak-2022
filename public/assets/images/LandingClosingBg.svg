@@ -1,0 +1,55 @@
+<svg width="1370" height="273" viewBox="0 0 1370 273" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_659_6161)">
+<rect width="1370" height="273" fill="#F36A22"/>
+<path d="M1200 65.2358C1200 86.3529 1217.11 103.472 1238.21 103.472V27C1217.11 27 1200 44.1187 1200 65.2358Z" fill="#F36A22"/>
+<path d="M1272.95 65.2358C1272.95 86.3529 1255.84 103.472 1234.74 103.472V27C1255.84 27 1272.95 44.1187 1272.95 65.2358Z" fill="#FEB048"/>
+<path d="M1398 355.48H1361.53V73.9258L1398 355.48Z" fill="#2F7A84"/>
+<path d="M1398 73.9258H1361.53L1398 355.331V73.9258Z" fill="#F36A22"/>
+<path d="M1352.84 202.537H1318.11V354.611H1352.84V202.537Z" fill="#FEB048"/>
+<path d="M1262.53 202.537H1227.79V354.611H1262.53V202.537Z" fill="#2F7A84"/>
+<path d="M1318.11 202.537H1262.53V256.415H1318.11V202.537Z" fill="#F36A22"/>
+<g style="mix-blend-mode:overlay">
+<path d="M1276.42 202.537V425" stroke="#242A2B" stroke-width="4"/>
+</g>
+<g style="mix-blend-mode:overlay">
+<path d="M1290.32 202.537V425" stroke="#242A2B" stroke-width="4"/>
+</g>
+<g style="mix-blend-mode:overlay">
+<path d="M1304.21 202.537V425" stroke="#242A2B" stroke-width="4"/>
+</g>
+<path d="M1352.84 76.5327V202.537H1227.79L1352.84 76.5327Z" fill="#A33233"/>
+<g style="mix-blend-mode:color-burn">
+<path d="M1325.05 47.856V173.86H1200L1325.05 47.856Z" fill="#A33233"/>
+</g>
+<path d="M205.18 26.7079C205.18 55.2653 181.098 78.4157 151.391 78.4157V-25C181.098 -25 205.18 -1.84961 205.18 26.7079Z" fill="#FEB048"/>
+<path d="M73.6953 92.337C73.6953 120.894 97.7775 144.045 127.484 144.045V40.6292C97.7775 40.6292 73.6953 63.7795 73.6953 92.337Z" fill="#2F7A84"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 221.117 98.3035)" fill="#F36A22"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 161.352 118.191)" fill="#F36A22"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 161.352 98.3035)" fill="#F2E7E2"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 221.117 118.191)" fill="#F2E7E2"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 181.273 138.079)" fill="#F2E7E2"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 201.195 157.966)" fill="#F2E7E2"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 201.195 138.079)" fill="#F36A22"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 181.273 157.966)" fill="#F36A22"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 201.195 98.3035)" fill="#FEB048"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 181.273 118.191)" fill="#FEB048"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 181.273 98.3035)" fill="#2F7A84"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 201.195 118.191)" fill="#2F7A84"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 161.352 138.079)" fill="#2F7A84"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 221.117 157.966)" fill="#2F7A84"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 221.117 138.079)" fill="#FEB048"/>
+<ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 161.352 157.966)" fill="#FEB048"/>
+<rect width="147.422" height="145.18" transform="matrix(-1 0 0 1 221.117 183.82)" fill="#F36A22"/>
+<path d="M56.7617 -17.0449V328.006" stroke="black" stroke-width="3"/>
+<path d="M41.8203 -17.0449V328.006" stroke="black" stroke-width="3"/>
+<path d="M26.8789 -17.0449V328.006" stroke="black" stroke-width="3"/>
+<g style="mix-blend-mode:overlay">
+<rect width="255" height="63.6405" transform="matrix(-1 0 0 1 251 223.595)" fill="#EABB76"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_659_6161">
+<rect width="1370" height="273" fill="white"/>
+</clipPath>
+</defs>
+</svg>

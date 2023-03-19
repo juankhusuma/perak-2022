@@ -2,16 +2,19 @@ import { Button, GameCard, Tabs } from '@elements'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import CompetitiveGamesImage from '@images/CompetitiveGamesImage.svg'
 import FamilyGamesImage from '@images/FamilyGamesImage.svg'
+import GameController from '@images/GameController.svg'
 import MasterLeagueImage from '@images/MasterLeagueImage.svg'
+import Trophy from '@images/Trophy.svg'
 import Skeleton from '@mui/material/Skeleton'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { api } from 'src/utils/api'
 import { leagueData } from './constant'
 import { Pagination } from './Pagination'
 
 const GameSection = () => {
-  const [league, setLeague] = useState(0)
-  const [currentPage, setCurrentPage] = useState(0)
+  const [league, setLeague] = useState<number>(0)
+  const [currentPage, setCurrentPage] = useState<number>(0)
+  const [isClosing, setIsClosing] = useState<boolean>(false)
 
   const { data, fetchNextPage, isLoading, isFetchingNextPage } =
     api.game.getGamesBatch.useInfiniteQuery(
@@ -40,6 +43,24 @@ const GameSection = () => {
   useEffect(() => {
     setCurrentPage(0)
   }, [league])
+
+  const useIsInViewport = (ref: any) => {
+    const [isIntersecting, setIntersecting] = useState(false)
+
+    useEffect(() => {
+      const observer = new IntersectionObserver(([entry]) =>
+        setIntersecting(entry.isIntersecting)
+      )
+      observer.observe(ref.current)
+      return () => {
+        observer.disconnect()
+      }
+    }, [ref])
+
+    return isIntersecting
+  }
+  const landingClosingRef = useRef(null)
+  const isLandingClosingInViewport = useIsInViewport(landingClosingRef)
 
   return (
     <>
@@ -153,15 +174,32 @@ const GameSection = () => {
           </div>
         )}
       </div>
-      <div className="flex w-full flex-col items-center gap-3 bg-[rgb(243,106,34)] py-20 px-5">
-        <p className="text-center font-poppinsBold text-headline-small text-white md:text-headline-large">
+      <div
+        className="relative flex w-full flex-col items-center gap-3 overflow-hidden bg-[url('/assets/images/LandingClosingBg.svg')] bg-cover bg-center py-[60px] px-5"
+        ref={landingClosingRef}
+      >
+        <GameController
+          className={`absolute right-0 bottom-0 z-0 -rotate-45 transform opacity-50 transition-all duration-1000 ease-in-out xl:top-0 xl:bottom-auto xl:right-[15%] xl:rotate-0 xl:opacity-100 ${
+            isLandingClosingInViewport
+              ? ''
+              : 'translate-y-full xl:-translate-y-full'
+          }`}
+        />
+        <Trophy
+          className={`absolute left-0 top-0 z-0 rotate-45 transform opacity-50 transition-all duration-1000 ease-in-out xl:bottom-0 xl:top-auto xl:left-[15%] xl:rotate-0 xl:opacity-100 ${
+            isLandingClosingInViewport
+              ? ''
+              : '-translate-y-full xl:translate-y-full'
+          }`}
+        />
+        <p className="z-10 text-center font-poppinsBold text-headline-small text-white md:text-headline-large">
           Mau tahu permainan lainnya?
         </p>
-        <p className="text-center font-poppins text-label-large text-white md:text-headline-medium">
+        <p className="z-10 text-center font-poppins text-label-large text-white md:text-headline-medium">
           Temukan games-games seru hanya di PERAK!
         </p>
         <Button
-          className="mt-3 w-fit px-16 py-4"
+          className="z-10 mt-3 w-fit px-16 py-4"
           variant={2}
           onClick={() => {
             const offset = document.getElementById('game-section')?.offsetTop
