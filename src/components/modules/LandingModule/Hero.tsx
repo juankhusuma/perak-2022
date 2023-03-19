@@ -30,9 +30,9 @@ export default function Hero() {
     <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-background-light py-20 md:py-28">
       <RandomLogoBottomLeft className="absolute left-0 bottom-10 z-0 hidden lg:inline-block" />
       <RandomLogoBottomRight className="absolute right-0 bottom-10 z-0 hidden lg:inline-block" />
-      {height > 800 && (
+      {height > 768 && (
         <div>
-          <CurtainLeft className="absolute top-[5%] z-0 scale-125 animate-slide-in md:hidden" />
+          <CurtainLeft className="absolute top-[5%] z-0 animate-slide-in md:hidden" />
           <RandomLogoBottomRight className="absolute -right-[20%] -bottom-[10%] z-0 animate-slide-up md:hidden" />
         </div>
       )}
