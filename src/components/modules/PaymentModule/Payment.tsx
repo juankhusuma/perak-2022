@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import { useRegistration } from '@contexts'
 import { Button, Image, Modal, Select, Tag } from '@elements'
+import { DocumentIcon } from '@heroicons/react/24/outline'
 import { Clipboard, Dashboard, Wallet } from '@icons'
-import { toast } from 'react-hot-toast'
+import { MenuItem } from '@mui/material'
+import { PaymentMethod } from '@prisma/client'
+import { moneyFormater, uploadPaymentReciept } from '@utils'
+import { useSession } from 'next-auth/react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
 import { FileUploader } from 'react-drag-drop-files'
 import { useForm } from 'react-hook-form'
-import { MenuItem } from '@mui/material'
-import { PAYMENT_DETAIL } from './constant'
-import { Highlight } from './module-exports/Highlight'
-import { PaymentProps } from './interface'
-import { moneyFormater, uploadPaymentReciept } from '@utils'
-import Link from 'next/link'
+import { toast } from 'react-hot-toast'
 import { api } from 'src/utils/api'
-import { useRegistration } from '@contexts'
-import { DocumentIcon } from '@heroicons/react/24/outline'
-import { PaymentMethod } from '@prisma/client'
-import { useRouter } from 'next/router'
-import { useSession } from 'next-auth/react'
+import { PAYMENT_DETAIL } from './constant'
+import { PaymentProps } from './interface'
+import { Highlight } from './module-exports/Highlight'
 
 export const Payment: React.FC<PaymentProps> = ({ game, participant }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -238,12 +238,12 @@ export const Payment: React.FC<PaymentProps> = ({ game, participant }) => {
         exitCross={'#E0CDF2'}
         message={
           <div className="flex flex-col gap-4 md:flex-row md:gap-12">
-            <div className="flex w-full flex-col items-center gap-y-4 text-center md:w-1/2">
+            <div className="flex w-full flex-col items-center gap-y-4 md:text-center md:w-1/2">
               <h1 className="font-retro text-4xl lg:text-7xl">
                 Unggah bukti pembayaranmu.
               </h1>
               <p className="text-xs text-[#ffffff99] md:text-base">
-                file dapat kamu unggah
+                file dapat kamu unggah{" "}
                 <span className="font-poppinsBold text-orange-normal">
                   dalam format .png, .jpg, etc.
                 </span>
@@ -297,11 +297,11 @@ export const Payment: React.FC<PaymentProps> = ({ game, participant }) => {
                 }}
                 required
               >
-                <div className="custom-border flex h-[400px] w-full flex-col items-center justify-center gap-y-8 p-8">
+                <div className="custom-border flex md:h-[400px] w-full flex-col items-center justify-center gap-y-8 p-8">
                   <Image
                     alt="stamp"
                     imageUrl={'/assets/images/LeagueRegistration/Stamps.svg'}
-                    className="h-52 w-52 fill-inherit object-contain"
+                    className="h-32 w-32 md:h-52 md:w-52 fill-inherit object-contain"
                     fill
                   />
                   {!!!paymentProof ? (

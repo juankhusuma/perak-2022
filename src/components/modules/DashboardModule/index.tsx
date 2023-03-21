@@ -33,32 +33,36 @@ export const DashboardModule: React.FC = () => {
         <h1 className="text-shadow-lg font-outline-4 mb-6 text-center font-retro text-display-medium shadow-orange-dark md:text-display-large">
           Permainan Terdaftar
         </h1>
-        <section className="w-full columns-1 gap-4 lg:columns-2 lg:gap-16">
-          {gameData ? (
-            gameData.length > 0 ? (
-              gameData.map((participatedGame) => (
+        {gameData ? (
+          gameData.length > 0 ? (
+            <section className="w-full columns-1 gap-4 lg:columns-2 lg:gap-16">
+              {gameData.map((participatedGame) => (
                 <TeamDetail
                   key={participatedGame.id}
                   refetchGameData={refetchGameData}
                   {...participatedGame}
                 />
-              ))
-            ) : null
+              ))}
+            </section>
           ) : (
-            <>
-              <Skeleton
-                variant={'rectangular'}
-                animation="wave"
-                className="h-[400px] w-full"
-              />
-              <Skeleton
-                variant={'rectangular'}
-                animation="wave"
-                className="h-[400px] w-full"
-              />
-            </>
-          )}
-        </section>
+            <h1 className="col-span-2 mb-6 text-center font-poppinsBold text-title-large shadow-orange-dark md:text-headline-medium">
+              Anda belum terdaftar dalam permainan apapun
+            </h1>
+          )
+        ) : (
+          <section className="w-full columns-1 gap-4 lg:columns-2 lg:gap-16">
+            <Skeleton
+              variant={'rectangular'}
+              animation="wave"
+              className="h-[400px] w-full"
+            />
+            <Skeleton
+              variant={'rectangular'}
+              animation="wave"
+              className="h-[400px] w-full"
+            />
+          </section>
+        )}
       </main>
     </>
   )
