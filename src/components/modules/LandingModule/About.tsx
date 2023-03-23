@@ -96,13 +96,13 @@ export default function About() {
             />
           </div>
         </Marquee>
-        <div className="scrollbar-hidden mx-auto max-w-[80%] overflow-x-auto rounded-[20px] border-[3px] border-background-light bg-orange-light px-5 py-6 lg:max-w-[60%] xl:overflow-x-hidden">
-          <div className="fixed -left-full -right-full mx-auto  xl:static">
+        <div className="mx-auto max-w-[80%] overflow-x-auto rounded-[20px] border-[3px] border-background-light bg-orange-light px-5 py-6 lg:max-w-[60%]">
+          <div className="fixed -left-full -right-full mx-auto">
             <h1 className="mx-auto max-w-[250px] text-center font-poppinsBold text-title-large text-purple-dark md:max-w-none lg:text-display-medium">
               Flow Registrasi Permainan
             </h1>
           </div>
-          <div className="mx-auto mt-16 w-fit rounded-[20px] px-4 py-6 md:mt-14 xl:mt-8">
+          <div className="mx-auto mt-16 w-fit rounded-[20px] px-4 py-6 md:mt-14">
             <FlowRegistration />
           </div>
         </div>
