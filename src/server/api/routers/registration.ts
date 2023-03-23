@@ -164,6 +164,7 @@ export const registrationRouter = createTRPCRouter({
         include: {
           teamStatus: true,
           game: true,
+          leader: true,
         },
       })
 
@@ -199,7 +200,7 @@ export const registrationRouter = createTRPCRouter({
 
       const message = `NOTIF KONFIRMASI \n \
       Harap konfirmasi untuk: \n \
-      Team: ${team?.name} \n \
+      Team / Ign: ${team?.name ? team?.name : team?.leader?.ign} \n \
       Game: ${team?.game?.name}`
       axios.post(
         'https://discord.com/api/webhooks/1084033422667821136/GsBC9N_ySzV_aV81LcPrx35MRxyK8NQjiGQY5ghuVd-kfwcRcgXe6ulZ2eVSbywYQIyp',
