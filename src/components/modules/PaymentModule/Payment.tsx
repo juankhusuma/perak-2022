@@ -238,12 +238,12 @@ export const Payment: React.FC<PaymentProps> = ({ game, participant }) => {
         exitCross={'#E0CDF2'}
         message={
           <div className="flex flex-col gap-4 md:flex-row md:gap-12">
-            <div className="flex w-full flex-col items-center gap-y-4 md:text-center md:w-1/2">
+            <div className="flex w-full flex-col items-center gap-y-4 md:w-1/2 md:text-center">
               <h1 className="font-retro text-4xl lg:text-7xl">
                 Unggah bukti pembayaranmu.
               </h1>
               <p className="text-xs text-[#ffffff99] md:text-base">
-                file dapat kamu unggah{" "}
+                file dapat kamu unggah{' '}
                 <span className="font-poppinsBold text-orange-normal">
                   dalam format .png, .jpg, etc.
                 </span>
@@ -297,11 +297,11 @@ export const Payment: React.FC<PaymentProps> = ({ game, participant }) => {
                 }}
                 required
               >
-                <div className="custom-border flex md:h-[400px] w-full flex-col items-center justify-center gap-y-8 p-8">
+                <div className="custom-border flex w-full flex-col items-center justify-center gap-y-8 p-8 md:h-[400px]">
                   <Image
                     alt="stamp"
                     imageUrl={'/assets/images/LeagueRegistration/Stamps.svg'}
-                    className="h-32 w-32 md:h-52 md:w-52 fill-inherit object-contain"
+                    className="h-32 w-32 fill-inherit object-contain md:h-52 md:w-52"
                     fill
                   />
                   {!!!paymentProof ? (
