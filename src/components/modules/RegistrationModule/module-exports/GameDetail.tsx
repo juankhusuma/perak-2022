@@ -44,7 +44,13 @@ export const GameDetail: React.FC<GameDetailProps> = ({
                         {!game?.isIndividual && (
                           <div className="flex flex-col gap-0 md:flex-row md:gap-1">
                             <p>Kelompok:</p>
-                            <p>{moneyFormater(game.teamCost as number)}</p>
+                            <p>
+                              {moneyFormater(game.teamCost as number)}
+                              {game.name == 'Futsal' &&
+                                ' (Include deposit WO 50k dengan minimal main > 2)'}
+                              {game.name == 'Basket 3x3' &&
+                                ' (Include deposit WO 50k dengan minimal main > 3)'}
+                            </p>
                           </div>
                         )}
                         <div className="flex flex-col gap-0 md:flex-row md:gap-1">
