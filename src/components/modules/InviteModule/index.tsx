@@ -97,6 +97,10 @@ export const InviteModule: React.FC = () => {
               placeholder="In Game Name"
               rules={{
                 required: 'Anda harus masukkan In Game Name!',
+                maxLength: {
+                  value: 50,
+                  message: 'In Game Name tidak boleh lebih dari 50 karakter!',
+                },
               }}
               required
             />

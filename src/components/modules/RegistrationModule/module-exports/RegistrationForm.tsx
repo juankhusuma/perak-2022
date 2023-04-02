@@ -114,6 +114,10 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                 placeholder="Nama Tim"
                 rules={{
                   required: 'Anda harus masukkan nama tim anda!',
+                  maxLength: {
+                    value: 50,
+                    message: 'Nama tim tidak boleh lebih dari 50 karakter!',
+                  },
                 }}
                 required
               />
@@ -126,6 +130,10 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
               placeholder="In Game Name"
               rules={{
                 required: 'Anda harus masukkan In Game Name!',
+                maxLength: {
+                  value: 50,
+                  message: 'In Game Name tidak boleh lebih dari 50 karakter!',
+                },
               }}
               required
             />

@@ -362,6 +362,10 @@ export const ProfileModule: React.FC = () => {
                     required
                     rules={{
                       required: 'Anda harus mengisi username!',
+                      maxLength: {
+                        value: 50,
+                        message: 'Username tidak boleh lebih dari 50 karakter.',
+                      },
                       pattern: {
                         value: /^\S+$/,
                         message:
@@ -395,6 +399,10 @@ export const ProfileModule: React.FC = () => {
                     required
                     rules={{
                       required: 'Anda harus mengisi nama!',
+                      maxLength: {
+                        value: 50,
+                        message: 'Nama tidak boleh lebih dari 50 karakter.',
+                      },
                       pattern: {
                         value: /^[a-zA-Z\s]*$/,
                         message: 'Nama hanya berupa huruf.',
@@ -505,6 +513,10 @@ export const ProfileModule: React.FC = () => {
                     required
                     rules={{
                       required: 'Anda harus mengisi id Line!',
+                      maxLength: {
+                        value: 50,
+                        message: 'Id LINE tidak boleh lebih dari 50 karakter.',
+                      },
                       pattern: {
                         value: /^\S+$/,
                         message: 'Id LINE tidak boleh mengandung white space.',

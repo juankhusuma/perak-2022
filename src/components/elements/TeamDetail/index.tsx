@@ -259,6 +259,11 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
                                   required
                                   rules={{
                                     required: 'Anda harus mengisi ini!',
+                                    maxLength: {
+                                      value: 50,
+                                      message:
+                                        'In Game Name tidak boleh lebih dari 50 karakter!',
+                                    },
                                   }}
                                   control={control}
                                 />
