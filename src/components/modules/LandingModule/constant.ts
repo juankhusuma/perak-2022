@@ -62,5 +62,5 @@ export const gameData = [
 
 export const date = {
   open: '2023-03-15 08:00',
-  close: '2023-04-05 23:59',
+  close: '2023-04-09 23:59',
 }

@@ -37,6 +37,11 @@ export const GameCard: React.FC<GameCardProps> = ({
         return null
     }
   }
+  const close = new Date('2023-04-09 23:59').getTime()
+
+  const date = new Date().getTime()
+
+  const selisihTutup = date - close
   return (
     <div
       className={`rounded-[20px] border-2 border-background-normal bg-purple-dark p-[10px] ${
@@ -73,7 +78,11 @@ export const GameCard: React.FC<GameCardProps> = ({
               <Tag text={count} variant={3} className="truncate" />
             </div>
             <Link href={`/registration/${slug}`} className="w-full">
-              <Button variant={2} className="w-full py-4">
+              <Button
+                variant={2}
+                className="w-full py-4"
+                disabled={league != 'MASTER LEAGUE' && selisihTutup > 0}
+              >
                 Daftar Sekarang
               </Button>
             </Link>
