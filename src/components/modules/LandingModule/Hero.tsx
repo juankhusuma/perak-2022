@@ -77,7 +77,7 @@ export default function Hero() {
             Lihat Permainan
           </Button>
         </div>
-        <div className="z-10 mt-10 grid w-full place-items-center">
+        <div className="z-10 mt-10 grid w-full place-items-center px-5 md:px-0">
           <Countdown
             title={
               selisihBuka < 0
@@ -89,7 +89,7 @@ export default function Hero() {
             className="w-full font-bold text-[#383D75] md:w-[425px]"
           />
         </div>
-        <div className="z-10 mt-5 grid w-full place-items-center">
+        <div className="z-10 mt-5 grid w-full place-items-center px-5 md:px-0">
           <Countdown
             title={
               selisihBuka < 0
