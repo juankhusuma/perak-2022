@@ -1,5 +1,5 @@
 <svg width="1370" height="273" viewBox="0 0 1370 273" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_659_6161)">
+<g clipPath="url(#clip0_659_6161)">
 <rect width="1370" height="273" fill="#F36A22"/>
 <path d="M1200 65.2358C1200 86.3529 1217.11 103.472 1238.21 103.472V27C1217.11 27 1200 44.1187 1200 65.2358Z" fill="#F36A22"/>
 <path d="M1272.95 65.2358C1272.95 86.3529 1255.84 103.472 1234.74 103.472V27C1255.84 27 1272.95 44.1187 1272.95 65.2358Z" fill="#FEB048"/>
@@ -9,13 +9,13 @@
 <path d="M1262.53 202.537H1227.79V354.611H1262.53V202.537Z" fill="#2F7A84"/>
 <path d="M1318.11 202.537H1262.53V256.415H1318.11V202.537Z" fill="#F36A22"/>
 <g style="mix-blend-mode:overlay">
-<path d="M1276.42 202.537V425" stroke="#242A2B" stroke-width="4"/>
+<path d="M1276.42 202.537V425" stroke="#242A2B" strokeWidth="4"/>
 </g>
 <g style="mix-blend-mode:overlay">
-<path d="M1290.32 202.537V425" stroke="#242A2B" stroke-width="4"/>
+<path d="M1290.32 202.537V425" stroke="#242A2B" strokeWidth="4"/>
 </g>
 <g style="mix-blend-mode:overlay">
-<path d="M1304.21 202.537V425" stroke="#242A2B" stroke-width="4"/>
+<path d="M1304.21 202.537V425" stroke="#242A2B" strokeWidth="4"/>
 </g>
 <path d="M1352.84 76.5327V202.537H1227.79L1352.84 76.5327Z" fill="#A33233"/>
 <g style="mix-blend-mode:color-burn">
@@ -40,9 +40,9 @@
 <ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 221.117 138.079)" fill="#FEB048"/>
 <ellipse cx="7.96875" cy="7.95506" rx="7.96875" ry="7.95506" transform="matrix(-1 0 0 1 161.352 157.966)" fill="#FEB048"/>
 <rect width="147.422" height="145.18" transform="matrix(-1 0 0 1 221.117 183.82)" fill="#F36A22"/>
-<path d="M56.7617 -17.0449V328.006" stroke="black" stroke-width="3"/>
-<path d="M41.8203 -17.0449V328.006" stroke="black" stroke-width="3"/>
-<path d="M26.8789 -17.0449V328.006" stroke="black" stroke-width="3"/>
+<path d="M56.7617 -17.0449V328.006" stroke="black" strokeWidth="3"/>
+<path d="M41.8203 -17.0449V328.006" stroke="black" strokeWidth="3"/>
+<path d="M26.8789 -17.0449V328.006" stroke="black" strokeWidth="3"/>
 <g style="mix-blend-mode:overlay">
 <rect width="255" height="63.6405" transform="matrix(-1 0 0 1 251 223.595)" fill="#EABB76"/>
 </g>

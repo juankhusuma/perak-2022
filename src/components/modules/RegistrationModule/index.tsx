@@ -28,6 +28,25 @@ export const RegistrationModule: React.FC = () => {
 
   const [isSendiri, setIsSendiri] = useState(false)
 
+  const closeCG = new Date('2023-04-09 23:59').getTime()
+
+  const closeML = new Date('2023-04-12 23:59').getTime()
+
+  const date = new Date().getTime()
+
+  const selisihTutupCG = date - closeCG
+
+  const selisihTutupML = date - closeML
+
+  if (game) {
+    if (game.gameTypeName != 'Master League' && selisihTutupCG > 0) {
+      router.replace('/')
+    }
+    if (game.gameTypeName == 'Master League' && selisihTutupML > 0) {
+      router.replace('/')
+    }
+  }
+
   return (
     <>
       <LeagueRegistrationLayout game={game}>

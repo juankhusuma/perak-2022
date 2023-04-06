@@ -37,11 +37,16 @@ export const GameCard: React.FC<GameCardProps> = ({
         return null
     }
   }
-  const close = new Date('2023-04-09 23:59').getTime()
+  const closeCG = new Date('2023-04-09 23:59').getTime()
+
+  const closeML = new Date('2023-04-12 23:59').getTime()
 
   const date = new Date().getTime()
 
-  const selisihTutup = date - close
+  const selisihTutupCG = date - closeCG
+
+  const selisihTutupML = date - closeML
+
   return (
     <div
       className={`rounded-[20px] border-2 border-background-normal bg-purple-dark p-[10px] ${
@@ -81,7 +86,11 @@ export const GameCard: React.FC<GameCardProps> = ({
               <Button
                 variant={2}
                 className="w-full py-4"
-                disabled={league != 'MASTER LEAGUE' && selisihTutup > 0}
+                disabled={
+                  league == 'MASTER LEAGUE'
+                    ? selisihTutupML > 0
+                    : selisihTutupCG > 0
+                }
               >
                 Daftar Sekarang
               </Button>

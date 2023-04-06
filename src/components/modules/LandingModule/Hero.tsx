@@ -16,15 +16,14 @@ export default function Hero() {
   const router = useRouter()
   const { height } = useWindowSize()
 
+  const closeML = '2023-04-12 23:59'
+  const closeCG = '2023-04-09 23:59'
+
   const dateNow = new Date().getTime()
-  const startString = date.open ? date.open : ''
-  const endString = date.close ? date.close : ''
 
   const start = date.open ? new Date(date.open).getTime() : dateNow
-  const end = date.close ? new Date(date.close).getTime() : dateNow
 
   const selisihBuka = dateNow - start
-  const selisihTutup = dateNow - end
 
   return (
     <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-background-light py-20 md:py-28">
@@ -78,15 +77,27 @@ export default function Hero() {
             Lihat Permainan
           </Button>
         </div>
+        <div className="z-10 mt-10 grid w-full place-items-center">
+          <Countdown
+            title={
+              selisihBuka < 0
+                ? 'Pendaftaran Dibuka Dalam'
+                : 'Pendaftaran MASTER LEAGUE Berakhir dalam'
+            }
+            titleClassName="text-[#383D75] font-poppinsBold"
+            date={selisihBuka < 0 ? date.open : closeML}
+            className="w-full font-bold text-[#383D75] md:w-[425px]"
+          />
+        </div>
         <div className="z-10 mt-5 grid w-full place-items-center">
           <Countdown
             title={
               selisihBuka < 0
                 ? 'Pendaftaran Dibuka Dalam'
-                : 'Pendaftaran Berakhir dalam'
+                : 'Pendaftaran COMPETITIVE GAME & FAMILY GAME Berakhir dalam'
             }
             titleClassName="text-[#383D75] font-poppinsBold"
-            date={selisihBuka < 0 ? date.open : date.close}
+            date={selisihBuka < 0 ? date.open : closeCG}
             className="w-full font-bold text-[#383D75] md:w-[425px]"
           />
         </div>

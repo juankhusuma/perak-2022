@@ -1,11 +1,11 @@
-import { onBoardingRouter } from './routers/onBoarding'
 import { gameRouter } from './routers/game'
+import { onBoardingRouter } from './routers/onBoarding'
+import { participantRouter } from './routers/participant'
 import { profileRouter } from './routers/profile'
-import { userDataRouter } from './routers/userData'
-import { createTRPCRouter } from './trpc'
 import { registrationRouter } from './routers/registration'
 import { teamRouter } from './routers/team'
-import { participantRouter } from './routers/participant'
+import { userDataRouter } from './routers/userData'
+import { createTRPCRouter } from './trpc'
 
 /**
  * This is the primary router for your server.

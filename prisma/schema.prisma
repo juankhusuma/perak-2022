@@ -62,6 +62,59 @@ model User {
     accounts      Account[]
     sessions      Session[]
     participant   Participant[]
+    SnakeScore    SnakeScore?
+    TetrisScore   TetrisScore?
+    submission    Submission[]
+}
+
+// gak bisa store rank
+model SnakeScore {
+    id     String  @id @default(cuid())
+    userId String? @unique
+    user   User?   @relation(fields: [userId], references: [id])
+}
+
+model TetrisScore {
+    id     String  @id @default(cuid())
+    userId String? @unique
+    user   User?   @relation(fields: [userId], references: [id])
+}
+
+model Schedule {
+    id        String  @id @default(cuid())
+    game      Game?   @relation(fields: [gameId], references: [id])
+    gameId    String?
+    team      Team[]
+    teamId    String?
+    startDate String?
+}
+
+model Result {
+    id         String  @id @default(cuid())
+    game       Game?   @relation(fields: [gameId], references: [id])
+    gameId     String?
+    team       Team[]
+    team1Score String?
+    team2Score String?
+}
+
+model Challenge {
+    id                String           @id @default(cuid())
+    description       String?
+    status            ChallengeStatus? @relation(fields: [challengeStatusId], references: [id])
+    challengeStatusId String?
+    submission        Submission[]
+}
+
+model Submission {
+    id           String     @id @default(cuid())
+    createdAt    DateTime   @default(now())
+    updatedAt    DateTime   @updatedAt
+    submisionUrl String?
+    Challenge    Challenge? @relation(fields: [challengeId], references: [id])
+    challengeId  String?
+    User         User?      @relation(fields: [userId], references: [id])
+    userId       String?
 }
 
 // kalo daftar solo di game team, teamnya bakal null
@@ -96,6 +149,8 @@ model Game {
     isIndividual   Boolean?
     Team           Team[]
     Participant    Participant[]
+    Schedule       Schedule[]
+    Result         Result[]
 }
 
 model Team {
@@ -115,6 +170,9 @@ model Team {
     teamStatusId        String?
     paymentMethodId     String?
     isTeamButIndividual Boolean?       @default(false)
+    Schedule            Schedule[]
+    Result              Result[]
+    familyGameScore     Int?
 }
 
 model Generation {
@@ -152,10 +210,22 @@ model TeamStatus {
     Team    Team[]
 }
 
+model ChallengeStatus {
+    id        String      @id @default(cuid())
+    name      String?     @unique
+    Challenge Challenge[]
+}
+
 model VerificationToken {
     identifier String
     token      String   @unique
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model TrendingNews {
+    id    String  @id @default(cuid())
+    title String?
+    image String?
 }

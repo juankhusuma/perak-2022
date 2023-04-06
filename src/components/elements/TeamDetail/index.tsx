@@ -1,10 +1,9 @@
-import { Modal, TextField, TipCard } from '@elements'
+import { Modal, TextField } from '@elements'
 import {
   ArrowRightOnRectangleIcon,
   CheckIcon,
   ChevronDownIcon,
   CurrencyDollarIcon,
-  ExclamationTriangleIcon,
   LinkIcon,
   PencilSquareIcon,
   TrashIcon,
@@ -12,12 +11,11 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { useWindowSize } from '@hooks'
-import { Clipboard, Cross, Line } from '@icons'
+import { Clipboard, Line } from '@icons'
 import { Tooltip } from '@mui/material'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { title } from 'process'
 import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
@@ -40,7 +38,8 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
   const isConfirmed = Team?.teamStatus?.name === 'Terkonfirmasi'
   const isConfirmed2 =
     Team?.teamStatus?.name === 'Terkonfirmasi' ||
-    Team?.teamStatus?.name === 'Menunggu Pembayaran'
+    Team?.teamStatus?.name === 'Menunggu Pembayaran' ||
+    Team?.teamStatus?.name === 'Menunggu Konfirmasi'
 
   const [removeModalProps, setRemoveModalProps] = useState<RemoveModalProps>({
     isOpen: false,
