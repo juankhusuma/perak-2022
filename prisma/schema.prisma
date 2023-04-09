@@ -72,30 +72,49 @@ model SnakeScore {
     id     String  @id @default(cuid())
     userId String? @unique
     user   User?   @relation(fields: [userId], references: [id])
+    score  Int?
 }
 
 model TetrisScore {
     id     String  @id @default(cuid())
     userId String? @unique
     user   User?   @relation(fields: [userId], references: [id])
+    score  Int?
 }
 
 model Schedule {
-    id        String  @id @default(cuid())
-    game      Game?   @relation(fields: [gameId], references: [id])
+    id        String    @id @default(cuid())
+    title     String?
+    game      Game?     @relation(fields: [gameId], references: [id])
     gameId    String?
     team      Team[]
     teamId    String?
     startDate String?
+    date      DateTime?
 }
 
 model Result {
-    id         String  @id @default(cuid())
-    game       Game?   @relation(fields: [gameId], references: [id])
+    id         String    @id @default(cuid())
+    title      String?
+    game       Game?     @relation(fields: [gameId], references: [id])
     gameId     String?
     team       Team[]
     team1Score String?
     team2Score String?
+    date       DateTime?
+    score      Int[]
+}
+
+model Live {
+    id         String    @id @default(cuid())
+    title      String?
+    game       Game?     @relation(fields: [gameId], references: [id])
+    gameId     String?
+    team       Team[]
+    team1Score String?
+    team2Score String?
+    date       DateTime?
+    link       String?
 }
 
 model Challenge {
@@ -148,6 +167,7 @@ model Game {
     paymentMethod  PaymentMethod[]
     isIndividual   Boolean?
     Team           Team[]
+    Live           Live[]
     Participant    Participant[]
     Schedule       Schedule[]
     Result         Result[]
@@ -172,6 +192,7 @@ model Team {
     isTeamButIndividual Boolean?       @default(false)
     Schedule            Schedule[]
     Result              Result[]
+    Live                Live[]
     familyGameScore     Int?
 }
 
