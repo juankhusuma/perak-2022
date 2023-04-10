@@ -86,11 +86,7 @@ export const GameCard: React.FC<GameCardProps> = ({
               <Button
                 variant={2}
                 className="w-full py-4"
-                disabled={
-                  league == 'MASTER LEAGUE'
-                    ? selisihTutupML > 0
-                    : selisihTutupCG > 0
-                }
+                disabled={selisihTutupML > 0}
               >
                 Daftar Sekarang
               </Button>

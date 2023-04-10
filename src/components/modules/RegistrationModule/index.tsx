@@ -39,10 +39,7 @@ export const RegistrationModule: React.FC = () => {
   const selisihTutupML = date - closeML
 
   if (game) {
-    if (game.gameTypeName != 'Master League' && selisihTutupCG > 0) {
-      router.replace('/')
-    }
-    if (game.gameTypeName == 'Master League' && selisihTutupML > 0) {
+    if (selisihTutupML > 0) {
       router.replace('/')
     }
   }
