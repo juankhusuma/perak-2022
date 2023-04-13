@@ -12,12 +12,12 @@ export const SnakeGame: React.FC = () => {
   const snakeIFrame = useRef<HTMLIFrameElement>(null)
   const mutateSnakeScore = api.game.addSnakeScore.useMutation()
   const snakeScoreQuery = api.game.getSnakeScore.useQuery(undefined, {
-    onSuccess(data) {},
+    onSuccess(data) { },
     refetchOnWindowFocus: false,
   })
   const { data: snakeScoreData } = snakeScoreQuery
   const userSnakeScoreQuery = api.game.getUserSnakeScore.useQuery(undefined, {
-    onSuccess(data) {},
+    onSuccess(data) { },
     refetchOnWindowFocus: false,
   })
   const { data: userSnakeScoreData } = userSnakeScoreQuery
@@ -41,12 +41,17 @@ export const SnakeGame: React.FC = () => {
       }
       if (event.data.toString().slice(0, 5) === 'score') {
         const secured_score = event.data.split(' ')[1]
-        const score =
-          +decrypt(
+        const unparsed_score =
+          decrypt(
             secured_score,
             process.env.NEXT_PUBLIC_SECRET as string
-          ).toString() - 30
-        mutateSnakeScore.mutate(score, {
+          ).toString()
+        let score = ""
+        for (let i = 0; i < unparsed_score.length; i += 2) {
+          score += unparsed_score[i + 1]
+        }
+
+        mutateSnakeScore.mutate(+score, {
           onSuccess: () => {
             snakeScoreQuery.refetch()
             userSnakeScoreQuery.refetch()
@@ -114,7 +119,7 @@ export const SnakeGame: React.FC = () => {
             </p>
           </div>
         }
-        // icon={<Modalcheckicon />}
+      // icon={<Modalcheckicon />}
       />
       <h1 className="text-shadow-lg font-outline-4 mx-10 mt-4 text-center font-retro text-display-small text-primary shadow-orange-dark md:text-display-medium lg:text-display-large">
         Snake Nokia
