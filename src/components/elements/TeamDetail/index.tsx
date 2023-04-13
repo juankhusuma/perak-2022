@@ -157,7 +157,7 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
             </p>
           </div>
           {Team?.logo ? (
-            <div className="aspect-square relative h-20">
+            <div className="relative aspect-square h-20">
               <Image
                 src={Team.logo}
                 alt={Team.name ?? ''}

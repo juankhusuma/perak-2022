@@ -7,12 +7,6 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Example {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-}
-
 // Necessary for Next auth
 model Account {
     id                String  @id @default(cuid())
@@ -65,21 +59,26 @@ model User {
     SnakeScore    SnakeScore?
     TetrisScore   TetrisScore?
     submission    Submission[]
+    scanMeScore   Int?
 }
 
 // gak bisa store rank
 model SnakeScore {
-    id     String  @id @default(cuid())
-    userId String? @unique
-    user   User?   @relation(fields: [userId], references: [id])
-    score  Int?
+    id        String  @id @default(cuid())
+    userId    String? @unique
+    user      User?   @relation(fields: [userId], references: [id])
+    currScore Int     @default(0)
+    highScore Int     @default(0)
+    attempts  Int     @default(0)
 }
 
 model TetrisScore {
-    id     String  @id @default(cuid())
-    userId String? @unique
-    user   User?   @relation(fields: [userId], references: [id])
-    score  Int?
+    id        String  @id @default(cuid())
+    userId    String? @unique
+    user      User?   @relation(fields: [userId], references: [id])
+    currScore Int?    @default(0)
+    highScore Int?    @default(0)
+    attempts  Int?    @default(0)
 }
 
 model Schedule {
@@ -118,22 +117,23 @@ model Live {
 }
 
 model Challenge {
-    id                String           @id @default(cuid())
-    description       String?
-    status            ChallengeStatus? @relation(fields: [challengeStatusId], references: [id])
-    challengeStatusId String?
-    submission        Submission[]
+    id          String       @id @default(cuid())
+    description String?
+    submission  Submission[]
+    clue        String?
 }
 
 model Submission {
-    id           String     @id @default(cuid())
-    createdAt    DateTime   @default(now())
-    updatedAt    DateTime   @updatedAt
-    submisionUrl String?
-    Challenge    Challenge? @relation(fields: [challengeId], references: [id])
-    challengeId  String?
-    User         User?      @relation(fields: [userId], references: [id])
-    userId       String?
+    id                String           @id @default(cuid())
+    createdAt         DateTime         @default(now())
+    updatedAt         DateTime         @updatedAt
+    submisionUrl      String?
+    Challenge         Challenge?       @relation(fields: [challengeId], references: [id])
+    challengeId       String?
+    status            ChallengeStatus? @relation(fields: [challengeStatusId], references: [name])
+    challengeStatusId String?
+    User              User?            @relation(fields: [userId], references: [id])
+    userId            String?
 }
 
 // kalo daftar solo di game team, teamnya bakal null
@@ -232,9 +232,9 @@ model TeamStatus {
 }
 
 model ChallengeStatus {
-    id        String      @id @default(cuid())
-    name      String?     @unique
-    Challenge Challenge[]
+    id         String       @id @default(cuid())
+    name       String?      @unique
+    Submission Submission[]
 }
 
 model VerificationToken {

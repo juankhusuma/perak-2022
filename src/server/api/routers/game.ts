@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken'
 import { z } from 'zod'
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
 
@@ -144,4 +145,133 @@ export const gameRouter = createTRPCRouter({
       })
       return team?.member ?? []
     }),
+  addSnakeScore: protectedProcedure
+    .input(z.number())
+    .mutation(async ({ ctx, input }) => {
+      const user = ctx.session.user
+      let highScore = await ctx.prisma.snakeScore.findUnique({
+        where: {
+          userId: user.id,
+        },
+        select: {
+          highScore: true,
+        },
+      })
+      if (!highScore) {
+        highScore = {
+          highScore: 0,
+        }
+      }
+      if (highScore?.highScore < input) {
+        highScore = {
+          highScore: input,
+        }
+      }
+
+      const snakeScore = await ctx.prisma.snakeScore.upsert({
+        where: {
+          userId: user.id,
+        },
+        create: {
+          currScore: input,
+          highScore: input,
+          attempts: 1,
+          user: {
+            connect: {
+              id: user.id,
+            },
+          },
+        },
+        update: {
+          currScore: input,
+          highScore: highScore.highScore,
+          attempts: {
+            increment: 1,
+          },
+        },
+        select: {
+          currScore: true,
+          highScore: true,
+          attempts: true,
+        },
+      })
+
+      return snakeScore
+    }),
+  getSnakeScore: publicProcedure.query(async ({ ctx }) => {
+    const scores: any = await ctx.prisma.snakeScore.findMany({
+      orderBy: [
+        {
+          highScore: 'desc',
+        },
+        {
+          attempts: 'asc',
+        },
+      ],
+      select: {
+        highScore: true,
+        attempts: true,
+        user: {
+          select: {
+            id: true,
+            fullName: true,
+          },
+        },
+      },
+    })
+
+    // get the rank of the current user
+    const user = ctx.session?.user
+    const userScore = await ctx.prisma.snakeScore.findUnique({
+      where: {
+        userId: user?.id,
+      },
+      select: {
+        highScore: true,
+        attempts: true,
+        user: {
+          select: {
+            id: true,
+            fullName: true,
+          },
+        },
+      },
+    })
+    const userRank = scores.findIndex(
+      (score: any) =>
+        score.highScore === userScore?.highScore &&
+        score.attempts === userScore?.attempts
+    )
+    const userScoreWithRank = {
+      ...userScore,
+      rank: userRank + 1,
+    }
+
+    const top10 = scores.slice(0, 10)
+
+    if (userRank > 10) {
+      top10.push(userScoreWithRank)
+    }
+
+    return top10
+  }),
+  getUserSnakeScore: protectedProcedure.query(async ({ ctx }) => {
+    const user = ctx.session.user
+    const score = await ctx.prisma.snakeScore.findUnique({
+      where: {
+        userId: user.id,
+      },
+      select: {
+        currScore: true,
+        highScore: true,
+        attempts: true,
+        user: {
+          select: {
+            fullName: true,
+          },
+        },
+      },
+    })
+    return score
+  }),
 })

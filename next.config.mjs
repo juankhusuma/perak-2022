@@ -23,6 +23,14 @@ const config = {
     return config
   },
   images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+        port: '',
+        pathname: '**',
+      },
+    ],
     domains: [
       'localhost',
       'lh3.googleusercontent.com',
@@ -30,6 +38,8 @@ const config = {
       'avatars.githubusercontent.com',
       'perak2023.s3.ap-northeast-1.amazonaws.com',
       'cdn.discordapp.com',
+      'upload.wikipedia.org',
+      'cdn-icons-png.flaticon.com',
     ],
   },
 }

@@ -286,6 +286,36 @@ async function main() {
       })
     }
   }
+  console.log('Seeding ChallengeStatuses table')
+  const challengeStatuses = [
+    'Menunggu Bukti Tantangan',
+    'Menunggu Konfirmasi',
+    'Bukti Terkonfirmasi',
+    'Bukti Ditolak',
+  ]
+  for (const challengeStatus of challengeStatuses) {
+    const status = await prisma.challengeStatus.findFirst({
+      where: {
+        name: challengeStatus,
+      },
+    })
+    if (!status) {
+      await prisma.challengeStatus.create({
+        data: {
+          name: challengeStatus,
+        },
+      })
+    } else {
+      await prisma.challengeStatus.update({
+        where: {
+          id: status.id,
+        },
+        data: {
+          name: challengeStatus,
+        },
+      })
+    }
+  }
 }
 
 main()
