@@ -39,7 +39,7 @@ export const RegistrationModule: React.FC = () => {
   const selisihTutupML = date - closeML
 
   if (game) {
-    if (selisihTutupML > 0) {
+    if (selisihTutupML > 0 && gameName != 'basket') {
       router.replace('/')
     }
   }
