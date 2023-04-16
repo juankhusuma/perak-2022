@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken'
+import { decrypt } from 'crypto-js/aes'
 import { z } from 'zod'
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
 
@@ -146,9 +147,20 @@ export const gameRouter = createTRPCRouter({
       return team?.member ?? []
     }),
   addSnakeScore: protectedProcedure
-    .input(z.number())
+    .input(z.string())
     .mutation(async ({ ctx, input }) => {
       const user = ctx.session.user
+      input = decrypt(
+        input,
+        process.env.NEXT_PUBLIC_SECRET as string
+      ).toString()
+
+      let scoreString: string = ''
+      for (let i = 0; i < input.length; i += 2) {
+        scoreString += input[i + 1]
+      }
+      const score = +scoreString
+
       let highScore = await ctx.prisma.snakeScore.findUnique({
         where: {
           userId: user.id,
@@ -162,9 +174,9 @@ export const gameRouter = createTRPCRouter({
           highScore: 0,
         }
       }
-      if (highScore?.highScore < input) {
+      if (highScore?.highScore < score) {
         highScore = {
-          highScore: input,
+          highScore: score,
         }
       }
 
@@ -173,8 +185,8 @@ export const gameRouter = createTRPCRouter({
           userId: user.id,
         },
         create: {
-          currScore: input,
-          highScore: input,
+          currScore: score,
+          highScore: score,
           attempts: 1,
           user: {
             connect: {
@@ -183,7 +195,7 @@ export const gameRouter = createTRPCRouter({
           },
         },
         update: {
-          currScore: input,
+          currScore: score,
           highScore: highScore.highScore,
           attempts: {
             increment: 1,

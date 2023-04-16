@@ -1,3 +1,4 @@
+import { NextSeo } from 'next-seo'
 import React from 'react'
 
 export const HowToPlayModule: React.FC = () => {
@@ -5,6 +6,7 @@ export const HowToPlayModule: React.FC = () => {
 
   return (
     <>
+      <NextSeo title="How To Play Scan Me" />
       <main className="flex min-h-screen flex-col items-center justify-center bg-background-light p-4 pt-24 md:p-20 md:pt-32 lg:flex-row">
         <h1 className="text-shadow-lg font-outline-4 mb-6 text-center font-retro text-display-medium shadow-orange-dark md:text-display-large">
           Cara Bermain Scan Me

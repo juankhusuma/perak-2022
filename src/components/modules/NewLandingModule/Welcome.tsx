@@ -16,7 +16,7 @@ export default function Welcome() {
               Pesta Rakyat Komputer
             </p>
             <p className="mt-[-8px] text-center font-poppinsBold text-headline-medium text-red-light">
-              Embracing, Festive, & Beneficial
+              Adapting, Aware, Reviving, & Harmony
             </p>
             <div className="mx-auto my-2 w-64 bg-[#E9DEA6] text-center font-poppinsBold leading-8 text-red-dark drop-shadow-xl">
               DOEA RIBOE DOEA TIGA

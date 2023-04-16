@@ -1,5 +1,6 @@
 import { useAuthModalContext } from '@contexts'
 import { useSession } from 'next-auth/react'
+import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import React from 'react'
 
@@ -17,7 +18,12 @@ const withSession = <T extends object>(Component: React.ComponentType<T>) => {
     })
 
     if (status === 'authenticated' && session) {
-      return <Component {...props} />
+      return (
+        <>
+          <NextSeo title="Scan Me" />
+          <Component {...props} />
+        </>
+      )
     }
     return <></>
   }
