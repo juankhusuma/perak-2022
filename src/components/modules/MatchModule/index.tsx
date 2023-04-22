@@ -4,7 +4,6 @@ import { Bracket } from './Bracket'
 import { Classement } from './Classement'
 import { History } from './History'
 import { Schedule } from './Schedule'
-import { TopScorerClassement } from './TopScorerClassement'
 import { TAB_OPTIONS } from './constant'
 import { Tabs } from '@elements'
 import React, { useState } from 'react'
@@ -15,6 +14,31 @@ export const MatchModule: React.FC = () => {
   const router = useRouter()
 
   const { gameName } = router.query
+
+  const renderTitle = (name: string) => {
+    switch (name) {
+      case 'dota2':
+        return 'Dota 2'
+      case 'ml':
+        return 'Mobile Legends'
+      case 'chess':
+        return 'Chess'
+      case 'apex':
+        return 'Apex Legends'
+      case 'fifa23':
+        return 'Fifa 23'
+      case 'futsal':
+        return 'Futsal'
+      case 'basket':
+        return 'Basket 3x3'
+      case 'valorant':
+        return 'Valorant'
+      case 'fg':
+        return 'Family Games'
+      default:
+        return null
+    }
+  }
 
   const renderURL = (name: string) => {
     switch (name) {
@@ -79,7 +103,7 @@ export const MatchModule: React.FC = () => {
     <>
       {gameName && (
         <LeagueLayout
-          title="Basket 3x3"
+          title={renderTitle(gameName as string) as string}
           description={renderDesc(gameName as string) as string}
           imageUrl={renderURL(gameName as string) as string}
           imageAlt={gameName as string}
