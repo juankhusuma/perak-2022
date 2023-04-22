@@ -8,7 +8,7 @@ const Registration: NextPage = () => (
   <>
     <NextSeo title="Registration" description="Lakukan Pendaftaran Sekarang!" />
     <RegistrationContextProvider>
-      <RegistrationModule />{' '}
+      <RegistrationModule />
     </RegistrationContextProvider>
   </>
 )

@@ -34,7 +34,7 @@ export const LeaderboardCard: React.FC<LeaderboardCardProps> = ({
       case 'Family Games':
         return '/assets/images/gameCard/fg.png'
       default:
-        return null
+        return ''
     }
   }
   return (
@@ -60,7 +60,7 @@ export const LeaderboardCard: React.FC<LeaderboardCardProps> = ({
         <div
           className={`absolute w-full bg-blue-normal px-4 pt-2 pb-4 transition-all duration-200 ease-in-out ${
             isHover ? 'bottom-0' : '-bottom-[26%]'
-          }`}
+          } ${className ?? ''}`}
         >
           <p className="font-poppinsBold text-title-large font-extrabold text-background-light">
             {name}
@@ -70,8 +70,8 @@ export const LeaderboardCard: React.FC<LeaderboardCardProps> = ({
               <Tag text={league} variant={3} className="truncate" />
               <Tag text={count} variant={3} className="truncate" />
             </div>
-            <Link href={`/registration/${slug}`} className="w-full">
-              <Button variant={1} className="w-full py-4" disabled>
+            <Link href={`/game/${slug}`} className="w-full">
+              <Button variant={1} className="w-full py-4">
                 Lihat Detail
               </Button>
             </Link>

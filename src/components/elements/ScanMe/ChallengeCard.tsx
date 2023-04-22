@@ -186,7 +186,7 @@ const ChallengeCard = ({
                 Unggah bukti tantanganmu.
               </h1>
               <p className="text-xs text-[#ffffff99] md:text-base">
-                file dapat kamu unggah{' '}
+                file dapat kamu unggah
                 <span className="font-poppinsBold text-orange-normal">
                   dalam format .png, .jpg, etc.
                 </span>
@@ -220,7 +220,7 @@ const ChallengeCard = ({
                   />
                   {!submission ? (
                     <h2 className="text-center font-poppinsBold text-sm text-white sm:text-xl xl:text-3xl">
-                      Drag atau <span className="text-blue-normal">upload</span>{' '}
+                      Drag atau <span className="text-blue-normal">upload</span>
                       file kamu di sini
                     </h2>
                   ) : (

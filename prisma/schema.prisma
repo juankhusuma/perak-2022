@@ -102,6 +102,7 @@ model Result {
     team2Score String?
     date       DateTime?
     score      Int[]
+    videoLink  String?
 }
 
 model Live {

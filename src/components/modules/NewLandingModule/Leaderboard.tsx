@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { TicketDesign } from '@elements'
+import { Button, TicketDesign } from '@elements'
 import { Games } from './Games'
 import RightCloud from '@images/NewLanding/rightCloud.svg'
 import LeftCloud from '@images/NewLanding/leftCloud.svg'
+import Link from 'next/link'
 
 export default function Leaderboard() {
   const [league, setLeague] = useState<number>(0)
@@ -26,9 +27,9 @@ export default function Leaderboard() {
   return (
     <>
       <div
-        className="relative flex h-[1400px] w-full flex-col items-center justify-start gap-6 bg-background-light 
+        className="relative flex h-fit w-full flex-col items-center justify-start gap-6 bg-background-light 
         bg-cover bg-center 
-        bg-no-repeat md:h-[712px] md:bg-[url('/assets/images/NewLanding/LeaderboardMdBg.svg')] lg:bg-[url('/assets/images/NewLanding/LeaderboardBg.svg')]"
+        bg-no-repeat md:bg-[url('/assets/images/NewLanding/LeaderboardMdBg.svg')] lg:bg-[url('/assets/images/NewLanding/LeaderboardBg.svg')]"
       >
         <div className="flex-col items-center justify-start">
           <h1 className="mt-10 text-center font-poppinsBold text-headline-small text-blue-dark md:text-display-medium">
@@ -41,8 +42,16 @@ export default function Leaderboard() {
 
         <div className="flex flex-col items-center gap-8">
           <TicketDesign name="Leaderboard" />
-
-          <div className="flex flex-wrap">{leaderboardContent()}</div>
+          <div className="z-10">
+            <Link href={'/league'}>
+              <Button
+                className="mb-10 w-fit px-6 py-4 md:mb-20 md:mt-10"
+                variant={1}
+              >
+                Lihat Leaderboard Selengkapnya
+              </Button>
+            </Link>
+          </div>
         </div>
         <RightCloud className="absolute hidden animate-[bounce_20s_ease-in-out_infinite]  md:top-[-20%] md:right-[-28%] md:block lg:top-[-10%] lg:right-[5%]" />
         <LeftCloud className="absolute hidden animate-[bounce_20s_ease-in-out_infinite] md:top-[-20%] md:left-[-28%] md:block lg:top-[-10%] lg:left-[5%]" />

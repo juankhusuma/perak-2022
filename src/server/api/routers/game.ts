@@ -286,4 +286,199 @@ export const gameRouter = createTRPCRouter({
     })
     return score
   }),
+  getMatch: publicProcedure
+    .input(
+      z.object({
+        gameTypeName: z.string().optional(),
+        gameName: z.string().optional(),
+        limit: z.number(),
+        cursor: z.string().nullish(),
+        skip: z.number().optional(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const { limit, skip, cursor } = input
+
+      const items = await ctx.prisma.schedule.findMany({
+        take: limit + 1,
+        skip: skip,
+        cursor: cursor ? { id: cursor } : undefined,
+        where: {
+          game: {
+            gameTypeName: input.gameTypeName ?? undefined,
+            slug: input.gameName ?? undefined,
+          },
+        },
+        orderBy: {
+          date: 'desc',
+        },
+        include: {
+          game: {
+            select: {
+              name: true,
+              gameTypeName: true,
+            },
+          },
+          team: {
+            select: {
+              name: true,
+              logo: true,
+            },
+          },
+        },
+      })
+      let nextCursor: typeof cursor | undefined = undefined
+      if (items.length > limit) {
+        const nextItem = items.pop() // return the last item from the array
+        nextCursor = nextItem?.id
+      }
+
+      const totalCount = await ctx.prisma.game.count({
+        where: {
+          gameTypeName: input.gameTypeName ?? undefined,
+          slug: input.gameName ?? undefined,
+        },
+      })
+
+      return {
+        items,
+        nextCursor,
+        totalCount,
+      }
+    }),
+  getHistory: publicProcedure
+    .input(
+      z.object({
+        gameTypeName: z.string().optional(),
+        gameName: z.string().optional(),
+        limit: z.number(),
+        cursor: z.string().nullish(),
+        skip: z.number().optional(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const { limit, skip, cursor } = input
+
+      const items = await ctx.prisma.result.findMany({
+        take: limit + 1,
+        skip: skip,
+        cursor: cursor ? { id: cursor } : undefined,
+        where: {
+          game: {
+            gameTypeName: input.gameTypeName ?? undefined,
+            slug: input.gameName ?? undefined,
+          },
+        },
+        orderBy: {
+          date: 'desc',
+        },
+        include: {
+          game: {
+            select: {
+              name: true,
+              gameTypeName: true,
+            },
+          },
+          team: {
+            select: {
+              name: true,
+              logo: true,
+            },
+          },
+        },
+      })
+      let nextCursor: typeof cursor | undefined = undefined
+      if (items.length > limit) {
+        const nextItem = items.pop() // return the last item from the array
+        nextCursor = nextItem?.id
+      }
+
+      const totalCount = await ctx.prisma.result.count({
+        where: {
+          game: {
+            gameTypeName: input.gameTypeName ?? undefined,
+            slug: input.gameName ?? undefined,
+          },
+        },
+      })
+
+      return {
+        items,
+        nextCursor,
+        totalCount,
+      }
+    }),
+  getLiveGames: publicProcedure
+    .input(
+      z.object({
+        gameName: z.string().optional(),
+        limit: z.number(),
+        cursor: z.string().nullish(),
+        skip: z.number().optional(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const { limit, skip, cursor, gameName } = input
+
+      const items = await ctx.prisma.live.findMany({
+        take: limit + 1,
+        skip: skip,
+        cursor: cursor ? { id: cursor } : undefined,
+        orderBy: {
+          date: 'desc',
+        },
+        where: {
+          game: {
+            slug: gameName ?? undefined,
+          },
+        },
+        include: {
+          game: {
+            select: {
+              name: true,
+              gameTypeName: true,
+            },
+          },
+          team: {
+            select: {
+              name: true,
+              logo: true,
+            },
+          },
+        },
+      })
+
+      let nextCursor: typeof cursor | undefined = undefined
+      if (items.length > limit) {
+        const nextItem = items.pop() // return the last item from the array
+        nextCursor = nextItem?.id
+      }
+
+      const totalCount = await ctx.prisma.live.count({
+        where: {
+          game: {
+            slug: gameName ?? undefined,
+          },
+        },
+      })
+
+      return {
+        items,
+        nextCursor,
+        totalCount,
+      }
+    }),
+  getGameByType: publicProcedure
+    .input(
+      z.object({
+        gameTypeName: z.string(),
+      })
+    )
+    .query(async ({ input, ctx }) => {
+      return await ctx.prisma.game.findMany({
+        where: {
+          gameTypeName: input.gameTypeName,
+        },
+      })
+    }),
 })

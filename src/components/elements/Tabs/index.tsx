@@ -27,7 +27,7 @@ export const Tabs: React.FC<TabsProps> = ({
           {variant === 0 && (
             <>
               <p
-                className={`w-max font-poppins font-extrabold ${
+                className={`w-max font-poppinsBold ${
                   dark
                     ? 'group-hover:text-cream-normal'
                     : 'group-hover:text-primary'

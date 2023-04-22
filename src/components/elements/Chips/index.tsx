@@ -8,6 +8,7 @@ export const Chips: React.FC<ChipsProps> = ({
   rightIcon,
   text,
   variant,
+  className,
 }) => {
   // TODO: Write element's logic
   return (
@@ -19,7 +20,7 @@ export const Chips: React.FC<ChipsProps> = ({
             : ` border-2 border-primary   ${
                 variant == 1 && 'bg-cream-normal'
               } ${variant == 2 && 'bg-orange-light'}`
-        }`}
+        } ${className}`}
         onClick={onClick}
       >
         {leftIcon && <span className="text-primary">{leftIcon}</span>}

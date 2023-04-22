@@ -243,7 +243,7 @@ export const Payment: React.FC<PaymentProps> = ({ game, participant }) => {
                 Unggah bukti pembayaranmu.
               </h1>
               <p className="text-xs text-[#ffffff99] md:text-base">
-                file dapat kamu unggah{' '}
+                file dapat kamu unggah
                 <span className="font-poppinsBold text-orange-normal">
                   dalam format .png, .jpg, etc.
                 </span>
@@ -279,7 +279,7 @@ export const Payment: React.FC<PaymentProps> = ({ game, participant }) => {
                       key={idx}
                       className="text-xs md:text-base"
                     >
-                      {paymentMethod.accountNo} a.n. {paymentMethod.accountName}{' '}
+                      {paymentMethod.accountNo} a.n. {paymentMethod.accountName}
                       ({paymentMethod.accountProvider})
                     </MenuItem>
                   )
@@ -306,7 +306,7 @@ export const Payment: React.FC<PaymentProps> = ({ game, participant }) => {
                   />
                   {!!!paymentProof ? (
                     <h2 className="text-center font-poppinsBold text-sm text-white sm:text-xl xl:text-3xl">
-                      Drag atau <span className="text-blue-normal">upload</span>{' '}
+                      Drag atau <span className="text-blue-normal">upload</span>
                       file kamu di sini
                     </h2>
                   ) : (

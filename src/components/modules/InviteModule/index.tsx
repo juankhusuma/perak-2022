@@ -75,10 +75,9 @@ export const InviteModule: React.FC = () => {
           Pendaftaran Anggota Tim
         </h1>
         <p>
-          {' '}
           Kamu telah diundang untuk menjadi anggota tim. Silakan cek kembali
           informasi tim yang tertera di bawah dan masukkan IGN (In Game Name)
-          kamu.{' '}
+          kamu.
         </p>
         <Highlight title="Nama Tim">
           <p> {team?.name} </p>
@@ -129,14 +128,14 @@ export const InviteModule: React.FC = () => {
         message={
           <div className="flex flex-col items-center gap-y-4">
             <p className="text-center text-white">
-              Apakah anda yakin ingin mendaftarkan diri sebagai anggota tim{' '}
+              Apakah anda yakin ingin mendaftarkan diri sebagai anggota tim
               <span className="font-poppinsBold text-orange-normal">
                 {team?.name}
-              </span>{' '}
-              pada permainan{' '}
+              </span>
+              pada permainan
               <span className="font-poppinsBold text-orange-normal">
                 {team?.game?.name}
-              </span>{' '}
+              </span>
               di PERAK 2023?
             </p>
           </div>
@@ -162,10 +161,7 @@ export const InviteModule: React.FC = () => {
             <h1 className="text-center font-poppinsBold text-sm text-background-light md:text-2xl">
               Yah, kamu gagal bergabung :(
             </h1>
-            <p className="text-center text-white md:text-xl">
-              {' '}
-              {errorMessage}{' '}
-            </p>
+            <p className="text-center text-white md:text-xl">{errorMessage}</p>
             <button
               type="button"
               className={`inline-flex w-full justify-center rounded-md bg-orange-dark px-4 py-3 font-poppinsBold text-sm font-bold text-background-light hover:drop-shadow-md `}

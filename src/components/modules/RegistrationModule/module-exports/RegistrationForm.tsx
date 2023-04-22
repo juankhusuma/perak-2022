@@ -194,8 +194,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
               </span>
               pada permainan
               <span className="font-poppinsBold text-orange-normal">
-                {' '}
-                {game?.name}{' '}
+                {game?.name}
               </span>
               di PERAK 2023?
             </p>
