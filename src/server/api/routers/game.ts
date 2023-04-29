@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken'
 import { decrypt } from 'crypto-js/aes'
 import { z } from 'zod'
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
+import CryptoJS from "crypto-js"
 
 export const gameRouter = createTRPCRouter({
   getGames: publicProcedure.query(async ({ ctx }) => {
@@ -150,17 +151,15 @@ export const gameRouter = createTRPCRouter({
     .input(z.string())
     .mutation(async ({ ctx, input }) => {
       const user = ctx.session.user
-      input = decrypt(
-        input,
+      input = decrypt(input,
         process.env.NEXT_PUBLIC_SECRET as string
       ).toString()
 
-      let scoreString: string = ''
+      let scoreString: string = "";
       for (let i = 0; i < input.length; i += 2) {
         scoreString += input[i + 1]
       }
-      const score = +scoreString
-
+      const score = +scoreString;
       let highScore = await ctx.prisma.snakeScore.findUnique({
         where: {
           userId: user.id,
@@ -210,6 +209,69 @@ export const gameRouter = createTRPCRouter({
 
       return snakeScore
     }),
+  addTetrisScore: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      const user = ctx.session.user
+      input = decrypt(input,
+        process.env.NEXT_PUBLIC_SECRET as string
+      ).toString()
+
+      let scoreString: string = "";
+      for (let i = 0; i < input.length; i += 2) {
+        scoreString += input[i + 1]
+      }
+      const score = +scoreString;
+
+      let highScore = await ctx.prisma.tetrisScore.findUnique({
+        where: {
+          userId: user.id,
+        },
+        select: {
+          highScore: true,
+        },
+      })
+      if (!highScore) {
+        highScore = {
+          highScore: 0,
+        }
+      }
+      if (highScore?.highScore! < score) {
+        highScore = {
+          highScore: score,
+        }
+      }
+
+      const tetrisScore = await ctx.prisma.tetrisScore.upsert({
+        where: {
+          userId: user.id,
+        },
+        create: {
+          currScore: score,
+          highScore: score,
+          attempts: 1,
+          user: {
+            connect: {
+              id: user.id,
+            },
+          },
+        },
+        update: {
+          currScore: score,
+          highScore: highScore.highScore,
+          attempts: {
+            increment: 1,
+          },
+        },
+        select: {
+          currScore: true,
+          highScore: true,
+          attempts: true,
+        },
+      })
+
+      return tetrisScore
+    }),
   getSnakeScore: publicProcedure.query(async ({ ctx }) => {
     const scores: any = await ctx.prisma.snakeScore.findMany({
       orderBy: [
@@ -231,6 +293,7 @@ export const gameRouter = createTRPCRouter({
         },
       },
     })
+
 
     // get the rank of the current user
     const user = ctx.session?.user
@@ -267,9 +330,86 @@ export const gameRouter = createTRPCRouter({
 
     return top10
   }),
+  getTetrisScore: publicProcedure.query(async ({ ctx }) => {
+    const scores: any = await ctx.prisma.tetrisScore.findMany({
+      orderBy: [
+        {
+          highScore: 'desc',
+        },
+        {
+          attempts: 'asc',
+        },
+      ],
+      select: {
+        highScore: true,
+        attempts: true,
+        user: {
+          select: {
+            id: true,
+            fullName: true,
+          },
+        },
+      },
+    })
+
+
+    // get the rank of the current user
+    const user = ctx.session?.user
+    const userScore = await ctx.prisma.tetrisScore.findUnique({
+      where: {
+        userId: user?.id,
+      },
+      select: {
+        highScore: true,
+        attempts: true,
+        user: {
+          select: {
+            id: true,
+            fullName: true,
+          },
+        },
+      },
+    })
+    const userRank = scores.findIndex(
+      (score: any) =>
+        score.highScore === userScore?.highScore &&
+        score.attempts === userScore?.attempts
+    )
+    const userScoreWithRank = {
+      ...userScore,
+      rank: userRank + 1,
+    }
+
+    const top10 = scores.slice(0, 10)
+
+    if (userRank > 10) {
+      top10.push(userScoreWithRank)
+    }
+
+    return top10
+  }),
   getUserSnakeScore: protectedProcedure.query(async ({ ctx }) => {
     const user = ctx.session.user
     const score = await ctx.prisma.snakeScore.findUnique({
+      where: {
+        userId: user.id,
+      },
+      select: {
+        currScore: true,
+        highScore: true,
+        attempts: true,
+        user: {
+          select: {
+            fullName: true,
+          },
+        },
+      },
+    })
+    return score
+  }),
+  getUserTetrisScore: protectedProcedure.query(async ({ ctx }) => {
+    const user = ctx.session.user
+    const score = await ctx.prisma.tetrisScore.findUnique({
       where: {
         userId: user.id,
       },

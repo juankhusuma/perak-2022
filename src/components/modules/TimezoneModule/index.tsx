@@ -2,6 +2,7 @@ import { Button } from '@elements'
 import { ArrowLeft } from '@icons'
 import { useRouter } from 'next/router'
 import SnakeGame from './SnakeGame'
+import { TetrisGame } from './TetrisGame'
 
 export const TimezoneModule: React.FC = () => {
   const router = useRouter()
@@ -23,6 +24,8 @@ export const TimezoneModule: React.FC = () => {
         {(() => {
           if (gameName === 'snake') {
             return <SnakeGame />
+          } else if (gameName === 'tetris') {
+            return <TetrisGame />
           } else {
             return (
               <div className="mt-14 flex h-full w-full flex-col items-center justify-center">

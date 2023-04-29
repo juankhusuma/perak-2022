@@ -1,51 +1,50 @@
 import { Button, Modal } from '@elements'
 import { PlayButton } from '@icons'
+import CryptoJS from 'crypto-js'
 import { decrypt } from 'crypto-js/aes'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 import { api } from 'src/utils/api'
 import { GameInstruction } from './GameInstruction'
 import Leaderboard from './Leaderboard'
-import { NextSeo } from 'next-seo'
 
-export const SnakeGame: React.FC = () => {
+export const TetrisGame: React.FC = () => {
   const router = useRouter()
-  const snakeIFrame = useRef<HTMLIFrameElement>(null)
-  const mutateSnakeScore = api.game.addSnakeScore.useMutation()
-  const snakeScoreQuery = api.game.getSnakeScore.useQuery(undefined, {
-    onSuccess(data) { },
+  const tetrisIFrame = useRef<HTMLIFrameElement>(null)
+  const mutateTetrisScore = api.game.addTetrisScore.useMutation()
+  const tetrisScoreQuery = api.game.getTetrisScore.useQuery(undefined, {
+    onSuccess(data) {},
     refetchOnWindowFocus: false,
   })
-  const { data: snakeScoreData } = snakeScoreQuery
-  const userSnakeScoreQuery = api.game.getUserSnakeScore.useQuery(undefined, {
-    onSuccess(data) { },
+  const { data: tetrisScoreData } = tetrisScoreQuery
+  const userTetrisScoreQuery = api.game.getUserTetrisScore.useQuery(undefined, {
+    onSuccess(data) {},
     refetchOnWindowFocus: false,
   })
-  const { data: userSnakeScoreData } = userSnakeScoreQuery
+  const { data: userTetrisScoreData } = userTetrisScoreQuery
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
   const handleStartGame = () => {
     setIsModalOpen(false)
-    snakeIFrame.current?.focus()
-    snakeIFrame.current?.contentWindow?.postMessage('start_game', {
-      targetOrigin: process.env.NEXT_PUBLIC_SNAKE_URL,
-    })
+    tetrisIFrame.current?.focus()
   }
 
   useEffect(() => {
     const handler = (event: MessageEvent) => {
-      if (event.data === 'request_token') {
-        snakeIFrame.current?.contentWindow?.postMessage(
-          `nudes ${process.env.NEXT_PUBLIC_SECRET}`,
-          { targetOrigin: process.env.NEXT_PUBLIC_SNAKE_URL }
+      if (event.data === 'ready') {
+        tetrisIFrame.current?.contentWindow?.postMessage(
+          `k: ${process.env.NEXT_PUBLIC_SECRET}`,
+          { targetOrigin: process.env.NEXT_PUBLIC_TETRIS_URL }
         )
       }
-      if (event.data.toString().slice(0, 5) === 'score') {
-        const secured_score = event.data.split(' ')[1]
-        mutateSnakeScore.mutate(secured_score, {
+      console.log(event.data.toString()?.slice(0, 5))
+      if (event.data?.toString().slice(0, 5) === 'score') {
+        const secured_score = event.data.replace('score ', '')
+
+        mutateTetrisScore.mutate(secured_score, {
           onSuccess: () => {
-            snakeScoreQuery.refetch()
-            userSnakeScoreQuery.refetch()
+            tetrisScoreQuery.refetch()
+            userTetrisScoreQuery.refetch()
             setIsModalOpen(true)
           },
         })
@@ -60,24 +59,60 @@ export const SnakeGame: React.FC = () => {
 
   const gameInstructions = (
     <>
-      Untuk menggerakkan ular tekan tombol arrow pada keyboard. Namun, ingatlah
-      bahwa ular akan terus bergerak maju secara otomatis, jadi pastikan Anda
-      memberi instruksi yang tepat dan tidak terlalu berlebihan saat
-      menggerakkan ular. Anda harus mengendalikan ular kecil untuk memakan
-      makanan dan tumbuh lebih besar. Namun, cobalah untuk mengendalikan gerakan
-      ular dengan cermat agar tidak menabrak dinding atau ekornya sendiri, atau
-      Anda akan kalah!
-      <br />
-      <br />
-      ⬆️⬇️ : menggeser ular ke arah atas maupun bawah
-      <br />
-      ⬅️➡️ : menggeser ular ke arah kiri maupun kanan
+      Gunakan tombol arrow dan space pada keyboard untuk menggerakkan blok,
+      susun blok dengan cerdas untuk membentuk garis horizontal tanpa celah.
+      Hindari menumpuk terlalu tinggi sampai mencapai bagian atas layar, atau
+      Anda akan kalah. Dapatkan poin setiap kali berhasil membentuk garis.
+      <div className="mt-4 space-y-2">
+        <div>
+          {' '}
+          <span className="rounded-md bg-[#00A6ED] font-poppinsBold text-white">
+            ⬅️
+          </span>{' '}
+          <span className="rounded-md bg-[#00A6ED] font-poppinsBold text-white">
+            ➡️
+          </span>{' '}
+          : menggeser blok ke arah kiri maupun kanan
+        </div>
+        <div>
+          <span className="rounded-md bg-[#00A6ED] px-2 font-poppinsBold text-white">
+            Z
+          </span>{' '}
+          <span className="rounded-md bg-[#00A6ED] font-poppinsBold text-white">
+            ⬆️
+          </span>{' '}
+          : rotasi blok ke arah kiri maupun kanan
+        </div>
+        <div>
+          <span className="rounded-md bg-[#00A6ED] font-poppinsBold text-white">
+            ⬇️
+          </span>{' '}
+          : mempercepat jatuhnya blok
+        </div>
+        <div>
+          <span className="rounded-md bg-[#00A6ED] px-2 font-poppinsBold text-white">
+            SHIFT / C
+          </span>{' '}
+          : hold blok
+        </div>
+        <div>
+          <span className="rounded-md bg-[#00A6ED] px-2 font-poppinsBold text-white">
+            SPACE
+          </span>{' '}
+          : menjatuhkan blok secara instan
+        </div>
+        <div>
+          <span className="rounded-md bg-[#00A6ED] px-2 font-poppinsBold text-white">
+            P
+          </span>{' '}
+          : pause permainan
+        </div>
+      </div>
     </>
   )
 
   return (
     <>
-      <NextSeo title="Snake Nokia" />
       <Modal
         isOpen={isModalOpen}
         onClose={() => {
@@ -107,14 +142,14 @@ export const SnakeGame: React.FC = () => {
               Skor Kamu:
             </p>
             <p className="font-poppinsBold text-headline-large text-green-normal">
-              {userSnakeScoreData?.currScore}
+              {userTetrisScoreData?.currScore}
             </p>
           </div>
         }
-      // icon={<Modalcheckicon />}
+        // icon={<Modalcheckicon />}
       />
       <h1 className="text-shadow-lg font-outline-4 mx-10 mt-4 text-center font-retro text-display-small text-primary shadow-orange-dark md:text-display-medium lg:text-display-large">
-        Snake Nokia
+        Tetris
       </h1>
       <div className="flex flex-col items-center justify-center gap-4 xl:flex-row xl:p-0">
         <GameInstruction
@@ -122,28 +157,18 @@ export const SnakeGame: React.FC = () => {
           gameInstructions={gameInstructions}
         />
         <div className="flex w-fit grow flex-col items-center gap-4">
-          <div className="w-fit overflow-hidden">
-            <iframe
-              ref={snakeIFrame}
-              className="h-[610px] w-full sm:h-[500px] sm:w-[500px]"
-              src={process.env.NEXT_PUBLIC_SNAKE_URL}
-            ></iframe>
-          </div>
-          <Button
-            className="w-full px-5 py-3"
-            variant={1}
-            onClick={handleStartGame}
-            rightIcon={<PlayButton />}
-          >
-            Mainkan Permainan
-          </Button>
+          <iframe
+            ref={tetrisIFrame}
+            className="h-[660px] w-full overflow-hidden sm:h-[600px] sm:w-[500px]"
+            src={process.env.NEXT_PUBLIC_TETRIS_URL}
+          ></iframe>
         </div>
         <div className="flex flex-col justify-between gap-4">
           <p className="font-poppins text-body-medium text-primary lg:text-body-large">
-            Dengan Snake Nokia, Anda akan merasakan sensasi unik dari game
-            arcade yang sederhana namun adiktif. Dengan tampilan grafis 8-bit
-            dan soundtrack yang ikonik, game ini pasti akan membuat Anda kembali
-            ke masa kecil yang penuh kenangan.
+            Dengan game Tetris, Anda akan merasakan sensasi unik dari game
+            puzzle yang sederhana namun adiktif. Dengan tampilan grafis yang
+            simpel namun mengagumkan dan musik yang ikonik, game ini pasti akan
+            membuat Anda terpesona dan ingin terus bermain.
             <br />
             <br />
             Jangan lewatkan kesempatan untuk mengambil peran sebagai pemain
@@ -158,7 +183,7 @@ export const SnakeGame: React.FC = () => {
             <div className="w-full snap-center rounded-xl bg-primary p-2 text-center text-xs font-bold text-white md:p-3 md:text-base lg:p-5">
               <p>Skor tertinggi kamu:</p>
               <p className="mt-3 text-4xl text-green-normal">
-                {userSnakeScoreData?.highScore ?? 0}
+                {userTetrisScoreData?.highScore ?? 0}
               </p>
             </div>
           </div>
@@ -172,10 +197,10 @@ export const SnakeGame: React.FC = () => {
         <p className="mb-2 text-center font-retro text-display-small text-[#383D75] lg:text-display-medium">
           Papan Peringkat Permainan
         </p>
-        <Leaderboard leaderboardData={snakeScoreData} />
+        <Leaderboard leaderboardData={tetrisScoreData} />
       </div>
     </>
   )
 }
 
-export default SnakeGame
+export default TetrisGame

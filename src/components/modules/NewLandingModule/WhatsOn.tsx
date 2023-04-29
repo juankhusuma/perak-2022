@@ -88,7 +88,7 @@ export default function WhatsOn() {
                     Permainan online berupa Tetris dan Snake. Lima orang dengan
                     poin tertinggi pada setiap game-nya akan mendapatkan hadiah.
                   </div>
-                  <Link href={`/timezone/snake`} className="w-fit">
+                  <Link href={`/timezone/tetris`} className="w-fit">
                     <Button
                       className="w-fit rounded-md px-4 py-2 text-[8px] lg:rounded-lg lg:px-5 lg:py-3 lg:text-label-medium"
                       variant={1}
