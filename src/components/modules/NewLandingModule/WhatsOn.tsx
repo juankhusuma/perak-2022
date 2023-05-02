@@ -47,7 +47,6 @@ export default function WhatsOn() {
                       onClick={() => {
                         router.push('/scan-me')
                       }}
-                      disabled
                     >
                       PLAY NOW
                     </Button>
@@ -57,7 +56,6 @@ export default function WhatsOn() {
                       onClick={() => {
                         router.push('/scan-me/how-to-play')
                       }}
-                      disabled
                     >
                       Cara Bermain
                     </Button>

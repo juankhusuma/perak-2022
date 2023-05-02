@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import { decrypt } from 'crypto-js/aes'
 import { z } from 'zod'
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
-import CryptoJS from "crypto-js"
+import CryptoJS from 'crypto-js'
 
 export const gameRouter = createTRPCRouter({
   getGames: publicProcedure.query(async ({ ctx }) => {
@@ -151,15 +151,16 @@ export const gameRouter = createTRPCRouter({
     .input(z.string())
     .mutation(async ({ ctx, input }) => {
       const user = ctx.session.user
-      input = decrypt(input,
+      input = decrypt(
+        input,
         process.env.NEXT_PUBLIC_SECRET as string
       ).toString()
 
-      let scoreString: string = "";
+      let scoreString: string = ''
       for (let i = 0; i < input.length; i += 2) {
         scoreString += input[i + 1]
       }
-      const score = +scoreString;
+      const score = +scoreString
       let highScore = await ctx.prisma.snakeScore.findUnique({
         where: {
           userId: user.id,
@@ -213,15 +214,16 @@ export const gameRouter = createTRPCRouter({
     .input(z.string())
     .mutation(async ({ ctx, input }) => {
       const user = ctx.session.user
-      input = decrypt(input,
+      input = decrypt(
+        input,
         process.env.NEXT_PUBLIC_SECRET as string
       ).toString()
 
-      let scoreString: string = "";
+      let scoreString: string = ''
       for (let i = 0; i < input.length; i += 2) {
         scoreString += input[i + 1]
       }
-      const score = +scoreString;
+      const score = +scoreString
 
       let highScore = await ctx.prisma.tetrisScore.findUnique({
         where: {
@@ -294,7 +296,6 @@ export const gameRouter = createTRPCRouter({
       },
     })
 
-
     // get the rank of the current user
     const user = ctx.session?.user
     const userScore = await ctx.prisma.snakeScore.findUnique({
@@ -351,7 +352,6 @@ export const gameRouter = createTRPCRouter({
         },
       },
     })
-
 
     // get the rank of the current user
     const user = ctx.session?.user

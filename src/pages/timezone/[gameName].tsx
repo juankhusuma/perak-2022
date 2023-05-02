@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-  TimezoneModule
-} from '@modules'
+import { TimezoneModule } from '@modules'
 import type { NextPage } from 'next'
 import withSession from 'src/components/hoc/withSession'
 

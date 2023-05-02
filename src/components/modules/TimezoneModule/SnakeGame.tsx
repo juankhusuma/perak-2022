@@ -13,12 +13,12 @@ export const SnakeGame: React.FC = () => {
   const snakeIFrame = useRef<HTMLIFrameElement>(null)
   const mutateSnakeScore = api.game.addSnakeScore.useMutation()
   const snakeScoreQuery = api.game.getSnakeScore.useQuery(undefined, {
-    onSuccess(data) { },
+    onSuccess(data) {},
     refetchOnWindowFocus: false,
   })
   const { data: snakeScoreData } = snakeScoreQuery
   const userSnakeScoreQuery = api.game.getUserSnakeScore.useQuery(undefined, {
-    onSuccess(data) { },
+    onSuccess(data) {},
     refetchOnWindowFocus: false,
   })
   const { data: userSnakeScoreData } = userSnakeScoreQuery
@@ -111,7 +111,7 @@ export const SnakeGame: React.FC = () => {
             </p>
           </div>
         }
-      // icon={<Modalcheckicon />}
+        // icon={<Modalcheckicon />}
       />
       <h1 className="text-shadow-lg font-outline-4 mx-10 mt-4 text-center font-retro text-display-small text-primary shadow-orange-dark md:text-display-medium lg:text-display-large">
         Snake Nokia

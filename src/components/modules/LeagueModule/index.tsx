@@ -42,7 +42,7 @@ export const LeagueModule: React.FC = () => {
   return (
     <LeagueLayout
       title="Main dan Menang!"
-      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et a cursus dolor adipiscing mauris interdum et in laoreet. Felis pulvinar feugiat purus egestas."
+      description="Raih posisi tertinggi dan dapatkan hadiah"
       imageUrl="/assets/images/League/League.svg"
       imageAlt="league"
     >
