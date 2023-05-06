@@ -2,7 +2,6 @@ import Skeleton from '@mui/material/Skeleton'
 import React, { useEffect, useState } from 'react'
 import { api } from 'src/utils/api'
 import { LeaderboardCard } from '@elements'
-import { leagueData } from '../NewLandingModule/constant'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import { Pagination } from '../LandingModule/Pagination'
 import { ContentProps } from './interface'
@@ -14,7 +13,7 @@ export const Games: React.FC<ContentProps> = ({ leagueName, league }) => {
     api.game.getGamesBatch.useInfiniteQuery(
       {
         limit: 3,
-        gameTypeName: league > 0 ? leagueData[league].title : undefined,
+        gameTypeName: leagueName ?? undefined,
       },
       {
         getNextPageParam: (lastPage) => lastPage.nextCursor,
