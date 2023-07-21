@@ -88,7 +88,7 @@ export const MatchLayout: React.FC<MatchLayoutProps> = ({
         </div>
         {totalPages > 1 && (
           <>
-            <div className="right-12 bottom-20 z-10 mt-10 flex select-none justify-center gap-2 lg:absolute lg:mt-0">
+            <div className="bottom-20 right-12 z-10 mt-10 flex select-none justify-center gap-2 lg:absolute lg:mt-0">
               {
                 <div
                   className="cursor-pointer rounded-full p-2"
@@ -126,7 +126,7 @@ export const MatchLayout: React.FC<MatchLayoutProps> = ({
       <h1 className="text-center"> {noneText} </h1>
     )
   ) : (
-    <div className="my-4 mx-auto grid w-fit grid-cols-2 gap-5">
+    <div className="mx-auto my-4 grid w-fit grid-cols-2 gap-5">
       {Array.from({ length: LOADING_SKELETON }).map((_, key) => (
         <Skeleton
           key={key}

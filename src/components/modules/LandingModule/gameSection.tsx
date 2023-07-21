@@ -65,7 +65,7 @@ const GameSection = () => {
   return (
     <>
       <div
-        className="flex w-full flex-col items-center gap-7 bg-background-light pt-16 pb-5 md:p-20 md:pt-24"
+        className="flex w-full flex-col items-center gap-7 bg-background-light pb-5 pt-16 md:p-20 md:pt-24"
         id="game-section"
       >
         <div className="relative font-retro text-5xl md:text-7xl">
@@ -141,7 +141,7 @@ const GameSection = () => {
               ))}
             </div>
             {totalPages > 1 && (
-              <div className="right-0 bottom-0 z-10 mt-10 flex select-none justify-center gap-2 lg:absolute lg:mt-0">
+              <div className="bottom-0 right-0 z-10 mt-10 flex select-none justify-center gap-2 lg:absolute lg:mt-0">
                 {
                   <div
                     className="cursor-pointer rounded-full p-2"
@@ -175,18 +175,18 @@ const GameSection = () => {
         )}
       </div>
       <div
-        className="relative flex w-full flex-col items-center gap-3 overflow-hidden bg-[url('/assets/images/LandingClosingBg.svg')] bg-cover bg-center py-[60px] px-5"
+        className="relative flex w-full flex-col items-center gap-3 overflow-hidden bg-[url('/assets/images/LandingClosingBg.svg')] bg-cover bg-center px-5 py-[60px]"
         ref={landingClosingRef}
       >
         <GameController
-          className={`absolute right-0 bottom-0 z-0 -rotate-45 transform opacity-50 transition-all duration-1000 ease-in-out xl:top-0 xl:bottom-auto xl:right-[15%] xl:rotate-0 xl:opacity-100 ${
+          className={`absolute bottom-0 right-0 z-0 -rotate-45 transform opacity-50 transition-all duration-1000 ease-in-out xl:bottom-auto xl:right-[15%] xl:top-0 xl:rotate-0 xl:opacity-100 ${
             isLandingClosingInViewport
               ? ''
               : 'translate-y-full xl:-translate-y-full'
           }`}
         />
         <Trophy
-          className={`absolute left-0 top-0 z-0 rotate-45 transform opacity-50 transition-all duration-1000 ease-in-out xl:bottom-0 xl:top-auto xl:left-[15%] xl:rotate-0 xl:opacity-100 ${
+          className={`absolute left-0 top-0 z-0 rotate-45 transform opacity-50 transition-all duration-1000 ease-in-out xl:bottom-0 xl:left-[15%] xl:top-auto xl:rotate-0 xl:opacity-100 ${
             isLandingClosingInViewport
               ? ''
               : '-translate-y-full xl:translate-y-full'

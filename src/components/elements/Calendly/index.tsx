@@ -43,7 +43,7 @@ export const Calendly: FC<CalendlyProps> = ({
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="relative h-full max-h-screen w-full transform overflow-hidden bg-white text-left align-middle shadow-xl transition-all md:max-w-[400px] md:rounded-2xl">
-                  <div className="absolute top-1 left-1 md:hidden">
+                  <div className="absolute left-1 top-1 md:hidden">
                     <div onClick={onClose}>
                       <Cross className="cursor-pointer" />
                     </div>

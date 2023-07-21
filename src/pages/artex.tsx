@@ -135,9 +135,9 @@ const Artex: NextPage = () => {
     <>
       <NextSeo title="Artex" description="Design System PERAK 2023" />
       <main className="flex min-h-screen justify-center bg-cream-light">
-        <div className="flex w-full max-w-[1440px] flex-col space-y-20 pt-16 pb-5 md:p-20 md:pt-24">
+        <div className="flex w-full max-w-[1440px] flex-col space-y-20 pb-5 pt-16 md:p-20 md:pt-24">
           <div className="relative font-retro text-7xl">
-            <p className="absolute top-1 left-1 p-5 text-primary md:p-6">
+            <p className="absolute left-1 top-1 p-5 text-primary md:p-6">
               Artex Design System 2023
             </p>
             <p className="p-5 text-blue-normal md:p-6">
@@ -395,7 +395,7 @@ const Artex: NextPage = () => {
           </div>
           <div className="md:pl-5">
             <p className="pl-2 font-retro text-6xl text-primary">Modal</p>
-            <div className="mt-5 space-y-3 space-x-4 p-2 md:p-0 md:pl-10">
+            <div className="mt-5 space-x-4 space-y-3 p-2 md:p-0 md:pl-10">
               <button
                 type="button"
                 onClick={openModal1}

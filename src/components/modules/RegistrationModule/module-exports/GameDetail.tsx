@@ -17,7 +17,7 @@ export const GameDetail: React.FC<GameDetailProps> = ({
   const { currentPage, setCurrentPage, setType } = useRegistration()
 
   return (
-    <div className="flex flex-col gap-y-6 px-2 py-2 md:py-12 md:px-8">
+    <div className="flex flex-col gap-y-6 px-2 py-2 md:px-8 md:py-12">
       <h1 className="text-center font-poppinsBold text-title-large text-primary md:text-start md:text-display-small">
         Detail Permainan
       </h1>

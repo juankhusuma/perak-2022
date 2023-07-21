@@ -44,7 +44,7 @@ export const LeagueLayout: React.FC<LeagueLayoutProps> = ({
   const pages = Array.from(Array(totalPages).keys())
 
   return (
-    <main className="relative flex flex-col gap-16 py-28 px-16 font-poppins">
+    <main className="relative flex flex-col gap-16 px-16 py-28 font-poppins">
       {/* Text Section */}
       <div className="flex flex-col-reverse items-center justify-between gap-6 text-center md:flex-row  md:text-left">
         <div className="flex justify-center md:w-1/2">
@@ -95,7 +95,7 @@ export const LeagueLayout: React.FC<LeagueLayoutProps> = ({
           </div>
           {totalPages > 1 && (
             <>
-              <div className="right-12 bottom-0 z-10 mt-10 flex select-none justify-center gap-2 lg:absolute lg:mt-0">
+              <div className="bottom-0 right-12 z-10 mt-10 flex select-none justify-center gap-2 lg:absolute lg:mt-0">
                 {
                   <div
                     className="cursor-pointer rounded-full p-2"
@@ -130,7 +130,7 @@ export const LeagueLayout: React.FC<LeagueLayoutProps> = ({
           )}
         </div>
       ) : (
-        <div className="my-4 mx-auto grid w-fit grid-cols-2 gap-5">
+        <div className="mx-auto my-4 grid w-fit grid-cols-2 gap-5">
           {Array.from({ length: LIVE_LOADING_SKELETON }).map((_, key) => (
             <Skeleton
               key={key}

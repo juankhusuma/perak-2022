@@ -33,7 +33,7 @@ export default function WhatsOn() {
               ></div>
               <div
                 className="absolute inset-0 mt-[28px] h-[160px] w-[310px] bg-[url('/assets/images/NewLanding/greenCardSmallBg.svg')] bg-cover bg-center bg-no-repeat 
-                [transform:rotateY(180deg)] [backface-visibility:hidden] lg:mt-[60px] lg:h-[302px] lg:w-[587px] lg:bg-[url('/assets/images/NewLanding/greenCardBg.svg')]"
+                [backface-visibility:hidden] [transform:rotateY(180deg)] lg:mt-[60px] lg:h-[302px] lg:w-[587px] lg:bg-[url('/assets/images/NewLanding/greenCardBg.svg')]"
               >
                 <div className="flex h-full w-full flex-col items-center justify-center gap-2 lg:gap-3">
                   <div className="flex w-[280px] flex-wrap items-center justify-center text-center font-poppins text-body-small text-background-light lg:w-[392px] lg:text-title-large">
@@ -79,7 +79,7 @@ export default function WhatsOn() {
               ></div>
               <div
                 className="absolute inset-0 mt-[28px] h-[160px] w-[310px] bg-[url('/assets/images/NewLanding/greenCardSmallBg.svg')] bg-cover bg-center bg-no-repeat 
-                [transform:rotateY(180deg)] [backface-visibility:hidden] lg:mt-[60px] lg:h-[302px] lg:w-[587px] lg:bg-[url('/assets/images/NewLanding/greenCardBg.svg')]"
+                [backface-visibility:hidden] [transform:rotateY(180deg)] lg:mt-[60px] lg:h-[302px] lg:w-[587px] lg:bg-[url('/assets/images/NewLanding/greenCardBg.svg')]"
               >
                 <div className="flex h-full w-full flex-col items-center justify-center gap-2 lg:gap-3">
                   <div className="flex w-[280px] flex-wrap items-center justify-center text-center font-poppins text-body-small text-background-light lg:w-[392px] lg:text-title-large">

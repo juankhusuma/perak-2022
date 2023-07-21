@@ -95,7 +95,7 @@ export const AuthModal: FC<AuthModalProps> = ({
                         <button
                           key={provider.id}
                           type="button"
-                          className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-orange-dark px-4 py-3 font-poppins text-sm text-label-medium tracking-[0.5px] text-white hover:drop-shadow-md"
+                          className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-orange-dark px-4 py-3 font-poppins text-label-medium text-sm tracking-[0.5px] text-white hover:drop-shadow-md"
                           onClick={() => {
                             signIn(provider.id, {
                               callbackUrl: '/',

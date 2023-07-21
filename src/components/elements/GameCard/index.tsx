@@ -70,7 +70,7 @@ export const GameCard: React.FC<GameCardProps> = ({
           />
         </div>
         <div
-          className={`absolute w-full bg-purple-lightest px-4 pt-2 pb-4 transition-all duration-200 ease-in-out ${
+          className={`absolute w-full bg-purple-lightest px-4 pb-4 pt-2 transition-all duration-200 ease-in-out ${
             isHover ? 'bottom-0' : '-bottom-[20%]'
           }`}
         >

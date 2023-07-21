@@ -489,7 +489,7 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
             <div className="grid grid-rows-2 gap-2 rounded-lg bg-purple-dark p-4">
               <div className="grid grid-rows-2 truncate">
                 <p className="font-poppinsBold text-orange-normal">Permainan</p>
-                <div className="mt-[0.5px] w-fit rounded-[3px] bg-orange-light py-[0.5px] px-2">
+                <div className="mt-[0.5px] w-fit rounded-[3px] bg-orange-light px-2 py-[0.5px]">
                   <p className="font-poppinsBold text-purple-dark">
                     {game?.name?.toUpperCase()}
                   </p>
@@ -523,7 +523,7 @@ const TeamDetail = ({ refetchGameData, Team, game }: TeamDetailProps) => {
             <div className="grid grid-rows-2 gap-2 rounded-lg bg-purple-dark p-4">
               <div className="grid grid-rows-2 truncate">
                 <p className="font-poppinsBold text-orange-normal">Permainan</p>
-                <div className="mt-[0.5px] w-fit rounded-[3px] bg-orange-light py-[0.5px] px-2">
+                <div className="mt-[0.5px] w-fit rounded-[3px] bg-orange-light px-2 py-[0.5px]">
                   <p className="font-poppinsBold text-purple-dark">
                     {game?.name?.toUpperCase()}
                   </p>

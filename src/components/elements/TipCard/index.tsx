@@ -24,7 +24,7 @@ export const TipCard: React.FC<TipCardProps> = ({ icon, message, variant }) => {
         >
           {icon}
         </div>
-        <div className="font-poppinsRegular py-1 px-2 text-body-medium text-white">
+        <div className="font-poppinsRegular px-2 py-1 text-body-medium text-white">
           {message}
         </div>
       </div>

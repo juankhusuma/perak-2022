@@ -8,8 +8,8 @@ export default function Welcome() {
       <div className="">
         <div className="h-16 w-full bg-cream-light md:h-20"></div>
         <div className=" relative flex h-screen w-full items-center justify-center bg-[url('/assets/images/NewLanding/Background.svg')] bg-cover bg-center bg-no-repeat">
-          <OndelMonas className="invisible absolute left-0 bottom-0 lg:visible" />
-          <Toys className="invisible absolute right-0 bottom-0 lg:visible" />
+          <OndelMonas className="invisible absolute bottom-0 left-0 lg:visible" />
+          <Toys className="invisible absolute bottom-0 right-0 lg:visible" />
 
           <div className="grid grid-cols-1">
             <p className="text-shadow-lg font-outline-4 sm:[210px] mt-[260px] text-center  font-retro text-display-medium leading-[64px] text-primary drop-shadow-lg md:text-display-large lg:mt-[170px]">

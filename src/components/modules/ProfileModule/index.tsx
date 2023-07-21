@@ -289,7 +289,7 @@ export const ProfileModule: React.FC = () => {
   return (
     <>
       <div className="relative flex min-h-screen w-full items-center justify-center bg-background-light pt-24">
-        <div className="absolute left-0 bottom-0 hidden lg:block">
+        <div className="absolute bottom-0 left-0 hidden lg:block">
           <ProfilePageAssets />
         </div>
         <div className=" min-h-screen w-full max-w-[1920px] pb-10">

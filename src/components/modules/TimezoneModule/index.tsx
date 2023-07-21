@@ -10,9 +10,9 @@ export const TimezoneModule: React.FC = () => {
 
   return (
     <>
-      <div className="relative flex min-h-screen w-full max-w-[1920px] flex-col items-center justify-center bg-background-light px-5 pt-24 pb-10">
+      <div className="relative flex min-h-screen w-full max-w-[1920px] flex-col items-center justify-center bg-background-light px-5 pb-10 pt-24">
         <Button
-          className="ml-4 w-fit px-5 py-3 lg:absolute lg:top-[10%] lg:left-5"
+          className="ml-4 w-fit px-5 py-3 lg:absolute lg:left-5 lg:top-[10%]"
           variant={2}
           onClick={() => {
             router.back()

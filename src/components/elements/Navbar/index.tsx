@@ -332,7 +332,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
               <Navbarflowerright />
             </div>
           </div>
-          <div className="absolute top-1/2 left-1/2 hidden -translate-x-1/2 -translate-y-3 transform">
+          <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-3 transform">
             <Navbarflower />
           </div>
         </div>

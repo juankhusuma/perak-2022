@@ -8,7 +8,7 @@ export const LeagueRegistrationLayout: React.FC<
   LeagueRegistrationLayoutProps
 > = ({ game, children }) => {
   return (
-    <div className="relative flex min-h-screen justify-center bg-cream-light pt-24 pb-16 font-poppins lg:pt-40">
+    <div className="relative flex min-h-screen justify-center bg-cream-light pb-16 pt-24 font-poppins lg:pt-40">
       {IMAGE_DECORATION.map(({ alt, imageUrl, className }, key) => (
         <div key={key}>
           <Image

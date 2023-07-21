@@ -58,7 +58,7 @@ export const LeaderboardCard: React.FC<LeaderboardCardProps> = ({
           />
         </div>
         <div
-          className={`absolute w-full bg-blue-normal px-4 pt-2 pb-4 transition-all duration-200 ease-in-out ${
+          className={`absolute w-full bg-blue-normal px-4 pb-4 pt-2 transition-all duration-200 ease-in-out ${
             isHover ? 'bottom-0' : '-bottom-[26%]'
           } ${className ?? ''}`}
         >

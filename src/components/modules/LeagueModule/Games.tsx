@@ -88,7 +88,7 @@ export const Games: React.FC<ContentProps> = ({ leagueName, league }) => {
               ))}
             </div>
             {totalPages > 1 && (
-              <div className="right-0 bottom-0 z-10 mt-10 flex select-none justify-center gap-2 lg:absolute lg:mt-0">
+              <div className="bottom-0 right-0 z-10 mt-10 flex select-none justify-center gap-2 lg:absolute lg:mt-0">
                 {
                   <div
                     className="cursor-pointer rounded-full p-2"

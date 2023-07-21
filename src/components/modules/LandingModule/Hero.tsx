@@ -27,18 +27,18 @@ export default function Hero() {
 
   return (
     <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-background-light py-20 md:py-28">
-      <RandomLogoBottomLeft className="absolute left-0 bottom-10 z-0 hidden lg:inline-block" />
-      <RandomLogoBottomRight className="absolute right-0 bottom-10 z-0 hidden lg:inline-block" />
+      <RandomLogoBottomLeft className="absolute bottom-10 left-0 z-0 hidden lg:inline-block" />
+      <RandomLogoBottomRight className="absolute bottom-10 right-0 z-0 hidden lg:inline-block" />
       {height > 768 && (
         <div>
           <CurtainLeft className="absolute top-[5%] z-0 animate-slide-in md:hidden" />
-          <RandomLogoBottomRight className="absolute -right-[20%] -bottom-[10%] z-0 animate-slide-up md:hidden" />
+          <RandomLogoBottomRight className="absolute -bottom-[10%] -right-[20%] z-0 animate-slide-up md:hidden" />
         </div>
       )}
-      <CurtainRight className="absolute top-0 -right-40 hidden md:right-0 md:block" />
-      <CurtainLeft className="absolute top-0 -left-40 hidden md:left-0 md:block" />
-      <RandomBSOnTop className="invisible absolute top-5 left-5 animate-slide-in md:visible md:top-24 md:left-20" />
-      <GameController className="invisible absolute top-0 right-5 animate-slide-in md:top-12 md:right-14 lg:visible" />
+      <CurtainRight className="absolute -right-40 top-0 hidden md:right-0 md:block" />
+      <CurtainLeft className="absolute -left-40 top-0 hidden md:left-0 md:block" />
+      <RandomBSOnTop className="invisible absolute left-5 top-5 animate-slide-in md:visible md:left-20 md:top-24" />
+      <GameController className="invisible absolute right-5 top-0 animate-slide-in md:right-14 md:top-12 lg:visible" />
       <div className="grid w-full place-items-center">
         <Stars />
       </div>

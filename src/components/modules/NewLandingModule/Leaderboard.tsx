@@ -53,8 +53,8 @@ export default function Leaderboard() {
             </Link>
           </div>
         </div>
-        <RightCloud className="absolute hidden animate-[bounce_20s_ease-in-out_infinite]  md:top-[-20%] md:right-[-28%] md:block lg:top-[-10%] lg:right-[5%]" />
-        <LeftCloud className="absolute hidden animate-[bounce_20s_ease-in-out_infinite] md:top-[-20%] md:left-[-28%] md:block lg:top-[-10%] lg:left-[5%]" />
+        <RightCloud className="absolute hidden animate-[bounce_20s_ease-in-out_infinite]  md:right-[-28%] md:top-[-20%] md:block lg:right-[5%] lg:top-[-10%]" />
+        <LeftCloud className="absolute hidden animate-[bounce_20s_ease-in-out_infinite] md:left-[-28%] md:top-[-20%] md:block lg:left-[5%] lg:top-[-10%]" />
       </div>
 
       <div className="bg-transparent lg:h-[40px]"></div>

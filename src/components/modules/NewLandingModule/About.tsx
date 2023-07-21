@@ -31,7 +31,7 @@ export default function About() {
         ref={aboutRef}
       >
         <ControllerPic
-          className={`absolute top-[1%] right-[20%] bottom-auto z-0 hidden transform opacity-100 transition-all duration-1000 ease-in-out lg:block ${
+          className={`absolute bottom-auto right-[20%] top-[1%] z-0 hidden transform opacity-100 transition-all duration-1000 ease-in-out lg:block ${
             isAboutInViewport ? '' : 'translate-y-full'
           }`}
         />

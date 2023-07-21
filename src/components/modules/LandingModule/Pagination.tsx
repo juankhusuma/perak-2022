@@ -23,7 +23,7 @@ const Dot = ({ isSelected }: DotProps) => {
       <div className="relative h-[10px] w-[10px] rounded-full bg-orange-light">
         {isSelected && (
           <motion.div
-            className="absolute -top-[2px] -bottom-[2px] h-[14px] w-[14px] rounded-full bg-orange-dark"
+            className="absolute -bottom-[2px] -top-[2px] h-[14px] w-[14px] rounded-full bg-orange-dark"
             layoutId="highlight"
           />
         )}

@@ -8,7 +8,7 @@ export const PlayerModule: React.FC = () => {
 
   return (
     <>
-      <main className="relative flex flex-col gap-8 py-28 px-8 font-poppins lg:px-28">
+      <main className="relative flex flex-col gap-8 px-8 py-28 font-poppins lg:px-28">
         <h1 className="text-shadow-lg font-outline-4 font-poppinsBold text-headline-large text-purple-dark shadow-orange-dark">
           Player Information
         </h1>

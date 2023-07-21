@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
 
   return (
     <>
-      <div className="mb-20 flex w-full select-none flex-col items-center justify-between bg-[#DC8F1A] py-5 md:flex-row md:py-10 md:px-20">
+      <div className="mb-20 flex w-full select-none flex-col items-center justify-between bg-[#DC8F1A] py-5 md:flex-row md:px-20 md:py-10">
         <div className="flex flex-col items-center justify-center text-center md:flex-row md:text-left">
           <Image
             imageUrl="/logo.svg"
