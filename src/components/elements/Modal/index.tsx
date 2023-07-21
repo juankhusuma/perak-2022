@@ -54,7 +54,7 @@ export const Modal: FC<ModalProps> = ({
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel
-                  className={`w-full max-w-[300px] transform overflow-hidden rounded-2xl bg-primary p-6 text-left align-middle shadow-xl transition-all ${className}`}
+                  className={`w-full transform overflow-hidden rounded-2xl bg-primary p-6 text-left align-middle shadow-xl transition-all ${className}`}
                 >
                   <div
                     className={`flex w-full justify-end ${

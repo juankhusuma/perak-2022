@@ -38,7 +38,7 @@ export const activities = [
   [
     '2023-04-15 23:59',
     './assets/images/NewLanding/PestaRakyat.svg',
-    'Pesta Rakyat',
+    'Pesta Rakyat x Pasar Malam',
   ],
 ]
 

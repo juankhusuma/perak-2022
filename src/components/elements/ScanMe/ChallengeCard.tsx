@@ -99,19 +99,19 @@ const ChallengeCard = ({
       <div className="">
         <p className="font-poppinsBold">Status</p>
         {challengeStatusId === 'Menunggu Bukti Tantangan' ? (
-          <p className="w-max rounded bg-cream-dark py-2 px-3 font-poppinsBold text-sm text-cream-light">
+          <p className="w-max rounded bg-cream-dark px-3 py-2 font-poppinsBold text-sm text-cream-light">
             {challengeStatusId}
           </p>
         ) : challengeStatusId === 'Menunggu Konfirmasi' ? (
-          <p className="w-max rounded bg-purple-light py-2 px-3 font-poppinsBold text-sm text-cream-light">
+          <p className="w-max rounded bg-purple-light px-3 py-2 font-poppinsBold text-sm text-cream-light">
             {challengeStatusId}
           </p>
         ) : challengeStatusId === 'Bukti Terkonfirmasi' ? (
-          <p className="w-max rounded bg-green-dark py-2 px-3 font-poppinsBold text-sm text-cream-light">
+          <p className="w-max rounded bg-green-dark px-3 py-2 font-poppinsBold text-sm text-cream-light">
             {challengeStatusId}
           </p>
         ) : challengeStatusId === 'Bukti Ditolak' ? (
-          <p className="w-max rounded bg-red-dark py-2 px-3 font-poppinsBold text-sm text-cream-light">
+          <p className="w-max rounded bg-red-dark px-3 py-2 font-poppinsBold text-sm text-cream-light">
             {challengeStatusId}
           </p>
         ) : null}
